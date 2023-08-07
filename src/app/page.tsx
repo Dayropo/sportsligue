@@ -772,8 +772,8 @@ export default function Home() {
                           </li>
                         </ul>
                         <p>
-                          Our research demonstrates that – despite a high level
-                          of activity – many measures have limited impact unless
+                          Our research demonstrates that &dash; despite a high level
+                          of activity &dash; many measures have limited impact unless
                           they are truly embedded in a comprehensive strategy.
                           Download the full study to learn more.
                         </p>
@@ -811,7 +811,7 @@ export default function Home() {
                         </ul>
                         <p>
                           The Czech president, Miloš Zeman, led the first round
-                          of the Czech Republic’s presidential election on
+                          of the Czech Republic&apos;s presidential election on
                           Saturday by a wide margin but short of winning
                           outright, partial results have showed.
                         </p>
@@ -885,7 +885,7 @@ export default function Home() {
                         <p>
                           The vote is seen as a referendum on Zeman, 73, who has
                           been in office since 2013. He has criticised migration
-                          from Muslim-majority countries as well as Germany’s
+                          from Muslim-majority countries as well as Germany&apos;s
                           decision to accept many migrants.
                         </p>
                       </div>
@@ -919,7 +919,7 @@ export default function Home() {
                           </li>
                         </ul>
                         <p>
-                          Zeman’s lead does not mean an easy win in the second
+                          Zeman&apos;s lead does not mean an easy win in the second
                           round. Many voters may switch from their losing
                           candidates to support the runner-up against Zeman.
                         </p>
@@ -1097,7 +1097,7 @@ export default function Home() {
                           <div className="post-cont">
                             <h2>
                               <a href="single-post.html">
-                                Commentary: Spotify’s Unusual IPO Came at the
+                                Commentary: Spotify&apos;s Unusual IPO Came at the
                                 Perfect Time
                               </a>
                             </h2>
@@ -1288,7 +1288,7 @@ export default function Home() {
                           <div className="post-cont">
                             <h2>
                               <a href="single-post.html">
-                                Commentary: Spotify’s Unusual IPO Came at the
+                                Commentary: Spotify&apos;s Unusual IPO Came at the
                                 Perfect Time
                               </a>
                             </h2>
@@ -1380,7 +1380,7 @@ export default function Home() {
                           <div className="post-cont">
                             <h2>
                               <a href="single-post.html">
-                                Commentary: Spotify’s Unusual IPO Came at the
+                                Commentary: Spotify&apos;s Unusual IPO Came at the
                                 Perfect Time
                               </a>
                             </h2>
@@ -1479,7 +1479,7 @@ export default function Home() {
                           <div className="post-cont">
                             <h2>
                               <a href="single-post.html">
-                                Commentary: Spotify’s Unusual IPO Came at the
+                                Commentary: Spotify&apos;s Unusual IPO Came at the
                                 Perfect Time
                               </a>
                             </h2>
@@ -1569,7 +1569,7 @@ export default function Home() {
                           <div className="post-cont">
                             <h2>
                               <a href="single-post.html">
-                                Commentary: Spotify’s Unusual IPO Came at the
+                                Commentary: Spotify&apos;s Unusual IPO Came at the
                                 Perfect Time
                               </a>
                             </h2>
@@ -1664,7 +1664,7 @@ export default function Home() {
                         <div className="col-sm-7">
                           <h2>
                             <a href="single-post.html">
-                              The Guardian view on Germany’s coalition deal:
+                              The Guardian view on Germany&apos;s coalition deal:
                               Merkel in the balance
                             </a>
                           </h2>
@@ -1752,7 +1752,7 @@ export default function Home() {
                         <div className="col-sm-7">
                           <h2>
                             <a href="single-post.html">
-                              Cameroon’s heartbreaking struggles are a relic of
+                              Cameroon&apos;s heartbreaking struggles are a relic of
                               British colonialism
                             </a>
                           </h2>
@@ -1839,7 +1839,7 @@ export default function Home() {
                         <div className="col-sm-7">
                           <h2>
                             <a href="single-post.html">
-                              The Guardian view on Germany’s coalition deal:
+                              The Guardian view on Germany&apos;s coalition deal:
                               Merkel in the balance
                             </a>
                           </h2>
@@ -2033,7 +2033,7 @@ export default function Home() {
                         <div className="post-cont">
                           <h2>
                             <a href="single-post.html">
-                              Commentary: Spotify’s Unusual IPO Came at the
+                              Commentary: Spotify&apos;s Unusual IPO Came at the
                               Perfect Time
                             </a>
                           </h2>
