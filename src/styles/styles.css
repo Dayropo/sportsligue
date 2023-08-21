@@ -1557,9 +1557,20 @@ ul.post-tags li:last-child {
   overflow: hidden;
 }
 
+.image-post.main-post img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 700/500;
+  transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -webkit-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+}
+
 .image-post img {
   width: 100%;
   height: auto;
+  aspect-ratio: 350/500;
   transition: all 1s ease-in-out;
   -moz-transition: all 1s ease-in-out;
   -webkit-transition: all 1s ease-in-out;
@@ -2196,6 +2207,7 @@ ul.small-posts > li:last-child {
 .single-post img {
   width: 100%;
   height: auto;
+  aspect-ratio: 720/450;
   margin-bottom: 30px;
 }
 
