@@ -13,8 +13,7 @@ const HeadingNews = async () => {
       <div className="news-post image-post main-post">
         <Image
           src={posts[0].image}
-          width={700}
-          height={500}
+          fill
           alt=""
           style={{ objectFit: "cover" }}
         />
@@ -44,13 +43,7 @@ const HeadingNews = async () => {
 
       {posts.slice(1, 3).map((post: Post) => (
         <div className="news-post image-post" key={post._id}>
-          <Image
-            src={post.image}
-            width={350}
-            height={500}
-            alt=""
-            style={{ objectFit: "cover", objectPosition: "center" }}
-          />
+          <Image src={post.image} fill alt="" style={{ objectFit: "cover" }} />
           <div className="hover-box">
             <Link href={`/${post.category}`} className="category">
               {post.category}

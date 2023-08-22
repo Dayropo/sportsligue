@@ -72,7 +72,7 @@ export default async function Post({ params }: Props) {
                   </li>
                 </ul>
               </div>
-              <Image src={post.image} width={720} height={450} alt="" />
+              <Image src={post.image} width={720} height={450} style={{objectFit: "cover", objectPosition: "center"}} alt="" />
               <PortableText
                 value={post.body}
                 components={PortableTextComponents}

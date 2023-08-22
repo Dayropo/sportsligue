@@ -1,14 +1,59 @@
-"use client"
-
+import { getAllPosts } from "@/sanity/sanity-utils"
 import Image from "next/image"
+import { Post } from "../@types/typings"
+import Link from "next/link"
 
-const LatestNews = () => {
+const LatestNews = async () => {
+  const posts = await getAllPosts()
+
   return (
     <div className="posts-block standard-box">
       <div className="title-section">
         <h1>Latest News</h1>
       </div>
       <div className="row">
+        {posts.slice(0, 6).map((post: Post) => (
+          <div className="col-sm-6" key={post._id}>
+            <div className="news-post standart-post">
+              <div className="post-image">
+                <Link href={`/${post.category}/${post.slug}`}>
+                  <Image
+                    src={post.image}
+                    fill
+                    alt=""
+                    style={{ objectFit: "cover" }}
+                  />
+                </Link>
+                <Link href={`/${post.category}`} className="category">
+                  {post.category}
+                </Link>
+              </div>
+              <h2>
+                <Link href={`/${post.category}/${post.slug}`}>
+                  {post.title}
+                </Link>
+              </h2>
+              <ul className="post-tags">
+                <li>
+                  by <Link href={`/${post.authorSlug}`}>{post.author}</Link>
+                </li>
+                <li>
+                  <a href="#">
+                    <span>23 comments</span>
+                  </a>
+                </li>
+              </ul>
+              <p>
+                Eight candidates are seeking to oust Zeman, whose inclination
+                toward far-right groups and cosy relations with Russia and China
+                have split public opinion.
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* <div className="row">
         <div className="col-sm-6">
           <div className="news-post standart-post">
             <div className="post-image">
@@ -199,7 +244,7 @@ const LatestNews = () => {
             </p>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }
