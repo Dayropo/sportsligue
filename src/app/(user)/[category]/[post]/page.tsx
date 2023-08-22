@@ -458,7 +458,7 @@ export default async function Post({ params }: Props) {
                           <h2>
                             <a href="single-post.html">
                               5 Key Things to Know About Haiti After Donald
-                              Trump's Insult
+                              Trump&apos;s Insult
                             </a>
                           </h2>
                           <ul className="post-tags">
@@ -478,7 +478,7 @@ export default async function Post({ params }: Props) {
                         <div className="post-cont">
                           <h2>
                             <a href="single-post.html">
-                              These Are All the Sam's Club Locations That Are
+                              These Are All the Sam&apos;s Club Locations That Are
                               Closing
                             </a>
                           </h2>
