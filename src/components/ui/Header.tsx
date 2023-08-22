@@ -1,6 +1,9 @@
 "use client"
 
 import Image from "next/image"
+import Link from "next/link"
+import { ClockIcon } from "@heroicons/react/24/outline"
+import { UserIcon } from "@heroicons/react/24/solid"
 
 const Header = () => {
   return (
@@ -9,13 +12,13 @@ const Header = () => {
         <div className="container">
           <div className="row">
             <div className="col-sm-5">
-              <a className="navbar-brand" href="index.html">
+              <Link className="navbar-brand" href={`/`}>
                 <Image
                   src={require("../../assets/images/white_logo.png")}
                   style={{ width: "100px", height: "auto" }}
-                  alt=""
+                  alt="sportsligue"
                 />
-              </a>
+              </Link>
             </div>
             <div className="col-sm-7">
               <form className="form-inline">
@@ -31,11 +34,27 @@ const Header = () => {
               </form>
               <ul className="info-list right-align">
                 <li>
-                  <i className="fa fa-clock-o"></i>Monday 15.01.2018
+                  <ClockIcon
+                    style={{
+                      width: "16px",
+                      height: "16px",
+                      color: "white",
+                      marginRight: "4px",
+                    }}
+                  />
+                  Monday 15.01.2018
                 </li>
                 <li>
                   <a href="#" data-toggle="modal" data-target="#loginModal">
-                    <i className="fa fa-user"></i>Log in
+                    <UserIcon
+                      style={{
+                        width: "16px",
+                        height: "16px",
+                        color: "white",
+                        marginRight: "4px",
+                      }}
+                    />
+                    Log in
                   </a>
                 </li>
                 <li>

@@ -1,13 +1,11 @@
 type Props = {
-    params: {
-        category: string
-    }
+  params: {
+    category: string
+  }
 }
 
-export default function Category({params}: Props) {
-    const slug = params.category
-    
-  return (
-    <div>page</div>
-  )
+export default function Category({ params }: Props) {
+  const slug = params.category
+
+  return <div>page</div>
 }

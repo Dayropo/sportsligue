@@ -17,7 +17,8 @@ export async function getAllPosts(): Promise<Post[]> {
   featured,
   publishedAt,
   body,
-} | order(publishedAt desc)`
+} | order(publishedAt desc)`,
+    { next: { revalidate: process.env.NEXT_PUBLIC_SANITY_REVALIDATE } }
   )
 }
 
@@ -37,7 +38,7 @@ export async function getPost(slug: string): Promise<Post> {
   publishedAt,
   body,
 }`,
-    { slug }
+    { slug, next: { revalidate: process.env.NEXT_PUBLIC_SANITY_REVALIDATE } }
   )
 }
 
@@ -51,6 +52,6 @@ export async function getAuthor(slug: string): Promise<Author> {
   "slug": slug.current,
   bio,
 }`,
-    { slug }
+    { slug, next: { revalidate: process.env.NEXT_PUBLIC_SANITY_REVALIDATE } }
   )
 }

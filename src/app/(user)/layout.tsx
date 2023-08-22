@@ -3,6 +3,8 @@ import "../../styles/styles.css"
 import type { Metadata } from "next"
 import { Roboto_Condensed } from "next/font/google"
 import Script from "next/script"
+import Header from "@/src/components/ui/Header"
+import Footer from "@/src/components/ui/Footer"
 
 const robotoCondensed = Roboto_Condensed({
   weight: ["300", "400", "700"],
@@ -22,7 +24,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${robotoCondensed.className}  boxed-style`}>
-        {children}
+        <div id="container">
+          <Header />
+          {children}
+          <Footer />
+        </div>
+
         <Script src="https://code.jquery.com/jquery-3.4.1.min.js" />
       </body>
     </html>
