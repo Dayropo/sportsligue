@@ -5,13 +5,14 @@ export const PortableTextComponents = {
   types: {
     image: ({ value }: any) => {
       return (
-        <Image
-          src={urlFor(value).url()}
-          width={720}
-          height={450}
-          alt={value}
-          style={{ objectFit: "cover", objectPosition: "center" }}
-        />
+        <div className="portable-text-image">
+          <Image
+            src={urlFor(value).url()}
+            fill
+            alt={value}
+            style={{ objectFit: "cover", objectPosition: "center" }}
+          />
+        </div>
       )
     },
   },

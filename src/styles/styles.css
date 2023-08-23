@@ -52,8 +52,7 @@ h1 {
 }
 
 .heading2,
-ul.author-list > li .autor-box .autor-content .autor-title h1 span:after,
- {
+ul.author-list > li .autor-box .autor-content .autor-title h1 span:after {
   color: #212121;
   font-size: 17px;
   font-family: "Roboto Condensed", sans-serif;
@@ -1892,6 +1891,8 @@ ul.small-posts > li {
 ul.small-posts > li > a {
   float: left;
   width: 80px;
+  position: relative;
+  aspect-ratio: 1/1;
   margin-right: 20px;
 }
 
@@ -2218,10 +2219,16 @@ ul.small-posts > li:last-child {
   margin-right: 10px;
 }
 
+.single-post .main-image, .portable-text-image {
+  width: 100%;
+  position: relative;
+  aspect-ratio: 720/450;
+  margin-bottom: 30px;
+}
+
 .single-post img {
   width: 100%;
   height: auto;
-  aspect-ratio: 720/450;
   margin-bottom: 30px;
 }
 
@@ -4316,11 +4323,11 @@ footer .down-footer a.go-top:hover {
 .studio-navbar-container .homepage-link {
   display: flex;
   align-items: center;
-  color: #F7AB0A;
+  color: #f7ab0a;
 }
 
 .studio-navbar-container .homepage-link .icon {
-  color: #F7AB0A;
+  color: #f7ab0a;
   margin-right: 8px;
   width: 24px;
   height: 24px;

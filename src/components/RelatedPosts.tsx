@@ -6,6 +6,7 @@ import "owl.carousel/dist/assets/owl.carousel.css"
 import "owl.carousel/dist/assets/owl.theme.default.css"
 import { Post } from "../@types/typings"
 import Link from "next/link"
+import urlFor from "@/sanity/urlFor"
 
 if (typeof window !== "undefined") {
   window.$ = window.jQuery = require("jquery")
@@ -40,21 +41,20 @@ export default function RelatedPosts({ posts }: Props) {
             <div className="item" key={post._id}>
               <div className="news-post standart-post">
                 <div className="post-image">
-                  <Link href={`/${post.category}/${post.slug}`}>
+                  <Link href={`/${post.category.slug.current}/${post.slug.current}`}>
                     <Image
-                      src={post.image}
-                      width={400}
-                      height={260}
+                      src={urlFor(post.mainImage).url()}
+                      fill
                       alt=""
                       style={{ objectFit: "cover", objectPosition: "center" }}
                     />
                   </Link>
-                  <Link href={`/${post.category}`} className="category">
-                    {post.category}
+                  <Link href={`/${post.category.slug.current}`} className="category">
+                    {post.category.title}
                   </Link>
                 </div>
                 <h2>
-                  <Link href={`/${post.category}/${post.slug}`}>
+                  <Link href={`/${post.category.slug.current}/${post.slug.current}`}>
                     {post.title}
                   </Link>
                 </h2>

@@ -3,6 +3,8 @@
 import Image from "next/image"
 
 const FootballLatest = () => {
+  
+
   return (
     <div className="col-md-6">
       <div className="title-section">

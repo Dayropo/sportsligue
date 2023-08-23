@@ -1,19 +1,22 @@
 import { getAuthor } from "@/sanity/sanity-utils"
 import { PortableText } from "@portabletext/react"
 import Image from "next/image"
+import { Author } from "../@types/typings"
+import urlFor from "@/sanity/urlFor"
 
 type Props = {
-  slug: string
+  author: Author
 }
 
-export default async function AuthorProfile({ slug }: Props) {
-  const author = await getAuthor(slug)
+export default async function AuthorProfile({ author }: Props) {
+  // const author = await getAuthor(slug)
+  console.log({ author })
 
   return (
     <div className="author-profile">
       <div className="author-box">
         <Image
-          src={author.image}
+          src={urlFor(author.image).url()}
           width={100}
           height={100}
           alt={author.name}

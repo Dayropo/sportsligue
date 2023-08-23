@@ -1,4 +1,5 @@
 import { getAllPosts, getPost } from "@/sanity/sanity-utils"
+import urlFor from "@/sanity/urlFor"
 import AuthorProfile from "@/src/components/AuthorProfile"
 import { PortableTextComponents } from "@/src/components/PortableTextComponents"
 import RelatedPosts from "@/src/components/RelatedPosts"
@@ -29,7 +30,7 @@ export default async function Post({ params }: Props) {
               <ul className="post-tags">
                 <li>
                   <i className="lnr lnr-user"></i>by{" "}
-                  <a href="#">{post.author}</a>
+                  <a href="#">{post.author.name}</a>
                 </li>
                 <li>
                   <a href="#">
@@ -72,7 +73,15 @@ export default async function Post({ params }: Props) {
                   </li>
                 </ul>
               </div>
-              <Image src={post.image} width={720} height={450} style={{objectFit: "cover", objectPosition: "center"}} alt="" />
+              <div className="main-image">
+                <Image
+                src={urlFor(post.mainImage).url()}
+                fill
+                style={{ objectFit: "cover", objectPosition: "center" }}
+                alt=""
+              />
+              </div>
+              
               <PortableText
                 value={post.body}
                 components={PortableTextComponents}
@@ -96,7 +105,7 @@ export default async function Post({ params }: Props) {
             {/* <!-- End Posts-block --> */}
 
             {/* <!-- author-profile --> */}
-            <AuthorProfile slug={post.authorSlug} />
+            <AuthorProfile author={post.author} />
             {/* <!-- End author-profile --> */}
 
             {/* <!-- comment area box --> */}
