@@ -37,6 +37,13 @@ export default defineType({
       options: {
         hotspot: true,
       },
+      fields: [
+        {
+          name: "caption",
+          type: "string",
+          title: "Caption",
+        },
+      ],
     }),
     defineField({
       name: "category",
@@ -64,6 +71,12 @@ export default defineType({
       name: "featured",
       title: "Featured",
       type: "boolean",
+    }),
+    defineField({
+      name: "tags",
+      title: "Tags",
+      type: "array",
+      of: [{ type: "string" }],
     }),
   ],
 

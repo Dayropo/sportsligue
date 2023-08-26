@@ -203,6 +203,17 @@ header.active .navbar {
   position: inherit;
 }
 
+.nav-link > .nav-icon {
+  font-size: 13px;
+  margin-left: 8px;
+}
+
+.nav-link:hover,
+.nav-link:hover > .nav-icon,
+.nav-link.active > .nav-icon {
+  color: #ff7e00 !important;
+}
+
 .top-line {
   padding: 15px 0;
   transition: all 0.2s ease-in-out;
@@ -2219,7 +2230,8 @@ ul.small-posts > li:last-child {
   margin-right: 10px;
 }
 
-.single-post .main-image, .portable-text-image {
+.single-post .main-image,
+.portable-text-image {
   width: 100%;
   position: relative;
   aspect-ratio: 720/450;

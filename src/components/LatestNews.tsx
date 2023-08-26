@@ -18,7 +18,7 @@ const LatestNews = async () => {
             <div className="news-post standart-post">
               <div className="post-image">
                 <Link
-                  href={`/${post.category.slug.current}/${post.slug.current}`}
+                  href={`/${post.slug.current}`}
                 >
                   <Image
                     src={urlFor(post.mainImage).url()}
@@ -36,7 +36,7 @@ const LatestNews = async () => {
               </div>
               <h2>
                 <Link
-                  href={`/${post.category.slug.current}/${post.slug.current}`}
+                  href={`/${post.slug.current}`}
                 >
                   {post.title}
                 </Link>

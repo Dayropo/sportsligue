@@ -18,9 +18,7 @@ const CategoryLatest = async ({ category }: Props) => {
       </div>
       <div className="news-post standart-post">
         <div className="post-image">
-          <Link
-            href={`/${posts[0].category.slug.current}/${posts[0].slug.current}`}
-          >
+          <Link href={`/${posts[0].slug.current}`}>
             <Image
               src={urlFor(posts[0].mainImage).url()}
               fill
@@ -29,18 +27,14 @@ const CategoryLatest = async ({ category }: Props) => {
             />
           </Link>
           <Link
-            href={`/${posts[0].category.slug.current}`}
+            href={`/category/${posts[0].category.slug.current}`}
             className="category"
           >
             {posts[0].category.title}
           </Link>
         </div>
         <h2>
-          <Link
-            href={`/${posts[0].category.slug.current}/${posts[0].slug.current}`}
-          >
-            {posts[0].title}
-          </Link>
+          <Link href={`/${posts[0].slug.current}`}>{posts[0].title}</Link>
         </h2>
         <p>
           Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
@@ -50,7 +44,7 @@ const CategoryLatest = async ({ category }: Props) => {
       <ul className="small-posts">
         {posts.slice(1, 4).map((post: Post) => (
           <li key={post._id}>
-            <Link href={`/${post.category.slug.current}/${post.slug.current}`}>
+            <Link href={`/${post.slug.current}`}>
               <Image
                 src={urlFor(post.mainImage).url()}
                 fill
@@ -60,16 +54,12 @@ const CategoryLatest = async ({ category }: Props) => {
             </Link>
             <div className="post-cont">
               <h2>
-                <Link
-                  href={`/${post.category.slug.current}/${post.slug.current}`}
-                >
-                  {post.title}
-                </Link>
+                <Link href={`/${post.slug.current}`}>{post.title}</Link>
               </h2>
               <ul className="post-tags">
                 <li>
                   by{" "}
-                  <Link href={`/${post.author.slug.current}`}>
+                  <Link href={`/profile/${post.author.slug.current}`}>
                     {post.author.name}
                   </Link>
                 </li>
@@ -77,42 +67,6 @@ const CategoryLatest = async ({ category }: Props) => {
             </div>
           </li>
         ))}
-
-        {/* <li>
-          <a href="single-post.html">
-            <Image src={require("../assets/upload/blog/th2.jpg")} alt="" />
-          </a>
-          <div className="post-cont">
-            <h2>
-              <a href="single-post.html">
-                5 Key Things to Know About Haiti After Donald Trump&apos;s
-                Insult
-              </a>
-            </h2>
-            <ul className="post-tags">
-              <li>
-                by <a href="#">John Doe</a>
-              </li>
-            </ul>
-          </div>
-        </li>
-        <li>
-          <a href="single-post.html">
-            <Image src={require("../assets/upload/blog/th3.jpg")} alt="" />
-          </a>
-          <div className="post-cont">
-            <h2>
-              <a href="single-post.html">
-                These Are All the Sam&apos;s Club Locations That Are Closing
-              </a>
-            </h2>
-            <ul className="post-tags">
-              <li>
-                by <a href="#">John Doe</a>
-              </li>
-            </ul>
-          </div>
-        </li> */}
       </ul>
     </div>
   )

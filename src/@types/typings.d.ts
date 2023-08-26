@@ -15,6 +15,7 @@ interface Post extends Base {
   featured: boolean
   publishedAt: Date
   body: PortableTextBlock[]
+  tags: string[]
 }
 
 interface Author extends Base {
@@ -27,7 +28,7 @@ interface Author extends Base {
 interface Category extends Base {
   title: string,
   slug: Slug,
-  subCategory: SubCategory
+  subCategories: SubCategory[]
 }
 
 interface SubCategory extends Base {
