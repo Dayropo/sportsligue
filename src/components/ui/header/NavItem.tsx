@@ -38,7 +38,7 @@ export default function NavItem({ category, posts }: Props) {
 
           <div className="row">
             {posts.slice(0, 4).map((post: Post) => (
-              <div className="col-lg-3 col-md-6">
+              <div className="col-lg-3 col-md-6" key={post._id}>
                 <div className="news-post standart-post">
                   <div className="post-image">
                     <Link
