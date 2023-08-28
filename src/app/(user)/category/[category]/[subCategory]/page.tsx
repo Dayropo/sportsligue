@@ -33,7 +33,7 @@ export default async function SubCategory({ params }: Props) {
 
                 <div className="articles-box-style">
                   {posts.slice(0, 5).map((post: Post) => (
-                    <div className="news-post article-post">
+                    <div className="news-post article-post" key={post._id}>
                       <div className="row">
                         <div className="col-sm-5">
                           <div className="post-image">
