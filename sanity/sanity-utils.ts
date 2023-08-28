@@ -112,6 +112,29 @@ export async function getPostsByCategory(category: string): Promise<Post[]> {
   )
 }
 
+export async function getPostsByCategorySlug(slug: string): Promise<Post[]> {
+  return client.fetch(
+    groq`*[_type == "post" && category->slug.current == $slug]{
+  _id,
+  _createdAt,
+  title,
+  slug,
+  mainImage,
+  author->,
+  category->,
+  subCategory->,
+  featured,
+  publishedAt,
+  body,
+  tags,
+} | order(publishedAt desc)`,
+    {
+      slug,
+      next: { revalidate: process.env.NEXT_PUBLIC_SANITY_REVALIDATE },
+    }
+  )
+}
+
 export async function getPostsBySubCategory(
   subCategory: string
 ): Promise<Post[]> {
@@ -132,6 +155,31 @@ export async function getPostsBySubCategory(
 } | order(publishedAt desc)`,
     {
       subCategory,
+      next: { revalidate: process.env.NEXT_PUBLIC_SANITY_REVALIDATE },
+    }
+  )
+}
+
+export async function getPostsBySubCategorySlug(
+  slug: string
+): Promise<Post[]> {
+  return client.fetch(
+    groq`*[_type == "post" && subCategory->slug.current == $slug]{
+  _id,
+  _createdAt,
+  title,
+  slug,
+  mainImage,
+  author->,
+  category->,
+  subCategory->,
+  featured,
+  publishedAt,
+  body,
+  tags,
+} | order(publishedAt desc)`,
+    {
+      slug,
       next: { revalidate: process.env.NEXT_PUBLIC_SANITY_REVALIDATE },
     }
   )

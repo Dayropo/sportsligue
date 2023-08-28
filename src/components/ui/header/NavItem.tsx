@@ -15,7 +15,7 @@ type Props = {
 export default function NavItem({ category, posts }: Props) {
   return (
     <li className="nav-item">
-      <Link className="nav-link" href={`/${category.slug.current}`}>
+      <Link className="nav-link" href={`/category/${category.slug.current}`}>
         {category.title}
 
         {category.subCategories && <FaCaretDown className="nav-icon" />}
@@ -27,7 +27,7 @@ export default function NavItem({ category, posts }: Props) {
               {category.subCategories.map((subCategory: SubCategory) => (
                 <li key={subCategory._id}>
                   <Link
-                    href={`/${category.slug.current}/${subCategory.slug.current}`}
+                    href={`/category/${category.slug.current}/${subCategory.slug.current}`}
                   >
                     {subCategory.title}
                   </Link>

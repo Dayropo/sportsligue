@@ -1820,6 +1820,8 @@ ul.post-tags li:last-child {
 
 .article-post .post-image {
   position: relative;
+  aspect-ratio: 400/260;
+  width: 100%;
 }
 
 .article-post .post-image a {

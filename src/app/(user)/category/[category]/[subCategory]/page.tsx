@@ -1,4 +1,4 @@
-import { getPostsByCategorySlug } from "@/sanity/sanity-utils"
+import { getPostsBySubCategorySlug } from "@/sanity/sanity-utils"
 import urlFor from "@/sanity/urlFor"
 import { Post } from "@/src/@types/typings"
 import Footer from "@/src/components/ui/Footer"
@@ -9,13 +9,13 @@ import Link from "next/link"
 
 type Props = {
   params: {
-    category: string
+    subCategory: string
   }
 }
 
-export default async function Category({ params }: Props) {
-  const slug = params.category
-  const posts = await getPostsByCategorySlug(slug)
+export default async function SubCategory({ params }: Props) {
+  const slug = params.subCategory
+  const posts = await getPostsBySubCategorySlug(slug)
 
   return (
     <div id="container">
@@ -28,7 +28,7 @@ export default async function Category({ params }: Props) {
               {/* <!-- Posts-block --> */}
               <div className="posts-block">
                 <div className="title-section">
-                  <h1>{posts[0].category.title}</h1>
+                  <h1>{`${posts[0].category.title}  /  ${posts[0].subCategory.title}`}</h1>
                 </div>
 
                 <div className="articles-box-style">
