@@ -3,6 +3,8 @@ import urlFor from "@/sanity/urlFor"
 import Image from "next/image"
 import Link from "next/link"
 import { Post } from "../@types/typings"
+import { PortableText } from "@portabletext/react"
+import { PortableTextComponents } from "./PortableTextComponents"
 
 type Props = {
   category: string
@@ -36,10 +38,12 @@ const CategoryLatest = async ({ category }: Props) => {
         <h2>
           <Link href={`/${posts[0].slug.current}`}>{posts[0].title}</Link>
         </h2>
-        <p>
-          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-          dolore eu fugiat nulla pariatur.
-        </p>
+        <div className="description">
+          <PortableText
+            value={posts[0].body}
+            components={PortableTextComponents}
+          />
+        </div>
       </div>
       <ul className="small-posts">
         {posts.slice(1, 4).map((post: Post) => (

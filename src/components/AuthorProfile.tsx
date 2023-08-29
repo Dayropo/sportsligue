@@ -3,6 +3,13 @@ import { PortableText } from "@portabletext/react"
 import Image from "next/image"
 import { Author } from "../@types/typings"
 import urlFor from "@/sanity/urlFor"
+import {
+  FaFacebookF,
+  FaGooglePlusG,
+  FaInstagram,
+  FaLinkedinIn,
+  FaTwitter,
+} from "react-icons/fa"
 
 type Props = {
   author: Author
@@ -10,7 +17,6 @@ type Props = {
 
 export default async function AuthorProfile({ author }: Props) {
   // const author = await getAuthor(slug)
-  console.log({ author })
 
   return (
     <div className="author-profile">
@@ -30,27 +36,27 @@ export default async function AuthorProfile({ author }: Props) {
           <ul className="author-social">
             <li>
               <a href="#" className="facebook">
-                <i className="fa fa-facebook"></i>
+                <FaFacebookF size={16} />
               </a>
             </li>
             <li>
               <a href="#" className="google">
-                <i className="fa fa-google-plus"></i>
+                <FaGooglePlusG size={16} />
               </a>
             </li>
             <li>
               <a href="#" className="twitter">
-                <i className="fa fa-twitter"></i>
+                <FaTwitter size={16} />
               </a>
             </li>
             <li>
               <a href="#" className="instagram">
-                <i className="fa fa-instagram"></i>
+                <FaInstagram size={16} />
               </a>
             </li>
             <li>
               <a href="#" className="linkedin">
-                <i className="fa fa-linkedin"></i>
+                <FaLinkedinIn size={16} />
               </a>
             </li>
           </ul>

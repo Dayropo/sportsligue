@@ -1,5 +1,11 @@
 import Image from "next/image"
-import React from "react"
+import {
+  FaFacebookF,
+  FaGooglePlusG,
+  FaInstagram,
+  FaLinkedinIn,
+  FaTwitter,
+} from "react-icons/fa"
 
 export default function Footer() {
   return (
@@ -27,27 +33,27 @@ export default function Footer() {
                 <ul className="social-icons">
                   <li>
                     <a className="facebook" href="#">
-                      <i className="fa fa-facebook"></i>
+                      <FaFacebookF size={14} />
                     </a>
                   </li>
                   <li>
                     <a className="twitter" href="#">
-                      <i className="fa fa-twitter"></i>
+                      <FaTwitter size={14} />
                     </a>
                   </li>
                   <li>
                     <a className="google" href="#">
-                      <i className="fa fa-google-plus"></i>
+                      <FaGooglePlusG size={14} />
                     </a>
                   </li>
                   <li>
                     <a className="linkedin" href="#">
-                      <i className="fa fa-linkedin"></i>
+                      <FaLinkedinIn size={14} />
                     </a>
                   </li>
                   <li>
                     <a className="instagram" href="#">
-                      <i className="fa fa-instagram"></i>
+                      <FaInstagram size={14} />
                     </a>
                   </li>
                 </ul>

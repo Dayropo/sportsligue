@@ -1444,6 +1444,11 @@ ul.post-tags li:last-child {
   color: #ff7e00;
 }
 
+.standart-post .description {
+  height: 60px;
+  overflow-y: hidden;
+}
+
 .video-post .post-image {
   position: relative;
   margin-bottom: 14px;
@@ -1861,6 +1866,11 @@ ul.post-tags li:last-child {
   line-height: 24px;
 }
 
+.article-post .description {
+  height: 72px;
+  overflow-y: hidden;
+}
+
 ul.list-news {
   padding-top: 10px;
 }
@@ -2070,6 +2080,13 @@ ul.small-posts > li:last-child {
   -o-transition: all 0.5s ease-in-out;
 }
 
+.sidebar .social-widget ul.social-share li a .share-icons {
+  transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+}
+
 .sidebar .social-widget ul.social-share li a span {
   font-size: 12px;
   display: block;
@@ -2099,6 +2116,14 @@ ul.small-posts > li:last-child {
 }
 
 .sidebar .social-widget ul.social-share li a:hover i {
+  -webkit-transform: rotate(360deg);
+  -moz-transform: rotate(360deg);
+  -ms-transform: rotate(360deg);
+  -o-transform: rotate(360deg);
+  transform: rotate(360deg);
+}
+
+.sidebar .social-widget ul.social-share li a:hover .share-icons {
   -webkit-transform: rotate(360deg);
   -moz-transform: rotate(360deg);
   -ms-transform: rotate(360deg);
@@ -2237,7 +2262,13 @@ ul.small-posts > li:last-child {
   width: 100%;
   position: relative;
   aspect-ratio: 720/450;
-  margin-bottom: 30px;
+  margin-bottom: 36px;
+}
+
+.single-post .main-image figcaption, .portable-text-image figcaption {
+  position: absolute;
+  bottom: -24px;
+  left: 0px;
 }
 
 .single-post img {

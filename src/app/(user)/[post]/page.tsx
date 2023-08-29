@@ -9,6 +9,14 @@ import Sidebar from "@/src/components/ui/Sidebar"
 import { PortableText } from "@portabletext/react"
 import Image from "next/image"
 import Link from "next/link"
+import {
+  FaFacebookF,
+  FaGooglePlusG,
+  FaLinkedinIn,
+  FaRss,
+  FaTwitter,
+} from "react-icons/fa"
+import { FiBook, FiUser, FiEye } from "react-icons/fi"
 
 type Props = {
   params: {
@@ -33,58 +41,60 @@ export default async function Post({ params }: Props) {
                 <h1>{post.title}</h1>
                 <ul className="post-tags">
                   <li>
-                    <i className="lnr lnr-user"></i>by{" "}
-                    <a href="#">{post.author.name}</a>
+                    <FiUser size={14} style={{ marginRight: "8px" }} />
+                    by <a href="#">{post.author.name}</a>
                   </li>
                   <li>
                     <a href="#">
-                      <i className="lnr lnr-book"></i>
+                      <FiBook size={14} style={{ marginRight: "8px" }} />
                       <span>20 comments</span>
                     </a>
                   </li>
                   <li>
-                    <i className="lnr lnr-eye"></i>872 Views
+                    <FiEye size={14} style={{ marginRight: "8px" }} />
+                    872 Views
                   </li>
                 </ul>
                 <div className="share-post-box">
                   <ul className="share-box">
                     <li>
                       <a className="facebook" href="#">
-                        <i className="fa fa-facebook"></i>
+                        <FaFacebookF size={18} />
                         <span>Share on Facebook</span>
                       </a>
                     </li>
                     <li>
                       <a className="twitter" href="#">
-                        <i className="fa fa-twitter"></i>
+                        <FaTwitter size={18} />
                         <span>Share on Twitter</span>
                       </a>
                     </li>
                     <li>
                       <a className="google" href="#">
-                        <i className="fa fa-google-plus"></i>
+                        <FaGooglePlusG size={18} />
                       </a>
                     </li>
                     <li>
                       <a className="linkedin" href="#">
-                        <i className="fa fa-linkedin"></i>
+                        <FaLinkedinIn size={18} />
                       </a>
                     </li>
                     <li>
                       <a className="rss" href="#">
-                        <i className="fa fa-rss"></i>
+                        <FaRss size={18} />
                       </a>
                     </li>
                   </ul>
                 </div>
-                <div className="main-image">
+                <figure className="main-image">
                   <Image
                     src={urlFor(post.mainImage).url()}
                     fill
                     style={{ objectFit: "cover", objectPosition: "center" }}
                     alt=""
                   />
-                </div>
+                  <figcaption>{post.mainImage.caption}</figcaption>
+                </figure>
 
                 <PortableText
                   value={post.body}
@@ -97,7 +107,7 @@ export default async function Post({ params }: Props) {
               <div className="advertisement">
                 <a href="#">
                   <Image
-                    src={require("../../../assets/upload/addsense/620x80grey.jpg")}
+                    src={require("../../../assets/upload/addsense/728x90.gif")}
                     alt=""
                   />
                 </a>

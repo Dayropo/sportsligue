@@ -1,15 +1,16 @@
-import { getAllPosts } from "@/sanity/sanity-utils"
+import { getHeadlines } from "@/sanity/sanity-utils"
 import Image from "next/image"
 import { Post } from "../@types/typings"
 import Link from "next/link"
 import urlFor from "@/sanity/urlFor"
+import { FiBook, FiUser } from "react-icons/fi"
 
 const HeadingNews = async () => {
-  const posts = await getAllPosts()
+  const posts = await getHeadlines()
 
   return (
     <div className="news-headline">
-      <span className="title-notifier">Heading News</span>
+      <span className="title-notifier">Headlines</span>
 
       <div className="news-post image-post main-post">
         <Image
@@ -30,14 +31,15 @@ const HeadingNews = async () => {
           </h2>
           <ul className="post-tags">
             <li>
-              <i className="lnr lnr-user"></i>by{" "}
+              <FiUser size={12} style={{ marginRight: "4px" }} />
+              by{" "}
               <Link href={`/profile/${posts[0].author.slug.current}`}>
                 {posts[0].author.name}
               </Link>
             </li>
             <li>
               <a href="#">
-                <i className="lnr lnr-book"></i>
+                <FiBook size={12} style={{ marginRight: "4px" }} />
                 <span>23 comments</span>
               </a>
             </li>

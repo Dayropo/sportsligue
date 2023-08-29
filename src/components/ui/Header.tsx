@@ -8,6 +8,7 @@ import NavItem from "./header/NavItem"
 import { Category } from "@/src/@types/typings"
 import usePostsStore from "@/src/stores/posts"
 import { getCategoryByTitle, getPostsByCategory } from "@/sanity/sanity-utils"
+import { FaCaretDown } from "react-icons/fa"
 
 const Header = async () => {
   const footballCategory = await getCategoryByTitle("Football")
@@ -104,7 +105,7 @@ const Header = async () => {
             <ul className="navbar-nav mr-auto">
               <li className="nav-item active">
                 <a className="nav-link" href="index.html">
-                  Live Score
+                  Live Scores
                 </a>
               </li>
 
@@ -116,33 +117,11 @@ const Header = async () => {
               <NavItem category={amFootballCategory} posts={amFootballPosts} />
               <NavItem category={athleticsCategory} posts={athleticsPosts} />
 
-              <li className="nav-item drop-link">
+              <li className="nav-item">
                 <a className="nav-link food" href="#">
-                  Pages<i className="fa fa-caret-down"></i>
+                  ...
                 </a>
-                <ul className="dropdown">
-                  <li>
-                    <a href="archive.html">Archive Page</a>
-                  </li>
-                  <li>
-                    <a href="tag.html">Tags Page</a>
-                  </li>
-                  <li>
-                    <a href="search.html">Search Page</a>
-                  </li>
-                  <li>
-                    <a href="register.html">Register Page</a>
-                  </li>
-                  <li>
-                    <a href="about.html">About Us</a>
-                  </li>
-                  <li>
-                    <a href="contact.html">Contact Us</a>
-                  </li>
-                  <li>
-                    <a href="404-error.html">404 Error</a>
-                  </li>
-                </ul>
+                <div className="mega-posts-menu"></div>
               </li>
             </ul>
           </div>

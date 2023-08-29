@@ -4,6 +4,9 @@ dependencies:
   '@heroicons/react':
     specifier: ^2.0.18
     version: 2.0.18(react@18.2.0)
+  '@madzadev/image-slider':
+    specifier: ^1.0.9
+    version: 1.0.9(react@18.2.0)
   '@portabletext/react':
     specifier: ^3.0.4
     version: 3.0.4(react@18.2.0)
@@ -1826,6 +1829,15 @@ packages:
     resolution: {integrity: sha512-XPz6dzuTHlnsbA5M2DZgjflNQ+9Hi5Swhic0RULdp3oOs3rh6bqGZolosVqN/fQIT8uNiepzINJDnS39oweTHQ==}
     dependencies:
       '@lezer/common': 1.0.3
+    dev: false
+
+  /@madzadev/image-slider@1.0.9(react@18.2.0):
+    resolution: {integrity: sha512-OtzVq2wXXTVq5VY8LZo2g/xBL0Vmgvg5XfzONMR0TSxzRoJTBfgksTOUQ8U+SDgT02Fw3pb/gt7dm5Nv6ez5Ew==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: ^16.8.0
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /@next/env@13.4.13:

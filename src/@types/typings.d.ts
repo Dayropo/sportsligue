@@ -38,7 +38,8 @@ interface SubCategory extends Base {
 
 interface Image {
   _type: "image",
-  asset: Reference
+  asset: Reference,
+  caption: string
 }
 
 interface Reference {

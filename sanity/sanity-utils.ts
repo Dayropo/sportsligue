@@ -42,6 +42,27 @@ export async function getPost(slug: string): Promise<Post> {
   )
 }
 
+export async function getHeadlines(): Promise<Post[]> {
+  return client.fetch(
+    groq`*[_type == "post" && headline == true]{
+  _id,
+  _createdAt,
+  title,
+  slug,
+  mainImage,
+  author->,
+  category->,
+  subCategory->,
+  featured,
+  publishedAt,
+  body,
+  tags,
+} | order(publishedAt desc)`,
+    {
+      next: { revalidate: process.env.NEXT_PUBLIC_SANITY_REVALIDATE },
+    }
+  )
+}
 
 export async function getFeaturedPosts(): Promise<Post[]> {
   return client.fetch(
@@ -65,7 +86,10 @@ export async function getFeaturedPosts(): Promise<Post[]> {
   )
 }
 
-export async function getRelatedPosts(category: string, slug: string): Promise<Post[]> {
+export async function getRelatedPosts(
+  category: string,
+  slug: string
+): Promise<Post[]> {
   return client.fetch(
     groq`*[_type == "post" && category->title == $category && slug.current != $slug]{
   _id,
@@ -84,6 +108,28 @@ export async function getRelatedPosts(category: string, slug: string): Promise<P
     {
       category,
       slug,
+      next: { revalidate: process.env.NEXT_PUBLIC_SANITY_REVALIDATE },
+    }
+  )
+}
+
+export async function getWorldPosts(): Promise<Post[]> {
+  return client.fetch(
+    groq`*[_type == "post" && !(category->title in ["Football", "Tennis", "Basketball", "Boxing", "Formula 1", "American Football"])]{
+  _id,
+  _createdAt,
+  title,
+  slug,
+  mainImage,
+  author->,
+  category->,
+  subCategory->,
+  featured,
+  publishedAt,
+  body,
+  tags,
+} | order(publishedAt desc)`,
+    {
       next: { revalidate: process.env.NEXT_PUBLIC_SANITY_REVALIDATE },
     }
   )
@@ -160,9 +206,7 @@ export async function getPostsBySubCategory(
   )
 }
 
-export async function getPostsBySubCategorySlug(
-  slug: string
-): Promise<Post[]> {
+export async function getPostsBySubCategorySlug(slug: string): Promise<Post[]> {
   return client.fetch(
     groq`*[_type == "post" && subCategory->slug.current == $slug]{
   _id,

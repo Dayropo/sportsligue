@@ -21,7 +21,7 @@ export default defineType({
           input
             .toLowerCase()
             .replace(/\s+/g, "-")
-            .replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, ""),
+            .replace(/[&\/\\#,;+()$~%'.":*?<>{}]/g, ""),
       },
     }),
     defineField({
@@ -66,6 +66,11 @@ export default defineType({
       name: "body",
       title: "Body",
       type: "blockContent",
+    }),
+    defineField({
+      name: "headline",
+      title: "Headline",
+      type: "boolean",
     }),
     defineField({
       name: "featured",

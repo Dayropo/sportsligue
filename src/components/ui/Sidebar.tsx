@@ -1,5 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
+import { FaFacebookF, FaGooglePlusG, FaRss, FaTwitter } from "react-icons/fa"
 
 type Props = {
   tags?: string[]
@@ -16,25 +17,25 @@ export default function Sidebar({ tags }: Props) {
           <ul className="social-share">
             <li>
               <a href="#" className="rss">
-                <i className="fa fa-rss"></i>
+                <FaRss size={16} className="share-icons" />
                 <span>345</span>
               </a>
             </li>
             <li>
               <a href="#" className="facebook">
-                <i className="fa fa-facebook"></i>
+                <FaFacebookF size={16} className="share-icons" />
                 <span>3,460</span>
               </a>
             </li>
             <li>
               <a href="#" className="twitter">
-                <i className="fa fa-twitter"></i>
+                <FaTwitter size={16} className="share-icons" />
                 <span>5,600</span>
               </a>
             </li>
             <li>
               <a href="#" className="google">
-                <i className="fa fa-google-plus"></i>
+                <FaGooglePlusG size={16} className="share-icons" />
                 <span>659</span>
               </a>
             </li>
@@ -195,7 +196,7 @@ export default function Sidebar({ tags }: Props) {
         <div className="advertisement">
           <a href="#">
             <Image
-              src={require("../../assets/upload/addsense/300x250.jpg")}
+              src={require("../../assets/upload/addsense/300x250latest.gif")}
               alt=""
             />
           </a>

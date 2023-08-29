@@ -3,6 +3,8 @@ import Image from "next/image"
 import { Post } from "../@types/typings"
 import Link from "next/link"
 import urlFor from "@/sanity/urlFor"
+import { PortableText } from "@portabletext/react"
+import { PortableTextComponents } from "./PortableTextComponents"
 
 const LatestNews = async () => {
   const posts = await getAllPosts()
@@ -17,9 +19,7 @@ const LatestNews = async () => {
           <div className="col-sm-6" key={post._id}>
             <div className="news-post standart-post">
               <div className="post-image">
-                <Link
-                  href={`/${post.slug.current}`}
-                >
+                <Link href={`/${post.slug.current}`}>
                   <Image
                     src={urlFor(post.mainImage).url()}
                     fill
@@ -28,23 +28,19 @@ const LatestNews = async () => {
                   />
                 </Link>
                 <Link
-                  href={`/${post.category.slug.current}`}
+                  href={`/category/${post.category.slug.current}`}
                   className="category"
                 >
                   {post.category.title}
                 </Link>
               </div>
               <h2>
-                <Link
-                  href={`/${post.slug.current}`}
-                >
-                  {post.title}
-                </Link>
+                <Link href={`/${post.slug.current}`}>{post.title}</Link>
               </h2>
               <ul className="post-tags">
                 <li>
                   by{" "}
-                  <Link href={`/${post.author.slug.current}`}>
+                  <Link href={`/profile/${post.author.slug.current}`}>
                     {post.author.name}
                   </Link>
                 </li>
@@ -54,11 +50,12 @@ const LatestNews = async () => {
                   </a>
                 </li>
               </ul>
-              <p>
-                Eight candidates are seeking to oust Zeman, whose inclination
-                toward far-right groups and cosy relations with Russia and China
-                have split public opinion.
-              </p>
+              <div className="description">
+                <PortableText
+                  value={post.body}
+                  components={PortableTextComponents}
+                />
+              </div>
             </div>
           </div>
         ))}

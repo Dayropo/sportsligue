@@ -5,14 +5,15 @@ export const PortableTextComponents = {
   types: {
     image: ({ value }: any) => {
       return (
-        <div className="portable-text-image">
+        <figure className="portable-text-image">
           <Image
             src={urlFor(value).url()}
             fill
             alt={value}
             style={{ objectFit: "cover", objectPosition: "center" }}
           />
-        </div>
+          <figcaption>{value.caption}</figcaption>
+        </figure>
       )
     },
   },
