@@ -1291,6 +1291,11 @@ a.load-more:hover {
   color: #343434 !important;
 }
 
+.slider-widget .lightbox-slide {
+  position: relative;
+  aspect-ratio: 400/260;
+}
+
 .slider-widget .slider-caption {
   position: absolute;
   width: 280px;
@@ -1915,7 +1920,7 @@ ul.small-posts > li > a {
   float: left;
   width: 80px;
   position: relative;
-  aspect-ratio: 1/1;
+  aspect-ratio: 80/80;
   margin-right: 20px;
 }
 
@@ -2405,6 +2410,27 @@ ul.small-posts > li:last-child {
   width: 100%;
   height: 420px;
   margin-bottom: 30px;
+}
+
+.slide-arrows {
+  border: 0px;
+  background-color: transparent;
+  color: #fff;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.prev-arrow {
+  position: absolute;
+  bottom: 2px;
+}
+
+.next-arrow {
+  position: absolute;
+  bottom: 2px;
 }
 
 .share-post-box {

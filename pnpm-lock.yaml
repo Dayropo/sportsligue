@@ -4,9 +4,6 @@ dependencies:
   '@heroicons/react':
     specifier: ^2.0.18
     version: 2.0.18(react@18.2.0)
-  '@madzadev/image-slider':
-    specifier: ^1.0.9
-    version: 1.0.9(react@18.2.0)
   '@portabletext/react':
     specifier: ^3.0.4
     version: 3.0.4(react@18.2.0)
@@ -58,6 +55,9 @@ dependencies:
   react-owl-carousel:
     specifier: ^2.3.3
     version: 2.3.3(jquery@3.7.0)(react@18.2.0)
+  react-slideshow-image:
+    specifier: ^4.2.1
+    version: 4.2.1(react@18.2.0)
   sanity:
     specifier: ^3.15.1
     version: 3.15.1(@types/node@20.4.8)(@types/react@18.2.18)(react-dom@18.2.0)(react@18.2.0)(styled-components@5.3.11)
@@ -1831,15 +1831,6 @@ packages:
       '@lezer/common': 1.0.3
     dev: false
 
-  /@madzadev/image-slider@1.0.9(react@18.2.0):
-    resolution: {integrity: sha512-OtzVq2wXXTVq5VY8LZo2g/xBL0Vmgvg5XfzONMR0TSxzRoJTBfgksTOUQ8U+SDgT02Fw3pb/gt7dm5Nv6ez5Ew==}
-    engines: {node: '>=10'}
-    peerDependencies:
-      react: ^16.8.0
-    dependencies:
-      react: 18.2.0
-    dev: false
-
   /@next/env@13.4.13:
     resolution: {integrity: sha512-fwz2QgVg08v7ZL7KmbQBLF2PubR/6zQdKBgmHEl3BCyWTEDsAQEijjw2gbFhI1tcKfLdOOJUXntz5vZ4S0Polg==}
     dev: false
@@ -2396,6 +2387,10 @@ packages:
   /@tootallnate/once@2.0.0:
     resolution: {integrity: sha512-XCuKFP5PS55gnMVu3dty8KPatLqUoy/ZYzDzAGCQ8JNFCkLXzmI7vNHCR+XpbZaMWQK/vQubr7PkYq8g470J/A==}
     engines: {node: '>= 10'}
+    dev: false
+
+  /@tweenjs/tween.js@18.6.4:
+    resolution: {integrity: sha512-lB9lMjuqjtuJrx7/kOkqQBtllspPIN+96OvTCeJ2j5FEzinoAXTdAMFnDAQT1KVPRlnYfBrqxtqP66vDM40xxQ==}
     dev: false
 
   /@types/diff-match-patch@1.0.32:
@@ -5777,6 +5772,16 @@ packages:
       use-sync-external-store: 1.2.0(react@18.2.0)
     dev: false
 
+  /react-slideshow-image@4.2.1(react@18.2.0):
+    resolution: {integrity: sha512-R73s0L+4ect3e49qLP+EQE0m+BWs72LAfsfR2Z941snWq2W9o0poWtYTyZmCH7Ui5HaT0qkpszzeZ1F0xiGkZg==}
+    peerDependencies:
+      react: '>=15'
+    dependencies:
+      '@tweenjs/tween.js': 18.6.4
+      react: 18.2.0
+      resize-observer-polyfill: 1.5.1
+    dev: false
+
   /react-style-proptype@3.2.2:
     resolution: {integrity: sha512-ywYLSjNkxKHiZOqNlso9PZByNEY+FTyh3C+7uuziK0xFXu9xzdyfHwg4S9iyiRRoPCR4k2LqaBBsWVmSBwCWYQ==}
     dependencies:
@@ -5914,6 +5919,10 @@ packages:
 
   /requires-port@1.0.0:
     resolution: {integrity: sha512-KigOCHcocU3XODJxsu8i/j8T9tzT4adHiecwORRQ0ZZFcp7ahwXuRU1m+yuO90C5ZUyGeGfocHDI14M3L3yDAQ==}
+    dev: false
+
+  /resize-observer-polyfill@1.5.1:
+    resolution: {integrity: sha512-LwZrotdHOo12nQuZlHEmtuXdqGoOD0OhaxopaNFxWzInpEgaLWoVuAMbTzixuosCx2nEG58ngzW3vxdWoxIgdg==}
     dev: false
 
   /resolve-from@4.0.0:

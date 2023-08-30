@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.0.18",
-    "@madzadev/image-slider": "^1.0.9",
     "@portabletext/react": "^3.0.4",
     "@sanity/image-url": "^1.0.2",
     "@sanity/vision": "^3.15.1",
@@ -28,6 +27,7 @@
     "react-dom": "18.2.0",
     "react-icons": "^4.10.1",
     "react-owl-carousel": "^2.3.3",
+    "react-slideshow-image": "^4.2.1",
     "sanity": "^3.15.1",
     "styled-components": "^5.3.9",
     "typescript": "5.1.6",
