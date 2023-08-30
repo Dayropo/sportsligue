@@ -31,7 +31,7 @@ export default function SliderWrapper({ posts }: Props) {
         }
       >
         {posts.map((post: Post) => (
-          <div className="lightbox-slide">
+          <div className="lightbox-slide" key={post._id}>
             <Image
               fill
               alt={post.mainImage.caption}
