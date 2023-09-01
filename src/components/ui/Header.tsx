@@ -7,8 +7,19 @@ import useCategoriesStore from "@/src/stores/categories"
 import NavItem from "./header/NavItem"
 import { Category } from "@/src/@types/typings"
 import usePostsStore from "@/src/stores/posts"
-import { getCategoryByTitle, getPostsByCategory } from "@/sanity/sanity-utils"
+import {
+  getCategoryByTitle,
+  getOtherCategories,
+  getPostsByCategory,
+} from "@/sanity/sanity-utils"
 import { FaCaretDown } from "react-icons/fa"
+
+const arrayChunk = (arr: Category[], n: number) => {
+  const array = arr.slice()
+  const chunks = []
+  while (array.length) chunks.push(array.splice(0, n))
+  return chunks
+}
 
 const Header = async () => {
   const footballCategory = await getCategoryByTitle("Football")
@@ -18,6 +29,7 @@ const Header = async () => {
   const formula1Category = await getCategoryByTitle("Formula 1")
   const amFootballCategory = await getCategoryByTitle("American Football")
   const athleticsCategory = await getCategoryByTitle("Athletics")
+  const others = await getOtherCategories()
 
   const footballPosts = await getPostsByCategory("Football")
   const tennisPosts = await getPostsByCategory("Tennis")
@@ -119,9 +131,23 @@ const Header = async () => {
 
               <li className="nav-item">
                 <a className="nav-link food" href="#">
-                  ...
+                  • • •
                 </a>
-                <div className="mega-posts-menu"></div>
+                <div className="mega-posts-menu">
+                  <div className="row">
+                    {arrayChunk(others, 4).map((arr, index) => (
+                      <ul className="col-2 other-categories" key={index}>
+                        {arr.map(item => (
+                          <li key={item._id}>
+                            <Link href={`/category/${item.slug.current}`}>
+                              {item.title}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    ))}
+                  </div>
+                </div>
               </li>
             </ul>
           </div>

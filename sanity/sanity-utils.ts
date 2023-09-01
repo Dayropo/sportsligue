@@ -262,3 +262,23 @@ export async function getCategoryByTitle(title: string): Promise<Category> {
     { title, next: { revalidate: process.env.NEXT_PUBLIC_SANITY_REVALIDATE } }
   )
 }
+
+export async function getOtherCategories(): Promise<Category[]> {
+  return client.fetch(
+    groq`
+    *[_type == "category" && !(title in ["Football", "Tennis", "Basketball", "Boxing", "Formula 1", "American Football", "Athletics"])]{
+    _id,
+    _createdAt,
+    title,
+    slug,
+    "subCategories": subCategories[]-> {
+      _id,
+      _createdAt,
+      title,
+      slug,
+      }
+    } | order(title asc)
+  `,
+    { next: { revalidate: process.env.NEXT_PUBLIC_SANITY_REVALIDATE } }
+  )
+}
