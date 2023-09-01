@@ -407,20 +407,18 @@ header.active .top-line {
 }
 
 .mega-posts-menu ul.other-categories li {
-  display: inline-block;
   margin-bottom: 3px;
 }
 
 .mega-posts-menu ul.other-categories li a {
-  color: #ccc;
+  color: #fff;
   font-size: 12px;
   font-family: "Roboto Condensed", sans-serif;
   text-transform: uppercase;
 }
 
 .mega-posts-menu ul.other-categories li a:hover {
-  background: #ff7e00;
-  color: #fff;
+  color: #ff7e00;
 }
 
 li:hover .mega-posts-menu {
