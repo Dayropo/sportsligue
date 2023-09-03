@@ -130,7 +130,7 @@ const Header = async () => {
               <NavItem category={athleticsCategory} posts={athleticsPosts} />
 
               <li className="nav-item">
-                <a className="nav-link food" href="#">
+                <a className="nav-link food" style={{cursor: "pointer"}}>
                   • • •
                 </a>
                 <div className="mega-posts-menu">

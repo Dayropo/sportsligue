@@ -1,11 +1,14 @@
 import { getPostsByCategorySlug } from "@/sanity/sanity-utils"
 import urlFor from "@/sanity/urlFor"
 import { Post } from "@/src/@types/typings"
+import { PortableTextComponents } from "@/src/components/PortableTextComponents"
 import Footer from "@/src/components/ui/Footer"
 import Header from "@/src/components/ui/Header"
 import Sidebar from "@/src/components/ui/Sidebar"
+import { PortableText } from "@portabletext/react"
 import Image from "next/image"
 import Link from "next/link"
+import { FiBook, FiUser } from "react-icons/fi"
 
 type Props = {
   params: {
@@ -61,7 +64,11 @@ export default async function Category({ params }: Props) {
                           </h2>
                           <ul className="post-tags">
                             <li>
-                              <i className="lnr lnr-user"></i>by{" "}
+                              <FiUser
+                                size={12}
+                                style={{ marginRight: "4px" }}
+                              />
+                              by{" "}
                               <Link
                                 href={`/profile/${post.author.slug.current}`}
                               >
@@ -70,18 +77,20 @@ export default async function Category({ params }: Props) {
                             </li>
                             <li>
                               <a href="#">
-                                <i className="lnr lnr-book"></i>
+                                <FiBook
+                                  size={12}
+                                  style={{ marginRight: "4px" }}
+                                />
                                 <span>23 comments</span>
                               </a>
                             </li>
                           </ul>
-                          <p>
-                            Duis aute irure dolor in reprehenderit in voluptate
-                            velit esse cillum dolore eu fugiat nulla pariatur.
-                            Excepteur sint occaecat cupidatat non proident, sunt
-                            in culpa qui officia deserunt mollit anim id est
-                            laborum.
-                          </p>
+                          <div className="description">
+                            <PortableText
+                              value={post.body}
+                              components={PortableTextComponents}
+                            />
+                          </div>
                         </div>
                       </div>
                     </div>

@@ -67,14 +67,15 @@ const HeadingNews = async () => {
             </h2>
             <ul className="post-tags">
               <li>
-                <i className="lnr lnr-user"></i>by{" "}
+                <FiUser size={12} style={{ marginRight: "4px" }} />
+                by{" "}
                 <Link href={`/profile/${post.author.slug.current}`}>
                   {post.author.name}
                 </Link>
               </li>
               <li>
                 <a href="#">
-                  <i className="lnr lnr-book"></i>
+                  <FiBook size={12} style={{ marginRight: "4px" }} />
                   <span>56 comments</span>
                 </a>
               </li>

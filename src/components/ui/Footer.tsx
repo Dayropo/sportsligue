@@ -1,5 +1,7 @@
 import Image from "next/image"
+import Link from "next/link"
 import {
+  FaCaretUp,
   FaFacebookF,
   FaGooglePlusG,
   FaInstagram,
@@ -60,7 +62,7 @@ export default function Footer() {
               </div>
             </div>
 
-            <div className="col-lg-3 col-md-6">
+            {/* <div className="col-lg-3 col-md-6">
               <div className="footer-widget popular-widget">
                 <h1>Popular News</h1>
                 <ul className="small-posts">
@@ -126,9 +128,9 @@ export default function Footer() {
                   </li>
                 </ul>
               </div>
-            </div>
+            </div> */}
 
-            <div className="col-lg-3 col-md-6">
+            {/* <div className="col-lg-3 col-md-6">
               <div className="footer-widget featured-widget">
                 <h1>Featured Post</h1>
                 <div className="news-post standart-post">
@@ -150,9 +152,9 @@ export default function Footer() {
                   </h2>
                 </div>
               </div>
-            </div>
+            </div> */}
 
-            <div className="col-lg-3 col-md-6">
+            {/* <div className="col-lg-3 col-md-6">
               <div className="footer-widget tags-widget">
                 <h1>Tags</h1>
                 <ul className="tags-list">
@@ -179,29 +181,31 @@ export default function Footer() {
                   </li>
                 </ul>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
 
         <div className="down-footer">
           <ul className="list-footer">
             <li>
-              <a href="index.html">Home</a>
+              <Link href="/">Home</Link>
             </li>
             <li>
-              <a href="about.html">About Us</a>
+              <Link href="/about">About Us</Link>
             </li>
             <li>
-              <a href="privacy-policy.html">Privacy policy</a>
+              <Link href="/privacy-policy">Privacy policy</Link>
             </li>
             <li>
-              <a href="contact.html">Contact</a>
+              <Link href="/contact">Contact</Link>
             </li>
           </ul>
           <p>
-            &copy; Copyright By Nunforest 2017
+            &copy; Copyright By Sportsligue 2023
             <a href="#" className="go-top">
-              <i className="fa fa-caret-up" aria-hidden="true"></i>
+              <FaCaretUp size={16} />
+              
+              {/* <i className="fa fa-caret-up" aria-hidden="true"></i> */}
             </a>
           </p>
         </div>
