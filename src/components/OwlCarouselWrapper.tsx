@@ -42,6 +42,7 @@ export default function OwlCarouselWrapper({posts, noOfPosts, className}: Props)
                   <Image
                     src={urlFor(post.mainImage).url()}
                     fill
+                    sizes="100vw"
                     alt=""
                     style={{ objectFit: "cover", objectPosition: "center" }}
                   />

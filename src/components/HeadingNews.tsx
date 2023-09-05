@@ -16,6 +16,7 @@ const HeadingNews = async () => {
         <Image
           src={urlFor(posts[0].mainImage).url()}
           fill
+          sizes="100vw"
           alt=""
           style={{ objectFit: "cover" }}
         />
@@ -52,6 +53,7 @@ const HeadingNews = async () => {
           <Image
             src={urlFor(post.mainImage).url()}
             fill
+            sizes="100vw"
             alt=""
             style={{ objectFit: "cover" }}
           />

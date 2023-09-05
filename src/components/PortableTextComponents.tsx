@@ -9,6 +9,7 @@ export const PortableTextComponents = {
           <Image
             src={urlFor(value).url()}
             fill
+            sizes="100vw"
             alt={value}
             style={{ objectFit: "cover", objectPosition: "center" }}
           />

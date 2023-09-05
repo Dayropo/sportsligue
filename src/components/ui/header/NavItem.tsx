@@ -41,12 +41,11 @@ export default function NavItem({ category, posts }: Props) {
               <div className="col-lg-3 col-md-6" key={post._id}>
                 <div className="news-post standart-post">
                   <div className="post-image">
-                    <Link
-                      href={`/${post.slug.current}`}
-                    >
+                    <Link href={`/${post.slug.current}`}>
                       <Image
                         src={urlFor(post.mainImage).url()}
                         fill
+                        sizes="100vw"
                         alt=""
                         style={{ objectFit: "cover" }}
                       />
@@ -59,11 +58,7 @@ export default function NavItem({ category, posts }: Props) {
                     </Link>
                   </div>
                   <h2>
-                    <Link
-                      href={`/${post.slug.current}`}
-                    >
-                      {post.title}
-                    </Link>
+                    <Link href={`/${post.slug.current}`}>{post.title}</Link>
                   </h2>
                   <ul className="post-tags">
                     <li>

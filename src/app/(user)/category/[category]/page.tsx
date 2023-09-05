@@ -44,6 +44,7 @@ export default async function Category({ params }: Props) {
                               <Image
                                 src={urlFor(post.mainImage).url()}
                                 fill
+                                sizes="100vw"
                                 alt=""
                                 style={{ objectFit: "cover" }}
                               />

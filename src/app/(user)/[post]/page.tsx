@@ -90,6 +90,7 @@ export default async function Post({ params }: Props) {
                   <Image
                     src={urlFor(post.mainImage).url()}
                     fill
+                    sizes="100vw"
                     style={{ objectFit: "cover", objectPosition: "center" }}
                     alt=""
                   />

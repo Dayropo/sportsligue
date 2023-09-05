@@ -23,6 +23,7 @@ const LatestNews = async () => {
                   <Image
                     src={urlFor(post.mainImage).url()}
                     fill
+                    sizes="100vw"
                     alt=""
                     style={{ objectFit: "cover" }}
                   />

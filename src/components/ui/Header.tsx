@@ -13,6 +13,7 @@ import {
   getPostsByCategory,
 } from "@/sanity/sanity-utils"
 import { FaCaretDown } from "react-icons/fa"
+import PrimaryNavItems from "./header/PrimaryNavItems"
 
 const arrayChunk = (arr: Category[], n: number) => {
   const array = arr.slice()
@@ -65,35 +66,8 @@ const Header = async () => {
                   <i className="fa fa-search"></i>
                 </button>
               </form>
-              <ul className="info-list right-align">
-                <li>
-                  <ClockIcon
-                    style={{
-                      width: "16px",
-                      height: "16px",
-                      color: "white",
-                      marginRight: "4px",
-                    }}
-                  />
-                  {moment().format("dddd LL")}
-                </li>
-                <li>
-                  <a href="#" data-toggle="modal" data-target="#loginModal">
-                    <UserIcon
-                      style={{
-                        width: "16px",
-                        height: "16px",
-                        color: "white",
-                        marginRight: "4px",
-                      }}
-                    />
-                    Log in
-                  </a>
-                </li>
-                <li>
-                  <a href="register.html">Register</a>
-                </li>
-              </ul>
+              
+              <PrimaryNavItems />
             </div>
           </div>
         </div>
