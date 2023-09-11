@@ -3,6 +3,7 @@
 import Script from "next/script"
 import { useEffect } from "react"
 import { usePathname, useSearchParams } from "next/navigation"
+import { pageview } from "@/src/libs/gtag"
 
 export default function GoogleAnalytics({ ga_id }: { ga_id: string }) {
   const pathname = usePathname()
@@ -12,9 +13,7 @@ export default function GoogleAnalytics({ ga_id }: { ga_id: string }) {
     const url = pathname + searchParams.toString()
 
     if (process.env.NODE_ENV === "production") {
-      window.gtag("config", ga_id, {
-        page_path: url,
-      })
+      pageview(ga_id, url)
     }
   }, [pathname, searchParams])
 
