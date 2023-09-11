@@ -23,9 +23,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${robotoCondensed.className}  boxed-style`}>
-        {/* {process.env.NODE_ENV === "production" && (
+        {process.env.NODE_ENV === "production" && (
           <GoogleAnalytics ga_id={process.env.NEXT_PUBLIC_GA_ID!} />
-        )} */}
+        )}
 
         <NextAuthProvider>{children}</NextAuthProvider>
 
