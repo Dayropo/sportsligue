@@ -1,0 +1,50 @@
+"use client"
+
+import { useRouter } from "next/router"
+import Script from "next/script"
+import { useEffect } from "react"
+
+export default function GoogleAnalytics({ ga_id }: { ga_id: string }) {
+  const router = useRouter()
+
+  useEffect(() => {
+    const handleRouteChange = (url: string) => {
+      if (process.env.NODE_ENV === "production") {
+        window.gtag("config", ga_id, {
+          page_path: url,
+        })
+      }
+    }
+
+    router.events.on("routeChangeComplete", handleRouteChange)
+
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange)
+    }
+  }, [router.events])
+
+  return (
+    <>
+      <Script
+        strategy="afterInteractive"
+        src={`https://www.googletagmanager.com/gtag/js?id=${ga_id}`}
+      ></Script>
+
+      <Script
+        strategy="afterInteractive"
+        id="google-analytics"
+        dangerouslySetInnerHTML={{
+          __html: `
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', ${ga_id}, {
+          page_path: window.location.pathname,
+          });
+        `,
+        }}
+      />
+    </>
+  )
+}
