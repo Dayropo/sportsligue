@@ -12,7 +12,7 @@ export default function Sidebar({ tags }: Props) {
     <div className="col-lg-4 sidebar-sticky">
       {/* <!-- Sidebar --> */}
       <div className="sidebar theiaStickySidebar">
-        <div className="widget social-widget">
+        {/* <div className="widget social-widget">
           <h1>Stay Connected </h1>
           <p>Do you want to be informed everytime with our latest news?</p>
           <ul className="social-share">
@@ -41,7 +41,7 @@ export default function Sidebar({ tags }: Props) {
               </a>
             </li>
           </ul>
-        </div>
+        </div> */}
 
         <FeaturedSidebarPosts />
 

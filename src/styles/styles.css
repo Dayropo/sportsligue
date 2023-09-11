@@ -2291,14 +2291,10 @@ ul.small-posts > li:last-child {
   width: 100%;
   position: relative;
   aspect-ratio: 720/450;
-  margin-bottom: 36px;
 }
 
-.single-post .main-image figcaption,
-.portable-text-image figcaption {
-  position: absolute;
-  bottom: -24px;
-  left: 0px;
+.figcaption {
+  margin-bottom: 20px;
 }
 
 .single-post img {
@@ -3429,12 +3425,12 @@ div.search-box {
 }
 
 .register-box .google-signup {
-  border: 0px;
-  border-radius: 6px;
+  border: 1px solid #eeeeee;
+  border-radius: 12px;
   padding: 12px 16px;
   width: 100%;
-  background: rgb(59 130 246);
-  color: #fff;
+  background: white;
+  /* color: #fff; */
   font-size: 13px;
   font-family: "Roboto Condensed", sans-serif;
 }
@@ -3634,6 +3630,12 @@ div.search-box {
 /*------------------------------------------------- */
 .about-box {
   margin-bottom: 30px;
+}
+
+.about-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 840/410;
 }
 
 .about-box img {

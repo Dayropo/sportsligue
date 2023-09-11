@@ -11,8 +11,6 @@ import { useEffect } from "react"
 export default function Register() {
   const { status } = useSession()
 
-  console.log(status)
-
   useEffect(() => {
     if (status === "authenticated") Router.replace("/")
   }, [status])

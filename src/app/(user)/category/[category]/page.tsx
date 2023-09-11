@@ -6,6 +6,7 @@ import Footer from "@/src/components/ui/Footer"
 import Header from "@/src/components/ui/Header"
 import Sidebar from "@/src/components/ui/Sidebar"
 import { PortableText } from "@portabletext/react"
+import { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import { FiBook, FiUser } from "react-icons/fi"
@@ -13,6 +14,16 @@ import { FiBook, FiUser } from "react-icons/fi"
 type Props = {
   params: {
     category: string
+  }
+}
+
+export const generateMetadata = async ({
+  params,
+}: Props): Promise<Metadata> => {
+  const slug = params.category
+  const posts = await getPostsByCategorySlug(slug)
+  return {
+    title: `${posts[0].category.title} - Sportsligue`,
   }
 }
 
@@ -29,54 +40,55 @@ export default async function Category({ params }: Props) {
           <div className="row">
             <div className="col-lg-8">
               {/* <!-- Posts-block --> */}
-              <div className="posts-block">
-                <div className="title-section">
-                  <h1>{posts[0].category.title}</h1>
-                </div>
+              {posts.length > 0 ? (
+                <div className="posts-block">
+                  <div className="title-section">
+                    <h1>{posts[0].category.title}</h1>
+                  </div>
 
-                <div className="articles-box-style">
-                  {posts.slice(0, 5).map((post: Post) => (
-                    <div className="news-post article-post" key={post._id}>
-                      <div className="row">
-                        <div className="col-sm-5">
-                          <div className="post-image">
-                            <Link href={`/${post.slug.current}`}>
-                              <Image
-                                src={urlFor(post.mainImage).url()}
-                                fill
-                                sizes="100vw"
-                                alt=""
-                                style={{ objectFit: "cover" }}
-                              />
-                            </Link>
-                            <Link
-                              href={`/category/${post.category.slug.current}`}
-                              className="category"
-                            >
-                              {post.category.title}
-                            </Link>
-                          </div>
-                        </div>
-                        <div className="col-sm-7">
-                          <h2>
-                            <Link href={`/${post.slug.current}`}>
-                              {post.title}
-                            </Link>
-                          </h2>
-                          <ul className="post-tags">
-                            <li>
-                              <FiUser
-                                size={12}
-                                style={{ marginRight: "4px" }}
-                              />
-                              by{" "}
-                              <Link
-                                href={`/profile/${post.author.slug.current}`}
-                              >
-                                {post.author.name}
+                  <div className="articles-box-style">
+                    {posts.slice(0, 5).map((post: Post) => (
+                      <div className="news-post article-post" key={post._id}>
+                        <div className="row">
+                          <div className="col-sm-5">
+                            <div className="post-image">
+                              <Link href={`/${post.slug.current}`}>
+                                <Image
+                                  src={urlFor(post.mainImage).url()}
+                                  fill
+                                  sizes="100vw"
+                                  alt=""
+                                  style={{ objectFit: "cover" }}
+                                />
                               </Link>
-                            </li>
-                            <li>
+                              <Link
+                                href={`/category/${post.category.slug.current}`}
+                                className="category"
+                              >
+                                {post.category.title}
+                              </Link>
+                            </div>
+                          </div>
+                          <div className="col-sm-7">
+                            <h2>
+                              <Link href={`/${post.slug.current}`}>
+                                {post.title}
+                              </Link>
+                            </h2>
+                            <ul className="post-tags">
+                              <li>
+                                <FiUser
+                                  size={12}
+                                  style={{ marginRight: "4px" }}
+                                />
+                                by{" "}
+                                <Link
+                                  href={`/profile/${post.author.slug.current}`}
+                                >
+                                  {post.author.name}
+                                </Link>
+                              </li>
+                              {/* <li>
                               <a href="#">
                                 <FiBook
                                   size={12}
@@ -84,46 +96,54 @@ export default async function Category({ params }: Props) {
                                 />
                                 <span>23 comments</span>
                               </a>
-                            </li>
-                          </ul>
-                          <div className="description">
-                            <PortableText
-                              value={post.body}
-                              components={PortableTextComponents}
-                            />
+                            </li> */}
+                            </ul>
+                            <div className="description">
+                              <PortableText
+                                value={post.body}
+                                components={PortableTextComponents}
+                              />
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
 
-                  <ul className="pagination-list">
-                    <li>
-                      <a href="#">Prev</a>
-                    </li>
-                    <li>
-                      <a href="#" className="active">
-                        1
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">2</a>
-                    </li>
-                    <li>
-                      <a href="#">3</a>
-                    </li>
-                    <li>
-                      <a href="#">...</a>
-                    </li>
-                    <li>
-                      <a href="#">6</a>
-                    </li>
-                    <li>
-                      <a href="#">Next</a>
-                    </li>
-                  </ul>
+                    <ul className="pagination-list">
+                      <li>
+                        <a href="#">Prev</a>
+                      </li>
+                      <li>
+                        <a href="#" className="active">
+                          1
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">2</a>
+                      </li>
+                      <li>
+                        <a href="#">3</a>
+                      </li>
+                      <li>
+                        <a href="#">...</a>
+                      </li>
+                      <li>
+                        <a href="#">6</a>
+                      </li>
+                      <li>
+                        <a href="#">Next</a>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
-              </div>
+              ) : (
+                <div className="posts-block">
+                  <div className="title-section">
+                    <h2>No articles found</h2>
+                  </div>
+                </div>
+              )}
+
               {/* <!-- End Posts-block --> */}
             </div>
 

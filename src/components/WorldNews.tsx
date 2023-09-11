@@ -1,4 +1,3 @@
-import { getWorldPosts } from "@/sanity/sanity-utils"
 import Image from "next/image"
 import { Post } from "../@types/typings"
 import Link from "next/link"
@@ -7,9 +6,7 @@ import { FiBook, FiUser } from "react-icons/fi"
 import { PortableText } from "@portabletext/react"
 import { PortableTextComponents } from "./PortableTextComponents"
 
-export default async function WorldNews() {
-  const posts = await getWorldPosts()
-
+export default async function WorldNews({ posts }: { posts: Post[] }) {
   return (
     <div className="posts-block">
       <div className="title-section">
@@ -51,12 +48,12 @@ export default async function WorldNews() {
                       {post.author.name}
                     </Link>
                   </li>
-                  <li>
+                  {/* <li>
                     <a href="#">
                       <FiBook size={12} style={{ marginRight: "4px" }} />
                       <span>23 comments</span>
                     </a>
-                  </li>
+                  </li> */}
                 </ul>
                 <div className="description">
                   <PortableText

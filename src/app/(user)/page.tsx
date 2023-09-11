@@ -7,8 +7,13 @@ import Footer from "@/src/components/ui/Footer"
 import CategoryLatest from "@/src/components/CategoryLatest"
 import Sidebar from "@/src/components/ui/Sidebar"
 import WorldNews from "@/src/components/WorldNews"
+import { getAllPosts, getHeadlines, getWorldPosts } from "@/sanity/sanity-utils"
 
 export default async function Home() {
+  const headlines = await getHeadlines()
+  const posts = await getAllPosts()
+  const worldNews = await getWorldPosts()
+
   return (
     <div id="container">
       <Header />
@@ -16,7 +21,7 @@ export default async function Home() {
       <section id="content-section">
         <div className="container">
           {/* <!-- News-Headline --> */}
-          <HeadingNews />
+          <HeadingNews posts={headlines} />
           {/* <!-- End News-Headline --> */}
 
           {/* <!-- Advertisement --> */}
@@ -33,7 +38,7 @@ export default async function Home() {
           <div className="row">
             <div className="col-lg-8">
               {/* <!-- Posts-block --> */}
-              <LatestNews />
+              <LatestNews posts={posts} />
               {/* <!-- End Posts-block --> */}
 
               {/* <!-- Posts-block --> */}
@@ -90,7 +95,7 @@ export default async function Home() {
               {/* <!-- End Advertisement --> */}
 
               {/* <!-- Posts-block --> */}
-              <WorldNews />
+              <WorldNews posts={worldNews} />
               {/* <!-- End Posts-block --> */}
             </div>
 

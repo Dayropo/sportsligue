@@ -7,6 +7,8 @@ import Footer from "@/src/components/ui/Footer"
 import Header from "@/src/components/ui/Header"
 import Sidebar from "@/src/components/ui/Sidebar"
 import { PortableText } from "@portabletext/react"
+import { Metadata } from "next"
+import Head from "next/head"
 import Image from "next/image"
 import Link from "next/link"
 import {
@@ -24,12 +26,25 @@ type Props = {
   }
 }
 
+export const generateMetadata = async ({
+  params,
+}: Props): Promise<Metadata> => {
+  const slug = params.post
+  const post = await getPost(slug)
+  return {
+    title: `${post.title} - Sportsligue`,
+  }
+}
+
 export default async function Post({ params }: Props) {
   const slug = params.post
   const post = await getPost(slug)
 
   return (
     <div id="container">
+      <Head>
+        <title>{post.title}</title>
+      </Head>
       <Header />
 
       <section id="content-section">
@@ -44,7 +59,7 @@ export default async function Post({ params }: Props) {
                     <FiUser size={14} style={{ marginRight: "8px" }} />
                     by <a href="#">{post.author.name}</a>
                   </li>
-                  <li>
+                  {/* <li>
                     <a href="#">
                       <FiBook size={14} style={{ marginRight: "8px" }} />
                       <span>20 comments</span>
@@ -53,9 +68,9 @@ export default async function Post({ params }: Props) {
                   <li>
                     <FiEye size={14} style={{ marginRight: "8px" }} />
                     872 Views
-                  </li>
+                  </li> */}
                 </ul>
-                <div className="share-post-box">
+                {/* <div className="share-post-box">
                   <ul className="share-box">
                     <li>
                       <a className="facebook" href="#">
@@ -70,11 +85,6 @@ export default async function Post({ params }: Props) {
                       </a>
                     </li>
                     <li>
-                      <a className="google" href="#">
-                        <FaGooglePlusG size={18} />
-                      </a>
-                    </li>
-                    <li>
                       <a className="linkedin" href="#">
                         <FaLinkedinIn size={18} />
                       </a>
@@ -85,7 +95,8 @@ export default async function Post({ params }: Props) {
                       </a>
                     </li>
                   </ul>
-                </div>
+                </div> */}
+
                 <figure className="main-image">
                   <Image
                     src={urlFor(post.mainImage).url()}
@@ -94,8 +105,8 @@ export default async function Post({ params }: Props) {
                     style={{ objectFit: "cover", objectPosition: "center" }}
                     alt=""
                   />
-                  <figcaption>{post.mainImage.caption}</figcaption>
                 </figure>
+                <h6 className="figcaption">{post.mainImage.caption}</h6>
 
                 <PortableText
                   value={post.body}
@@ -123,11 +134,11 @@ export default async function Post({ params }: Props) {
               {/* <!-- End Posts-block --> */}
 
               {/* <!-- author-profile --> */}
-              <AuthorProfile author={post.author} />
+              {/* <AuthorProfile author={post.author} /> */}
               {/* <!-- End author-profile --> */}
 
               {/* <!-- comment area box --> */}
-              <div className="comment-area-box">
+              {/* <div className="comment-area-box">
                 <div className="title-section">
                   <h1>
                     <span>5 Comments</span>
@@ -280,11 +291,11 @@ export default async function Post({ params }: Props) {
                     </div>
                   </li>
                 </ul>
-              </div>
+              </div> */}
               {/* <!-- End comment area box --> */}
 
               {/* <!-- contact form box --> */}
-              <div className="contact-form-box">
+              {/* <div className="contact-form-box">
                 <div className="title-section">
                   <h1>
                     <span>Leave a Comment</span>{" "}
@@ -312,7 +323,7 @@ export default async function Post({ params }: Props) {
                     <i className="fa fa-comment"></i> Post Comment
                   </button>
                 </form>
-              </div>
+              </div> */}
               {/* <!-- End contact form box --> */}
             </div>
 

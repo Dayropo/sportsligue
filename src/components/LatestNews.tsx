@@ -1,4 +1,3 @@
-import { getAllPosts } from "@/sanity/sanity-utils"
 import Image from "next/image"
 import { Post } from "../@types/typings"
 import Link from "next/link"
@@ -6,9 +5,7 @@ import urlFor from "@/sanity/urlFor"
 import { PortableText } from "@portabletext/react"
 import { PortableTextComponents } from "./PortableTextComponents"
 
-const LatestNews = async () => {
-  const posts = await getAllPosts()
-
+const LatestNews = async ({ posts }: { posts: Post[] }) => {
   return (
     <div className="posts-block standard-box">
       <div className="title-section">
@@ -45,11 +42,11 @@ const LatestNews = async () => {
                     {post.author.name}
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <a href="#">
                     <span>23 comments</span>
                   </a>
-                </li>
+                </li> */}
               </ul>
               <div className="description">
                 <PortableText

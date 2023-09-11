@@ -1,6 +1,6 @@
 "use client"
 
-import { FaGoogle } from "react-icons/fa"
+import { FcGoogle } from "react-icons/fc"
 import { signIn } from "next-auth/react"
 
 export default function GoogleSignInButton() {
@@ -12,7 +12,7 @@ export default function GoogleSignInButton() {
         signIn("google")
       }}
     >
-      <FaGoogle style={{ marginRight: "2px" }} /> Sign Up with Google
+      <FcGoogle size={16} style={{ marginRight: "2px" }} /> Sign Up with Google
     </button>
   )
 }

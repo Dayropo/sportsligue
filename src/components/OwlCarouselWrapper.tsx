@@ -9,9 +9,9 @@ import Link from "next/link"
 import urlFor from "@/sanity/urlFor"
 
 type Props = {
-    posts: Post[]
-    noOfPosts: number
-    className?: string
+  posts: Post[]
+  noOfPosts: number
+  className?: string
 }
 
 if (typeof window !== "undefined") {
@@ -22,7 +22,11 @@ const OwlCarousel = dynamic(() => import("react-owl-carousel"), {
   ssr: false,
 })
 
-export default function OwlCarouselWrapper({posts, noOfPosts, className}: Props) {
+export default function OwlCarouselWrapper({
+  posts,
+  noOfPosts,
+  className,
+}: Props) {
   return (
     <div className={`owl-wrapper ${className}`}>
       <OwlCarousel
@@ -32,6 +36,7 @@ export default function OwlCarouselWrapper({posts, noOfPosts, className}: Props)
         dots={false}
         margin={10}
         nav
+        responsive={{ "0": { items: 1 }, "768": { items: 3 } }}
       >
         {/* <div className="owl-carousel" data-num="3"> */}
         {posts.slice(0, noOfPosts).map(post => (

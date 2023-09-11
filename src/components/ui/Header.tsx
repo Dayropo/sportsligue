@@ -55,7 +55,7 @@ const Header = async () => {
               </Link>
             </div>
             <div className="col-sm-7">
-              <form className="form-inline">
+              {/* <form className="form-inline">
                 <input
                   className="form-control mr-sm-2"
                   type="search"
@@ -65,8 +65,8 @@ const Header = async () => {
                 <button className="btn btn-primary my-2 my-sm-0" type="submit">
                   <i className="fa fa-search"></i>
                 </button>
-              </form>
-              
+              </form> */}
+
               <PrimaryNavItems />
             </div>
           </div>
@@ -89,11 +89,11 @@ const Header = async () => {
 
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav mr-auto">
-              <li className="nav-item active">
+              {/* <li className="nav-item active">
                 <a className="nav-link" href="index.html">
                   Live Scores
                 </a>
-              </li>
+              </li> */}
 
               <NavItem category={footballCategory} posts={footballPosts} />
               <NavItem category={tennisCategory} posts={tennisPosts} />
@@ -104,7 +104,7 @@ const Header = async () => {
               <NavItem category={athleticsCategory} posts={athleticsPosts} />
 
               <li className="nav-item">
-                <a className="nav-link food" style={{cursor: "pointer"}}>
+                <a className="nav-link food" style={{ cursor: "pointer" }}>
                   • • •
                 </a>
                 <div className="mega-posts-menu">

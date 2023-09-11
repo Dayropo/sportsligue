@@ -1,13 +1,10 @@
-import { getHeadlines } from "@/sanity/sanity-utils"
 import Image from "next/image"
 import { Post } from "../@types/typings"
 import Link from "next/link"
 import urlFor from "@/sanity/urlFor"
 import { FiBook, FiUser } from "react-icons/fi"
 
-const HeadingNews = async () => {
-  const posts = await getHeadlines()
-
+const HeadingNews = async ({ posts }: { posts: Post[] }) => {
   return (
     <div className="news-headline">
       <span className="title-notifier">Headlines</span>
@@ -38,12 +35,12 @@ const HeadingNews = async () => {
                 {posts[0].author.name}
               </Link>
             </li>
-            <li>
+            {/* <li>
               <a href="#">
                 <FiBook size={12} style={{ marginRight: "4px" }} />
                 <span>23 comments</span>
               </a>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>
@@ -75,12 +72,12 @@ const HeadingNews = async () => {
                   {post.author.name}
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <a href="#">
                   <FiBook size={12} style={{ marginRight: "4px" }} />
                   <span>56 comments</span>
                 </a>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>
