@@ -1,27 +1,22 @@
 "use client"
 
-import { useRouter } from "next/router"
 import Script from "next/script"
 import { useEffect } from "react"
+import { usePathname, useSearchParams } from "next/navigation"
 
 export default function GoogleAnalytics({ ga_id }: { ga_id: string }) {
-  const router = useRouter()
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
 
   useEffect(() => {
-    const handleRouteChange = (url: string) => {
-      if (process.env.NODE_ENV === "production") {
-        window.gtag("config", ga_id, {
-          page_path: url,
-        })
-      }
-    }
+    const url = pathname + searchParams.toString()
 
-    router.events.on("routeChangeComplete", handleRouteChange)
-
-    return () => {
-      router.events.off("routeChangeComplete", handleRouteChange)
+    if (process.env.NODE_ENV === "production") {
+      window.gtag("config", ga_id, {
+        page_path: url,
+      })
     }
-  }, [router.events])
+  }, [pathname, searchParams])
 
   return (
     <>
