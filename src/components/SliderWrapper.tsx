@@ -1,7 +1,5 @@
 "use client"
 
-
-
 import { Post } from "../@types/typings"
 import urlFor from "@/sanity/urlFor"
 import { Slide } from "react-slideshow-image"
@@ -59,12 +57,12 @@ export default function SliderWrapper({ posts }: Props) {
                     {post.author.name}
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <a href="#">
                     <FiBook size={12} style={{ marginRight: "4px" }} />
                     <span>23 comments</span>
                   </a>
-                </li>
+                </li> */}
               </ul>
             </div>
           </div>

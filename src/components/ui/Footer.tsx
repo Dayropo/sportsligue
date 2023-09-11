@@ -3,7 +3,6 @@ import Link from "next/link"
 import {
   FaCaretUp,
   FaFacebookF,
-  FaGooglePlusG,
   FaInstagram,
   FaLinkedinIn,
   FaTwitter,
@@ -26,12 +25,13 @@ export default function Footer() {
                     />
                   </a>
                 </h1>
-                <p>
-                  Duis aute irure dolor in reprehenderit in voluptate velit esse
-                  cillum dolore eu fugiat nulla pariatur. Excepteur occaecat
-                  cupidatat non proident, sunt in culpa qui officia deserunt
-                  mollit anim id est laborum.
-                </p>
+                {/* <p>
+                  SportsLigue.com is a groundbreaking online platform poised to
+                  revolutionize the sports industry&apos;s digital landscape.
+                  Our mission is to provide sports enthusiasts worldwide with an
+                  immersive and interactive experience that transcends
+                  traditional sports engagement.
+                </p> */}
                 <ul className="social-icons">
                   <li>
                     <a className="facebook" href="#">
@@ -41,11 +41,6 @@ export default function Footer() {
                   <li>
                     <a className="twitter" href="#">
                       <FaTwitter size={14} />
-                    </a>
-                  </li>
-                  <li>
-                    <a className="google" href="#">
-                      <FaGooglePlusG size={14} />
                     </a>
                   </li>
                   <li>
@@ -204,7 +199,7 @@ export default function Footer() {
             &copy; Copyright By Sportsligue 2023
             <a href="#" className="go-top">
               <FaCaretUp size={16} />
-              
+
               {/* <i className="fa fa-caret-up" aria-hidden="true"></i> */}
             </a>
           </p>

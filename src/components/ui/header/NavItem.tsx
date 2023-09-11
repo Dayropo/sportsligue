@@ -67,12 +67,12 @@ export default function NavItem({ category, posts }: Props) {
                         {post.author.name}
                       </Link>
                     </li>
-                    <li>
+                    {/* <li>
                       <a href="#">
                         <i className="lnr lnr-book"></i>
                         <span>23 comments</span>
                       </a>
-                    </li>
+                    </li> */}
                   </ul>
                 </div>
               </div>

@@ -21,7 +21,7 @@ export default function PrimaryNavItems() {
         />
         {moment().format("dddd LL")}
       </li>
-      <li>
+      {/* <li>
         {status === "authenticated" ? (
           <a>
             <UserIcon
@@ -47,8 +47,8 @@ export default function PrimaryNavItems() {
             Log in
           </a>
         )}
-      </li>
-      {status === "authenticated" ? (
+      </li> */}
+      {/* {status === "authenticated" ? (
         <li>
           <a role="button" onClick={() => signOut()}>Sign Out</a>
         </li>
@@ -56,7 +56,7 @@ export default function PrimaryNavItems() {
         <li>
           <Link href="/register">Register</Link>
         </li>
-      )}
+      )} */}
     </ul>
   )
 }
