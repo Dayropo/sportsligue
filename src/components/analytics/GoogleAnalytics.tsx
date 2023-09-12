@@ -10,10 +10,12 @@ export default function GoogleAnalytics({ ga_id }: { ga_id: string }) {
   const searchParams = useSearchParams()
 
   useEffect(() => {
-    const url = pathname + searchParams?.toString()
+    if (pathname && searchParams) {
+      const url = pathname + searchParams?.toString()
 
-    if (process.env.NODE_ENV === "production") {
-      pageview(ga_id, url)
+      if (process.env.NODE_ENV === "production") {
+        pageview(ga_id, url)
+      }
     }
   }, [pathname, searchParams])
 
