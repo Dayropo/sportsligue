@@ -17,8 +17,7 @@ export async function getAllPosts(): Promise<Post[]> {
   publishedAt,
   body,
   tags,
-} | order(publishedAt desc)`,
-    { next: { revalidate: process.env.NEXT_PUBLIC_SANITY_REVALIDATE } }
+} | order(publishedAt desc)`
   )
 }
 
@@ -38,7 +37,7 @@ export async function getPost(slug: string): Promise<Post> {
   body,
   tags,
 }`,
-    { slug, next: { revalidate: process.env.NEXT_PUBLIC_SANITY_REVALIDATE } }
+    { slug }
   )
 }
 
@@ -57,10 +56,7 @@ export async function getHeadlines(): Promise<Post[]> {
   publishedAt,
   body,
   tags,
-} | order(publishedAt desc)`,
-    {
-      next: { revalidate: process.env.NEXT_PUBLIC_SANITY_REVALIDATE },
-    }
+} | order(publishedAt desc)`
   )
 }
 
@@ -79,10 +75,7 @@ export async function getFeaturedPosts(): Promise<Post[]> {
   publishedAt,
   body,
   tags,
-} | order(publishedAt desc)`,
-    {
-      next: { revalidate: process.env.NEXT_PUBLIC_SANITY_REVALIDATE },
-    }
+} | order(publishedAt desc)`
   )
 }
 
@@ -108,7 +101,6 @@ export async function getRelatedPosts(
     {
       category,
       slug,
-      next: { revalidate: process.env.NEXT_PUBLIC_SANITY_REVALIDATE },
     }
   )
 }
@@ -128,10 +120,7 @@ export async function getWorldPosts(): Promise<Post[]> {
   publishedAt,
   body,
   tags,
-} | order(publishedAt desc)`,
-    {
-      next: { revalidate: process.env.NEXT_PUBLIC_SANITY_REVALIDATE },
-    }
+} | order(publishedAt desc)`
   )
 }
 
@@ -151,10 +140,7 @@ export async function getPostsByCategory(category: string): Promise<Post[]> {
   body,
   tags,
 } | order(publishedAt desc)`,
-    {
-      category,
-      next: { revalidate: process.env.NEXT_PUBLIC_SANITY_REVALIDATE },
-    }
+    { category }
   )
 }
 
@@ -174,10 +160,7 @@ export async function getPostsByCategorySlug(slug: string): Promise<Post[]> {
   body,
   tags,
 } | order(publishedAt desc)`,
-    {
-      slug,
-      next: { revalidate: process.env.NEXT_PUBLIC_SANITY_REVALIDATE },
-    }
+    { slug }
   )
 }
 
@@ -199,10 +182,7 @@ export async function getPostsBySubCategory(
   body,
   tags,
 } | order(publishedAt desc)`,
-    {
-      subCategory,
-      next: { revalidate: process.env.NEXT_PUBLIC_SANITY_REVALIDATE },
-    }
+    { subCategory }
   )
 }
 
@@ -222,10 +202,7 @@ export async function getPostsBySubCategorySlug(slug: string): Promise<Post[]> {
   body,
   tags,
 } | order(publishedAt desc)`,
-    {
-      slug,
-      next: { revalidate: process.env.NEXT_PUBLIC_SANITY_REVALIDATE },
-    }
+    { slug }
   )
 }
 
@@ -239,7 +216,7 @@ export async function getAuthor(slug: string): Promise<Author> {
   image,
   bio,
 }`,
-    { slug, next: { revalidate: process.env.NEXT_PUBLIC_SANITY_REVALIDATE } }
+    { slug }
   )
 }
 
@@ -259,7 +236,7 @@ export async function getCategoryByTitle(title: string): Promise<Category> {
       }
     }
   `,
-    { title, next: { revalidate: process.env.NEXT_PUBLIC_SANITY_REVALIDATE } }
+    { title }
   )
 }
 
@@ -278,7 +255,6 @@ export async function getOtherCategories(): Promise<Category[]> {
       slug,
       }
     } | order(title asc)
-  `,
-    { next: { revalidate: process.env.NEXT_PUBLIC_SANITY_REVALIDATE } }
+  `
   )
 }
