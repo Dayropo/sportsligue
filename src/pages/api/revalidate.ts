@@ -1,7 +1,7 @@
 import { isValidSignature, SIGNATURE_HEADER_NAME } from "@sanity/webhook"
 import { NextApiRequest, NextApiResponse } from "next"
 
-const SANITY_WEBHOOK_SECRET = process.env.SANITY_WEBHOOK_SECRET
+const SANITY_WEBHOOK_SECRET = process.env.SANITY_WEBHOOK_SECRET!
 
 export default async function handler(
   req: NextApiRequest,
