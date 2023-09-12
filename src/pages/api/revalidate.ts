@@ -7,7 +7,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const signature = req.headers[SIGNATURE_HEADER_NAME]
+  const signature = req.headers[SIGNATURE_HEADER_NAME] as string
   const isValid = isValidSignature(
     JSON.stringify(req.body),
     signature,
