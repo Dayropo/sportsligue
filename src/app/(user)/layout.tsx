@@ -22,11 +22,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${robotoCondensed.className}  boxed-style`}>
-        {/* {process.env.NODE_ENV === "production" && (
-          <GoogleAnalytics ga_id={process.env.NEXT_PUBLIC_GA_ID!} />
-        )} */}
+      {process.env.NODE_ENV === "production" && (
+        <GoogleAnalytics GA_MEASUREMENT_ID="G-0ZER7XKZDG" />
+      )}
 
+      <body className={`${robotoCondensed.className}  boxed-style`}>
         <NextAuthProvider>{children}</NextAuthProvider>
 
         <Script src="https://code.jquery.com/jquery-3.4.1.min.js" />
