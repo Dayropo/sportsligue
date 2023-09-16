@@ -16,9 +16,6 @@ dependencies:
   '@sanity/webhook':
     specifier: ^3.0.1
     version: 3.0.1
-  '@types/gtag.js':
-    specifier: ^0.0.13
-    version: 0.0.13
   '@types/node':
     specifier: 20.4.8
     version: 20.4.8
@@ -90,6 +87,9 @@ devDependencies:
   '@sanity/eslint-config-studio':
     specifier: ^3.0.0
     version: 3.0.0(eslint@8.46.0)(typescript@5.1.6)
+  '@types/gtag.js':
+    specifier: ^0.0.13
+    version: 0.0.13
 
 packages:
 
@@ -2448,7 +2448,7 @@ packages:
 
   /@types/gtag.js@0.0.13:
     resolution: {integrity: sha512-yOXFkfnt1DQr1v9B4ERulJOGnbdVqnPHV8NG4nkQhnu4qbrJecQ06DlaKmSjI3nzIwBj5U9/X61LY4sTc2KbaQ==}
-    dev: false
+    dev: true
 
   /@types/hast@2.3.5:
     resolution: {integrity: sha512-SvQi0L/lNpThgPoleH53cdjB3y9zpLlVjRbqB3rH8hx1jiRSBGAhyjV3H+URFjNVRqt2EdYNrbZE5IsGlNfpRg==}

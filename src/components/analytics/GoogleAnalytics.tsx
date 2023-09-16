@@ -1,44 +1,43 @@
 "use client"
 
 import Script from "next/script"
-import { useEffect } from "react"
 import { usePathname, useSearchParams } from "next/navigation"
+import { useEffect } from "react"
 import { pageview } from "@/src/libs/gtag"
 
-export default function GoogleAnalytics({ ga_id }: { ga_id: string }) {
+export default function GoogleAnalytics({
+  GA_MEASUREMENT_ID,
+}: {
+  GA_MEASUREMENT_ID: string
+}) {
   const pathname = usePathname()
   const searchParams = useSearchParams()
 
   useEffect(() => {
-    if (pathname && searchParams) {
-      const url = pathname + searchParams?.toString()
+    const url = pathname! + searchParams?.toString()
 
-      if (process.env.NODE_ENV === "production") {
-        pageview(ga_id, url)
-      }
-    }
-  }, [pathname, searchParams])
+    pageview(GA_MEASUREMENT_ID, url)
+  }, [pathname, searchParams, GA_MEASUREMENT_ID])
 
   return (
     <>
       <Script
         strategy="afterInteractive"
-        src={`https://www.googletagmanager.com/gtag/js?id=${ga_id}`}
-      ></Script>
-
+        src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+      />
       <Script
-        strategy="afterInteractive"
         id="google-analytics"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: `
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
 
-          gtag('config', ${ga_id}, {
-          page_path: window.location.pathname,
-          });
-        `,
+                gtag('config', '${GA_MEASUREMENT_ID}', {
+                    page_path: window.location.pathname,
+                });
+                `,
         }}
       />
     </>

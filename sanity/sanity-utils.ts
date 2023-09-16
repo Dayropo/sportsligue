@@ -1,8 +1,12 @@
 import { groq } from "next-sanity"
 import { client } from "./sanity-client"
 import { Author, Category, Post } from "@/src/@types/typings"
+import { cache } from "react"
 
-export async function getAllPosts(): Promise<Post[]> {
+export const revalidate = 0
+
+// export async function getAllPosts(): Promise<Post[]> {
+export const getAllPosts = cache(async (): Promise<Post[]> => {
   return client.fetch(
     groq`*[_type == "post"]{
   _id,
@@ -19,7 +23,7 @@ export async function getAllPosts(): Promise<Post[]> {
   tags,
 } | order(publishedAt desc)`
   )
-}
+})
 
 export async function getPost(slug: string): Promise<Post> {
   return client.fetch(
