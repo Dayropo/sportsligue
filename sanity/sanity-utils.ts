@@ -3,7 +3,7 @@ import { client } from "./sanity-client"
 import { Author, Category, Post } from "@/src/@types/typings"
 import { cache } from "react"
 
-export const revalidate = 60
+export const revalidate = 0
 
 export async function getAllPosts(): Promise<Post[]> {
   return client.fetch(
