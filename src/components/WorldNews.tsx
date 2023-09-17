@@ -1,3 +1,6 @@
+"use client"
+
+import { useState } from "react"
 import Image from "next/image"
 import { Post } from "../@types/typings"
 import Link from "next/link"
@@ -5,8 +8,16 @@ import urlFor from "@/sanity/urlFor"
 import { FiBook, FiUser } from "react-icons/fi"
 import { PortableText } from "@portabletext/react"
 import { PortableTextComponents } from "./PortableTextComponents"
+import Pagination from "./ui/Pagination"
 
-export default async function WorldNews({ posts }: { posts: Post[] }) {
+export default function WorldNews({ posts }: { posts: Post[] }) {
+  const [currentPage, setCurrentPage] = useState<number>(1)
+  const [postsPerPage] = useState<number>(5)
+
+  const indexOfLastPost = currentPage * postsPerPage
+  const indexOfFirstPost = indexOfLastPost - postsPerPage
+  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost)
+
   return (
     <div className="posts-block">
       <div className="title-section">
@@ -14,7 +25,7 @@ export default async function WorldNews({ posts }: { posts: Post[] }) {
       </div>
 
       <div className="articles-box-style">
-        {posts.slice(0, 5).map((post: Post) => (
+        {currentPosts.map((post: Post) => (
           <div className="news-post article-post" key={post._id}>
             <div className="row">
               <div className="col-sm-5">
@@ -66,31 +77,12 @@ export default async function WorldNews({ posts }: { posts: Post[] }) {
           </div>
         ))}
 
-        <ul className="pagination-list">
-          <li>
-            <a href="#">Prev</a>
-          </li>
-          <li>
-            <a href="#" className="active">
-              1
-            </a>
-          </li>
-          <li>
-            <a href="#">2</a>
-          </li>
-          <li>
-            <a href="#">3</a>
-          </li>
-          <li>
-            <a href="#">...</a>
-          </li>
-          <li>
-            <a href="#">6</a>
-          </li>
-          <li>
-            <a href="#">Next</a>
-          </li>
-        </ul>
+        <Pagination
+          itemsPerPage={postsPerPage}
+          totalItems={posts.length}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
       </div>
     </div>
   )

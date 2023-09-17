@@ -611,7 +611,7 @@ body {
 }
 
 body.boxed-style {
-  background: url("../assets/upload/blog/back.jpg") 0 0 fixed;
+  background: url("../assets/images/sports-tools.webp") 0 0 fixed;
 }
 
 body.boxed-style #container {
@@ -671,6 +671,7 @@ body.boxed-style #container {
   font-size: 13px;
   font-family: "Roboto Condensed", sans-serif;
   border: 1px solid #f1f1f1;
+  cursor: pointer;
 }
 
 #content-section ul.pagination-list li a.active {
@@ -681,6 +682,25 @@ body.boxed-style #container {
   background: #ff7e00;
   border: 1px solid transparent;
   color: #fff;
+}
+
+.pagination-controls {
+  padding: 6px 15px;
+  background: #fff;
+  color: #212121;
+  font-size: 13px;
+  font-family: "Roboto Condensed", sans-serif;
+  border: 1px solid #f1f1f1;
+}
+
+.pagination-controls:hover {
+  background: #ff7e00;
+  border: 1px solid transparent;
+  color: #fff;
+}
+
+.pagination-active {
+  border: 1px solid #a1a1a1;
 }
 
 .news-headline {
@@ -694,7 +714,7 @@ body.boxed-style #container {
   width: 25%;
   margin-bottom: 0;
   aspect-ratio: 350/500;
-  position: rela;
+  position: relative;
 }
 
 .news-headline .news-post .hover-box {
@@ -1470,6 +1490,7 @@ ul.post-tags li:last-child {
 
 .standart-post .description {
   height: 60px;
+  width: 90%;
   overflow-y: hidden;
 }
 
@@ -1897,6 +1918,7 @@ ul.post-tags li:last-child {
 
 .article-post .description {
   height: 72px;
+  width: 80%;
   overflow-y: hidden;
 }
 
@@ -4359,6 +4381,7 @@ footer .down-footer a.go-top:hover {
 
   .news-headline .news-post {
     width: 100%;
+    aspect-ratio: 700/500;
   }
 
   .masonry-box .iso-call .news-post {
@@ -4398,6 +4421,10 @@ footer .down-footer a.go-top:hover {
   .navbar-dark .navbar-toggler,
   .navbar-light .navbar-toggler {
     margin: 10px auto;
+  }
+
+  .image-post {
+    aspect-ratio: 700/500;
   }
 }
 
