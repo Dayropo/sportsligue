@@ -1,9 +1,8 @@
 import { groq } from "next-sanity"
 import { client } from "./sanity-client"
 import { Author, Category, Post } from "@/src/@types/typings"
-import { cache } from "react"
 
-export const revalidate = 0
+export const revalidate = 120
 
 export async function getAllPosts(): Promise<Post[]> {
   return client.fetch(
@@ -21,7 +20,11 @@ export async function getAllPosts(): Promise<Post[]> {
   body,
   tags,
 } | order(publishedAt desc)`,
-    { revalidate }
+    {
+      next: {
+        revalidate,
+      },
+    }
   )
 }
 
@@ -41,7 +44,12 @@ export async function getPost(slug: string): Promise<Post> {
   body,
   tags,
 }`,
-    { slug, revalidate }
+    {
+      slug,
+      next: {
+        revalidate,
+      },
+    }
   )
 }
 
@@ -61,7 +69,11 @@ export async function getHeadlines(): Promise<Post[]> {
   body,
   tags,
 } | order(publishedAt desc)`,
-    { revalidate }
+    {
+      next: {
+        revalidate,
+      },
+    }
   )
 }
 
@@ -81,7 +93,7 @@ export async function getFeaturedPosts(): Promise<Post[]> {
   body,
   tags,
 } | order(publishedAt desc)`,
-    { revalidate }
+    { next: { revalidate } }
   )
 }
 
@@ -107,7 +119,9 @@ export async function getRelatedPosts(
     {
       category,
       slug,
-      revalidate,
+      next: {
+        revalidate,
+      },
     }
   )
 }
@@ -128,7 +142,7 @@ export async function getWorldPosts(): Promise<Post[]> {
   body,
   tags,
 } | order(publishedAt desc)`,
-    { revalidate }
+    { next: { revalidate } }
   )
 }
 
@@ -148,7 +162,12 @@ export async function getPostsByCategory(category: string): Promise<Post[]> {
   body,
   tags,
 } | order(publishedAt desc)`,
-    { category, revalidate }
+    {
+      category,
+      next: {
+        revalidate,
+      },
+    }
   )
 }
 
@@ -168,7 +187,7 @@ export async function getPostsByCategorySlug(slug: string): Promise<Post[]> {
   body,
   tags,
 } | order(publishedAt desc)`,
-    { slug, revalidate }
+    { slug, next: { revalidate } }
   )
 }
 
@@ -190,7 +209,7 @@ export async function getPostsBySubCategory(
   body,
   tags,
 } | order(publishedAt desc)`,
-    { subCategory, revalidate }
+    { subCategory, next: { revalidate } }
   )
 }
 
@@ -210,7 +229,7 @@ export async function getPostsBySubCategorySlug(slug: string): Promise<Post[]> {
   body,
   tags,
 } | order(publishedAt desc)`,
-    { slug, revalidate }
+    { slug, next: { revalidate } }
   )
 }
 
@@ -224,7 +243,7 @@ export async function getAuthor(slug: string): Promise<Author> {
   image,
   bio,
 }`,
-    { slug, revalidate }
+    { slug, next: { revalidate } }
   )
 }
 
@@ -244,7 +263,7 @@ export async function getCategoryByTitle(title: string): Promise<Category> {
       }
     }
   `,
-    { title, revalidate }
+    { title, next: { revalidate } }
   )
 }
 
@@ -264,6 +283,6 @@ export async function getOtherCategories(): Promise<Category[]> {
       }
     } | order(title asc)
   `,
-    { revalidate }
+    { next: { revalidate } }
   )
 }
