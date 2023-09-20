@@ -3,8 +3,11 @@ import { Post } from "../@types/typings"
 import Link from "next/link"
 import urlFor from "@/sanity/urlFor"
 import { FiBook, FiUser } from "react-icons/fi"
+import { getHeadlines } from "@/sanity/sanity-utils"
 
-const HeadingNews = async ({ posts }: { posts: Post[] }) => {
+const HeadingNews = async () => {
+  const posts = await getHeadlines()
+
   return (
     <div className="news-headline">
       <span className="title-notifier">Headlines</span>

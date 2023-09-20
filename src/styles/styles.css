@@ -115,6 +115,10 @@ a {
 /*------------------------------------------------- */
 /* =  Header
  *------------------------------------------------- */
+.clearfix {
+  position: relative;
+}
+
 .header-banner-place {
   width: 100%;
   padding: 14px 0 20px 0;
@@ -130,6 +134,53 @@ a {
 
 .header-banner-place a.navbar-brand img {
   margin-bottom: 5px;
+}
+
+.primary-nav-items {
+  display: flex;
+}
+
+.menu {
+  display: none;
+  cursor: pointer;
+}
+
+.mobile-menu {
+  position: absolute;
+  top: 70px;
+  left: 0px;
+  width: 100%;
+  /* height: calc(100vh - 70px); */
+  background: #252525;
+  z-index: 5;
+  padding: 24px 16px;
+}
+
+.mobile-menu li {
+  display: block;
+  margin-bottom: 10px;
+  color: #fff;
+  font-size: 18px;
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: 700;
+  position: relative;
+}
+
+.mobile-menu li a {
+  color: #f9f9f9;
+  outline: none;
+}
+
+.mobile-menu li a:hover {
+  color: #ff7e00;
+}
+
+.menu-items-cont {
+  background: #fff;
+  width: 300px;
+  max-width: 50%;
+  height: 100%;
+  opacity: 1;
 }
 
 .navbar {
@@ -611,7 +662,8 @@ body {
 }
 
 body.boxed-style {
-  background: url("../assets/images/sports-tools.webp") 0 0 fixed;
+  /* background: url("../assets/images/sports-tools.webp") 0 0 fixed; */
+  background: #181818;
 }
 
 body.boxed-style #container {
@@ -3457,6 +3509,39 @@ div.search-box {
   font-family: "Roboto Condensed", sans-serif;
 }
 
+/* Skeletons */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.headlines-skeleton-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.headlines-skeleton-main-post {
+  flex: 0 0 calc(50% - 16px);
+  aspect-ratio: 700 / 500;
+  background: #718096;
+}
+
+.headlines-skeleton-post {
+  flex: 0 0 calc(25% - 16px);
+  aspect-ratio: 350 / 500;
+  background: #718096;
+}
+
 /*------------------------------------------------- */
 /* =  Contact */
 /*------------------------------------------------- */
@@ -4087,6 +4172,14 @@ footer .down-footer a.go-top:hover {
 }
 
 @media (max-width: 991px) {
+  .primary-nav-items {
+    display: none;
+  }
+
+  .menu {
+    display: block;
+  }
+
   .wide-news-heading .item {
     width: 33.33333%;
   }
@@ -4116,7 +4209,16 @@ footer .down-footer a.go-top:hover {
     outline: none;
   }
 
+  .navbar-toggler {
+    margin: 10px 15px;
+    outline: none;
+  }
+
   header.style-5 .navbar-dark .navbar-toggler {
+    display: none !important;
+  }
+
+  .navbar-toggler {
     display: none !important;
   }
 
@@ -4199,6 +4301,14 @@ footer .down-footer a.go-top:hover {
 
   .news-headline .news-post {
     width: 50%;
+  }
+
+  .headlines-skeleton-main-post {
+    flex: 0 0 100%;
+  }
+
+  .headlines-skeleton-post {
+    flex: 0 0 calc(50% - 16px);
   }
 
   .slider-news-fullwidth .flexslider .slider-caption p {
@@ -4375,6 +4485,10 @@ footer .down-footer a.go-top:hover {
     margin: 15px;
   }
 
+  .navbar-toggler {
+    margin: 15px;
+  }
+
   .navbar-collapse {
     padding-left: 15px;
   }
@@ -4382,6 +4496,11 @@ footer .down-footer a.go-top:hover {
   .news-headline .news-post {
     width: 100%;
     aspect-ratio: 700/500;
+  }
+
+  .headlines-skeleton-post {
+    flex: 0 0 100%;
+    aspect-ratio: 700 / 500;
   }
 
   .masonry-box .iso-call .news-post {
@@ -4420,6 +4539,10 @@ footer .down-footer a.go-top:hover {
 
   .navbar-dark .navbar-toggler,
   .navbar-light .navbar-toggler {
+    margin: 10px auto;
+  }
+
+  .navbar-toggler {
     margin: 10px auto;
   }
 
