@@ -8,9 +8,10 @@ import CategoryLatest from "@/src/components/CategoryLatest"
 import Sidebar from "@/src/components/ui/Sidebar"
 import WorldNews from "@/src/components/WorldNews"
 import { getAllPosts, getHeadlines, getWorldPosts } from "@/sanity/sanity-utils"
+import { Suspense } from "react"
+import HeadlineSkeleton from "@/src/components/skeletons/HeadlineSkeleton"
 
 export default async function Home() {
-  const headlines = await getHeadlines()
   const posts = await getAllPosts()
   const worldNews = await getWorldPosts()
 
@@ -21,7 +22,10 @@ export default async function Home() {
       <section id="content-section">
         <div className="container">
           {/* <!-- News-Headline --> */}
-          <HeadingNews posts={headlines} />
+          <Suspense fallback={<HeadlineSkeleton />}>
+            <HeadingNews />
+          </Suspense>
+
           {/* <!-- End News-Headline --> */}
 
           {/* <!-- Advertisement --> */}
