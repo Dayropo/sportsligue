@@ -10,8 +10,6 @@ import { FaCaretDown } from "react-icons/fa"
 export default function TopLine() {
   const [showMenu, setShowMenu] = useState<boolean>(false)
 
-  console.log({ showMenu })
-
   return (
     <div className="top-line">
       <div className="container">
