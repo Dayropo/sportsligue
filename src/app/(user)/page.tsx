@@ -11,7 +11,7 @@ import { getAllPosts, getHeadlines, getWorldPosts } from "@/sanity/sanity-utils"
 import { Suspense } from "react"
 import HeadlineSkeleton from "@/src/components/skeletons/HeadlineSkeleton"
 
-export const dynamic = "force-dynamic"
+// export const dynamic = "force-dynamic"
 
 export default async function Home() {
   const posts = await getAllPosts()

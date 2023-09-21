@@ -5,7 +5,7 @@ import Header from "@/src/components/ui/Header"
 import Sidebar from "@/src/components/ui/Sidebar"
 import { Metadata } from "next"
 
-export const dynamic = "force-dynamic"
+// export const dynamic = "force-dynamic"
 
 type Props = {
   params: {
