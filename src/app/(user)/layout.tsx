@@ -27,6 +27,7 @@ export default function RootLayout({
       )}
 
       <body className={`${robotoCondensed.className}  boxed-style`}>
+        <script>0</script>
         <NextAuthProvider>{children}</NextAuthProvider>
 
         <Script src="https://code.jquery.com/jquery-3.4.1.min.js" />
