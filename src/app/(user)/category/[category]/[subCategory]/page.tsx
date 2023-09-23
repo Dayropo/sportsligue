@@ -20,7 +20,11 @@ export const generateMetadata = async ({
   const slug = params.subCategory
   const posts = await getPostsBySubCategorySlug(slug)
   return {
-    title: `${posts[0].subCategory.title} - Sportsligue`,
+    title: posts[0].subCategory.title,
+    description: `Latest ${posts[0].subCategory.title} news from Sportsligue.com`,
+    alternates: {
+      canonical: `/category/${posts[0].category.title}/${posts[0].subCategory.title}`,
+    },
   }
 }
 

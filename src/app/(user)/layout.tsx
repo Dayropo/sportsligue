@@ -12,7 +12,72 @@ const robotoCondensed = Roboto_Condensed({
 })
 
 export const metadata: Metadata = {
-  title: "Sportsligue",
+  metadataBase: new URL("https://www.sportsligue.com"),
+  title: {
+    default: "Sportsligue",
+    template: `%s | Sportsligue`,
+  },
+  description:
+    "Welcome to SportsLigue.com, your ultimate destination for the latest and most comprehensive sports news and updates! As avid sports enthusiasts ourselves, we understand the thrill and excitement that comes with being a part of the sports world. Whether you are a die-hard fan or a casual observer, our goal is to provide you with an unmatched sports news experience that keeps you informed, engaged, and entertained.",
+  keywords: [
+    "football",
+    "soccer",
+    "tennis",
+    "basketball",
+    "formula one",
+    "formula 1",
+    "athletics",
+    "boxing",
+    "baseball",
+    "cricket",
+    "golf",
+    "rugby",
+    "gymnastics",
+    "hockey",
+    "volleyball",
+    "transfers",
+    "english premier league",
+    "serie a",
+    "la liga",
+    "ligue 1",
+    "bundesliga",
+    "uefa champions league",
+    "uefa europa league",
+    "uefa conference league",
+    "womens football",
+    "world cup",
+    "uefa nations league",
+    "uefa",
+    "caf",
+    "african nations cup",
+    "euro",
+    "olympics",
+    "australian open",
+    "french open",
+    "roland garros",
+    "wimbledon",
+    "us open",
+    "atp",
+    "wta",
+    "nba",
+    "saudi pro league",
+    "mls",
+    "wnba",
+    "euroleague",
+    "efl championship",
+    "heavyweight",
+    "middleweight",
+    "lightweight",
+    "nfl",
+    "college football",
+    "diamond league",
+    "world athletics championships",
+    "mlb",
+  ],
+  verification: {
+    google:
+      "google-site-verification=gmb4wZzBjS9eygLVG-Z-vy4flCUBzYdoF-hzuakQlRk",
+  },
 }
 
 export default function RootLayout({
@@ -27,7 +92,6 @@ export default function RootLayout({
       )}
 
       <body className={`${robotoCondensed.className}  boxed-style`}>
-        <script>0</script>
         <NextAuthProvider>{children}</NextAuthProvider>
 
         <Script src="https://code.jquery.com/jquery-3.4.1.min.js" />

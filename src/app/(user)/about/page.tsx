@@ -5,7 +5,10 @@ import { Metadata } from "next"
 import Image from "next/image"
 
 export const metadata: Metadata = {
-  title: "About Us - Sportsligue",
+  title: "About Us",
+  alternates: {
+    canonical: `/about`,
+  },
 }
 
 export default function About() {

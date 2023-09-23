@@ -267,6 +267,26 @@ export async function getCategoryByTitle(title: string): Promise<Category> {
   )
 }
 
+export async function getAllCategories(): Promise<Category[]> {
+  return client.fetch(
+    groq`
+    *[_type == "category"]{
+    _id,
+    _createdAt,
+    title,
+    slug,
+    "subCategories": subCategories[]-> {
+      _id,
+      _createdAt,
+      title,
+      slug,
+      }
+    } | order(title asc)
+  `,
+    { next: { revalidate } }
+  )
+}
+
 export async function getOtherCategories(): Promise<Category[]> {
   return client.fetch(
     groq`

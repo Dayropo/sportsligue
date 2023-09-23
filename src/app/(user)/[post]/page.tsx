@@ -32,7 +32,10 @@ export const generateMetadata = async ({
   const slug = params.post
   const post = await getPost(slug)
   return {
-    title: `${post.title} - Sportsligue`,
+    title: post.title,
+    alternates: {
+      canonical: `/${post.slug.current}`,
+    },
   }
 }
 
