@@ -23,7 +23,7 @@ export default async function sitemap() {
 
   // subcategories
   const subCategoryUrls = categories?.map(category => {
-    return category.subCategories?.map(subCat => {
+    return category?.subCategories?.map(subCat => {
       return {
         url: `${baseUrl}/category/${category.slug.current}/${subCat.slug.current}`,
         lastModified: new Date(),
@@ -38,6 +38,5 @@ export default async function sitemap() {
     },
     ...postUrls,
     ...categoryUrls,
-    ...subCategoryUrls,
   ]
 }
