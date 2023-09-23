@@ -38,6 +38,5 @@ export default async function sitemap() {
     },
     ...postUrls,
     ...categoryUrls,
-    ...subCategoryUrls,
   ]
 }
