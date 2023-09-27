@@ -20,6 +20,9 @@ import {
 } from "react-icons/fa"
 import { FiBook, FiUser, FiEye } from "react-icons/fi"
 
+// export const dynamic = "force-dynamic"
+export const revalidate = 0
+
 type Props = {
   params: {
     post: string
