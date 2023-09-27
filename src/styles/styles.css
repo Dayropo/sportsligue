@@ -116,7 +116,9 @@ a {
 /* =  Header
  *------------------------------------------------- */
 .clearfix {
-  position: relative;
+  position: sticky;
+  top: 0px;
+  z-index: 9999px;
 }
 
 .header-banner-place {
