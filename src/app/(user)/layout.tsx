@@ -87,7 +87,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       {process.env.NODE_ENV === "production" && (
-        <GoogleAnalytics GA_MEASUREMENT_ID="G-0ZER7XKZDG" />
+        <>
+          <GoogleAnalytics GA_MEASUREMENT_ID="G-0ZER7XKZDG" />
+          <Script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1384009601184330"
+            crossOrigin="anonymous"
+            strategy="lazyOnload"
+          />
+        </>
       )}
 
       <body className={`${robotoCondensed.className}  boxed-style`}>
