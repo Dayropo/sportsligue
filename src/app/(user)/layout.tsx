@@ -75,8 +75,7 @@ export const metadata: Metadata = {
     "mlb",
   ],
   verification: {
-    google:
-      "google-site-verification=gmb4wZzBjS9eygLVG-Z-vy4flCUBzYdoF-hzuakQlRk",
+    google: "QKqFYQdbWpV08Qf1MSOAt4WLn-pU4xqDBsFfzfDLBKA",
   },
 }
 
