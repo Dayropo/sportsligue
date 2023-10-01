@@ -116,9 +116,9 @@ a {
 /* =  Header
  *------------------------------------------------- */
 .clearfix {
-  position: relative;
-  /* top: 0px;
-  z-index: 9999px; */
+  position: sticky;
+  top: 0px;
+  z-index: 99;
 }
 
 .header-banner-place {
@@ -154,7 +154,7 @@ a {
   width: 100%;
   /* height: calc(100vh - 70px); */
   background: #252525;
-  z-index: 5;
+  z-index: 99;
   padding: 24px 36px;
 }
 
@@ -192,7 +192,7 @@ a {
   -webkit-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
   width: 100%;
-  z-index: 999999;
+  z-index: 99;
 }
 
 header {
@@ -672,13 +672,14 @@ body.boxed-style #container {
   max-width: 1190px;
   margin: 0 auto;
   background: #fff;
-  overflow: hidden;
+  /* overflow: hidden; */
   position: relative;
-  z-index: 2;
+  /* z-index: 2; */
 }
 
 #content-section {
   padding: 40px 0;
+  z-index: 2;
 }
 
 #content-section .posts-block {
