@@ -40,6 +40,12 @@ export default function GoogleAnalytics({
                 `,
         }}
       />
+      <Script
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1384009601184330"
+        crossOrigin="anonymous"
+        strategy="lazyOnload"
+      />
     </>
   )
 }
