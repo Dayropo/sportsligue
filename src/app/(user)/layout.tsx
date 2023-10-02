@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     template: `%s | Sportsligue`,
   },
   description:
-    "Welcome to SportsLigue.com, your ultimate destination for the latest and most comprehensive sports news and updates! As avid sports enthusiasts ourselves, we understand the thrill and excitement that comes with being a part of the sports world. Whether you are a die-hard fan or a casual observer, our goal is to provide you with an unmatched sports news experience that keeps you informed, engaged, and entertained.",
+    "Stay updated with the latest sports news, scores, and highlights on Sportsligue.com - your one-stop source for all things sports and more.",
   keywords: [
     "football",
     "soccer",
@@ -45,6 +45,7 @@ export const metadata: Metadata = {
     "uefa europa league",
     "uefa conference league",
     "womens football",
+    "wsl",
     "world cup",
     "uefa nations league",
     "uefa",

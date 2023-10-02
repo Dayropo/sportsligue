@@ -39,7 +39,12 @@ export default function Footer() {
                     </a>
                   </li>
                   <li>
-                    <a className="twitter" href="#">
+                    <a
+                      className="twitter"
+                      href="https://twitter.com/SportsLigue"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <FaTwitter size={14} />
                     </a>
                   </li>
