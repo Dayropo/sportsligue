@@ -1544,12 +1544,12 @@ ul.post-tags li:last-child {
 }
 
 .standart-post .description {
-  max-height: 80px;
   width: 100%;
-  overflow-y: hidden;
+  overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
+  white-space: pre-wrap;
 }
 
 .video-post .post-image {
@@ -1975,12 +1975,12 @@ ul.post-tags li:last-child {
 }
 
 .article-post .description {
-  max-height: 96px;
   width: 100%;
-  overflow-y: hidden;
+  overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
+  white-space: pre-wrap;
 }
 
 ul.list-news {

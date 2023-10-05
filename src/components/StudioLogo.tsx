@@ -8,7 +8,7 @@ function StudioLogo(props: any) {
       <Image
         className="studio-logo"
         style={{ width: "100px", height: "auto" }}
-        src={require("../assets/images/white_logo.png")}
+        src="/images/white_logo.png"
         alt="logo"
       />
       <>{renderDefault(props)}</>

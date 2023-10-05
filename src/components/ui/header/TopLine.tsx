@@ -23,8 +23,9 @@ export default function TopLine() {
           {/* <div className="col-sm-5"> */}
           <Link className="navbar-brand" href={`/`}>
             <Image
-              src={require("../../../assets/images/white_logo.png")}
-              style={{ width: "100px", height: "auto" }}
+              src="/images/white_logo.png"
+              width={100}
+              height={40}
               alt="sportsligue"
             />
           </Link>

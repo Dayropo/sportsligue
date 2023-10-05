@@ -124,10 +124,7 @@ export default async function Post({ params }: Props) {
               {/* Advertisement */}
               <div className="advertisement">
                 <a href="#">
-                  <Image
-                    src={require("../../../assets/upload/addsense/728x90.gif")}
-                    alt=""
-                  />
+                  <Image src="/images/adsense/728x90.gif" alt="728x90" />
                 </a>
               </div>
               {/* End Advertisement */}

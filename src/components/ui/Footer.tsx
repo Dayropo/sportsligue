@@ -19,9 +19,10 @@ export default function Footer() {
                 <h1>
                   <a href="index.html">
                     <Image
-                      src={require("../../assets/images/white_logo.png")}
-                      style={{ width: "144px", height: "auto" }}
-                      alt=""
+                      src="/images/white_logo.png"
+                      width={144}
+                      height={48}
+                      alt="logo"
                     />
                   </a>
                 </h1>
