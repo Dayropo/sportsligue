@@ -32,7 +32,8 @@ const Header = async () => {
   const boxingCategory = await getCategoryByTitle("Boxing")
   const formula1Category = await getCategoryByTitle("Formula 1")
   const amFootballCategory = await getCategoryByTitle("American Football")
-  const athleticsCategory = await getCategoryByTitle("Athletics")
+  // const athleticsCategory = await getCategoryByTitle("Athletics")
+  const baseballCategory = await getCategoryByTitle("Baseball")
   const others = await getOtherCategories()
 
   const footballPosts = await getPostsByCategory("Football")
@@ -41,7 +42,8 @@ const Header = async () => {
   const boxingPosts = await getPostsByCategory("Boxing")
   const formula1Posts = await getPostsByCategory("Formula 1")
   const amFootballPosts = await getPostsByCategory("American Football")
-  const athleticsPosts = await getPostsByCategory("Athletics")
+  // const athleticsPosts = await getPostsByCategory("Athletics")
+  const baseballPosts = await getPostsByCategory("Baseball")
 
   return (
     <header className="clearfix">
@@ -67,7 +69,7 @@ const Header = async () => {
                   category={amFootballCategory}
                   posts={amFootballPosts}
                 />
-                <NavItem category={athleticsCategory} posts={athleticsPosts} />
+                <NavItem category={baseballCategory} posts={baseballPosts} />
 
                 <li className="nav-item">
                   <a className="nav-link food" style={{ cursor: "pointer" }}>
