@@ -26,12 +26,7 @@ export default function About() {
                   <h1>About Us</h1>
                 </div>
                 <div className="about-image">
-                  <Image
-                    src={require("../../../assets/images/logo.png")}
-                    fill
-                    sizes="100vw"
-                    alt=""
-                  />
+                  <Image src="/images/logo.png" fill sizes="100vw" alt="logo" />
                 </div>
 
                 <p>

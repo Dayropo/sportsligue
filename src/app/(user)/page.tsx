@@ -35,8 +35,10 @@ export default async function Home() {
           <div className="advertisement">
             <a href="#">
               <Image
-                src={require("../../assets/upload/addsense/728x90.gif")}
-                alt=""
+                src="/images/adsense/728x90.gif"
+                width={720}
+                height={90}
+                alt="728x90"
               />
             </a>
           </div>
@@ -56,8 +58,10 @@ export default async function Home() {
               <div className="advertisement">
                 <a href="#">
                   <Image
-                    src={require("../../assets/upload/addsense/728x90.gif")}
-                    alt=""
+                    src="/images/adsense/728x90.gif"
+                    width={720}
+                    height={90}
+                    alt="728x90"
                   />
                 </a>
               </div>
@@ -94,8 +98,10 @@ export default async function Home() {
               <div className="advertisement">
                 <a href="#">
                   <Image
-                    src={require("../../assets/upload/addsense/728x90.gif")}
-                    alt=""
+                    src="/images/adsense/728x90.gif"
+                    width={720}
+                    height={90}
+                    alt="728x90"
                   />
                 </a>
               </div>

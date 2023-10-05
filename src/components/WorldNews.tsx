@@ -47,7 +47,7 @@ export default function WorldNews({ posts }: { posts: Post[] }) {
                   </Link>
                 </div>
               </div>
-              <div className="col-sm-7">
+              <div className="col-sm-7" style={{ overflow: "hidden" }}>
                 <h2>
                   <Link href={`/${post.slug.current}`}>{post.title}</Link>
                 </h2>

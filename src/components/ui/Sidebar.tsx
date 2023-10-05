@@ -48,8 +48,10 @@ export default function Sidebar({ tags }: Props) {
         <div className="advertisement">
           <a href="#">
             <Image
-              src={require("../../assets/upload/addsense/300x250latest.gif")}
-              alt=""
+              src="/images/adsense/300x250latest.gif"
+              width={300}
+              height={250}
+              alt="300x250"
             />
           </a>
         </div>
