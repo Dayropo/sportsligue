@@ -290,7 +290,7 @@ export async function getAllCategories(): Promise<Category[]> {
 export async function getOtherCategories(): Promise<Category[]> {
   return client.fetch(
     groq`
-    *[_type == "category" && !(title in ["Football", "Tennis", "Basketball", "Boxing", "Formula 1", "American Football", "Athletics"])]{
+    *[_type == "category" && !(title in ["Football", "Tennis", "Basketball", "Boxing", "Formula 1", "American Football", "Baseball"])]{
     _id,
     _createdAt,
     title,
