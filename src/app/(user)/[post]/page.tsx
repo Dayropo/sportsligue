@@ -109,7 +109,8 @@ export default async function Post({ params }: Props) {
                     fill
                     sizes="100vw"
                     style={{ objectFit: "cover", objectPosition: "center" }}
-                    alt=""
+                    alt={post.title}
+                    priority
                   />
                 </figure>
                 <h6 className="figcaption">{post.mainImage.caption}</h6>
