@@ -36,8 +36,8 @@ export default async function Home() {
             <a href="#">
               <Image
                 src="/images/adsense/728x90.gif"
-                width={720}
-                height={90}
+                width={620}
+                height={80}
                 alt="728x90"
               />
             </a>
@@ -59,8 +59,8 @@ export default async function Home() {
                 <a href="#">
                   <Image
                     src="/images/adsense/728x90.gif"
-                    width={720}
-                    height={90}
+                    width={620}
+                    height={80}
                     alt="728x90"
                   />
                 </a>
@@ -99,8 +99,8 @@ export default async function Home() {
                 <a href="#">
                   <Image
                     src="/images/adsense/728x90.gif"
-                    width={720}
-                    height={90}
+                    width={620}
+                    height={80}
                     alt="728x90"
                   />
                 </a>

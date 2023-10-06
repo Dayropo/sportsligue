@@ -48,6 +48,8 @@ export default function NavItem({ category, posts }: Props) {
                         sizes="100vw"
                         alt={post.title}
                         style={{ objectFit: "cover" }}
+                        blurDataURL="data:..."
+                        placeholder="blur"
                       />
                     </Link>
                     <Link
