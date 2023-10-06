@@ -1545,11 +1545,17 @@ ul.post-tags li:last-child {
 
 .standart-post .description {
   width: 100%;
-  overflow: hidden;
+  overflow-y: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;
   white-space: pre-wrap;
+  height: 40px;
+}
+
+.standart-post .description p {
+  font-size: 14px;
+  line-height: 20px;
 }
 
 .video-post .post-image {
@@ -1976,11 +1982,17 @@ ul.post-tags li:last-child {
 
 .article-post .description {
   width: 100%;
-  overflow: hidden;
+  overflow-y: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;
   white-space: pre-wrap;
+  height: 48px;
+}
+
+.article-post .description p {
+  font-size: 14px;
+  line-height: 24px;
 }
 
 ul.list-news {

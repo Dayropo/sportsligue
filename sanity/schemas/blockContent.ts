@@ -1,4 +1,4 @@
-import {defineType, defineArrayMember} from 'sanity'
+import { defineType, defineArrayMember } from "sanity"
 
 /**
  * This is the schema definition for the rich text fields used for
@@ -61,7 +61,8 @@ export default defineType({
     // as a block type.
     defineArrayMember({
       type: "image",
-      options: { hotspot: true },
+      // options: { hotspot: true },
+      options: { hotspot: true, metadata: ["blurhash", "lqip", "palette"] },
       fields: [
         {
           name: "caption",

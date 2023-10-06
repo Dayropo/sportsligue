@@ -34,9 +34,10 @@ export default defineType({
       name: "mainImage",
       title: "Main image",
       type: "image",
-      options: {
-        hotspot: true,
-      },
+      // options: {
+      //   hotspot: true,
+      // },
+      options: { hotspot: true, metadata: ["blurhash", "lqip", "palette"] },
       fields: [
         {
           name: "caption",

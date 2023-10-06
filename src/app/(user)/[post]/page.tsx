@@ -125,7 +125,12 @@ export default async function Post({ params }: Props) {
               {/* Advertisement */}
               <div className="advertisement">
                 <a href="#">
-                  <Image src="/images/adsense/728x90.gif" alt="728x90" />
+                  <Image
+                    src="/images/adsense/728x90.gif"
+                    width={620}
+                    height={80}
+                    alt="728x90"
+                  />
                 </a>
               </div>
               {/* End Advertisement */}
