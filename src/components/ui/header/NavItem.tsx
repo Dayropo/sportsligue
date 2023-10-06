@@ -46,7 +46,7 @@ export default function NavItem({ category, posts }: Props) {
                         src={urlFor(post.mainImage).url()}
                         fill
                         sizes="100vw"
-                        alt=""
+                        alt={post.title}
                         style={{ objectFit: "cover" }}
                       />
                     </Link>
