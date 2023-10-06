@@ -46,8 +46,6 @@ export default async function Post({ params }: Props) {
   const slug = params.post
   const post = await getPost(slug)
 
-  console.log(post.mainImage)
-
   return (
     <div id="container">
       <Head>
