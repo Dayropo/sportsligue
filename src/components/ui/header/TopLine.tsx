@@ -83,7 +83,7 @@ export default function TopLine() {
             <Link href="/category/american-football">American Football</Link>
           </li>
           <li>
-            <Link href="/category/athletics">Athletics</Link>
+            <Link href="/category/baseball">Baseball</Link>
           </li>
 
           {/* <li>
