@@ -30,8 +30,9 @@ export default function Posts({ posts }: { posts: Post[] }) {
                     src={urlFor(post.mainImage).url()}
                     fill
                     sizes="100vw"
-                    alt=""
+                    alt={post.title}
                     style={{ objectFit: "cover" }}
+                    priority
                   />
                 </Link>
                 <Link

@@ -25,7 +25,7 @@ const CategoryLatest = async ({ category }: Props) => {
               src={urlFor(posts[0].mainImage).url()}
               fill
               sizes="100vw"
-              alt=""
+              alt={posts[0].title}
               style={{ objectFit: "cover" }}
             />
           </Link>
@@ -54,7 +54,7 @@ const CategoryLatest = async ({ category }: Props) => {
                 src={urlFor(post.mainImage).url()}
                 fill
                 sizes="100vw"
-                alt=""
+                alt={post.title}
                 style={{ objectFit: "cover" }}
               />
             </Link>
