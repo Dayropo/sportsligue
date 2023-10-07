@@ -198,7 +198,8 @@ export default function Footer() {
               <Link href="/privacy-policy">Privacy policy</Link>
             </li>
             <li>
-              <Link href="/contact">Contact</Link>
+              {/* <Link href="/contact">Contact</Link> */}
+              <a href="mailto:info@sportsligue.com">Contact</a>
             </li>
           </ul>
           <p>
