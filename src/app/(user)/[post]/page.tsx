@@ -19,9 +19,11 @@ import {
   FaTwitter,
 } from "react-icons/fa"
 import { FiBook, FiUser, FiEye } from "react-icons/fi"
+import { Post } from "@/src/@types/typings"
+import { notFound } from "next/navigation"
 
 // export const dynamic = "force-dynamic"
-export const revalidate = 0
+export const revalidate = 300
 
 type Props = {
   params: {
@@ -34,23 +36,32 @@ export const generateMetadata = async ({
 }: Props): Promise<Metadata> => {
   const slug = params.post
   const post = await getPost(slug)
+
+  if (post) {
+    return {
+      title: post?.title,
+      alternates: {
+        canonical: `/${post?.slug.current}`,
+      },
+      keywords: post.tags,
+    }
+  }
+
   return {
-    title: post.title,
-    alternates: {
-      canonical: `/${post.slug.current}`,
-    },
+    title: "Not Found",
   }
 }
 
-export default async function Post({ params }: Props) {
+export default async function Page({ params }: Props) {
   const slug = params.post
   const post = await getPost(slug)
 
+  if (!post) {
+    notFound()
+  }
+
   return (
     <div id="container">
-      <Head>
-        <title>{post.title}</title>
-      </Head>
       <Header />
 
       <section id="content-section">

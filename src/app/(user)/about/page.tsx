@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `/about`,
   },
+  keywords: ["Awin"],
 }
 
 export default function About() {
@@ -26,7 +27,13 @@ export default function About() {
                   <h1>About Us</h1>
                 </div>
                 <div className="about-image">
-                  <Image src="/images/logo.png" fill sizes="100vw" alt="logo" />
+                  <Image
+                    src="/images/logo.png"
+                    fill
+                    sizes="100vw"
+                    alt="logo"
+                    priority
+                  />
                 </div>
 
                 <p>
@@ -43,8 +50,8 @@ export default function About() {
                   At SportsLigue.com, we pride ourselves on delivering real-time
                   and in-depth coverage of a wide range of sports, including
                   football, basketball, soccer, tennis, cricket, and more. Our
-                  team of experienced and passionate sports journalists works
-                  tirelessly to bring you the most accurate and up-to-date
+                  team Awin of experienced and passionate sports journalists
+                  works tirelessly to bring you the most accurate and up-to-date
                   information from around the globe.
                 </p>
 

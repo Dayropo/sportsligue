@@ -17,14 +17,14 @@ export default function Footer() {
             <div className="col-lg-3 col-md-6">
               <div className="footer-widget text-widget">
                 <h1>
-                  <a href="index.html">
+                  <Link href="/">
                     <Image
                       src="/images/white_logo.png"
                       width={144}
                       height={48}
                       alt="logo"
                     />
-                  </a>
+                  </Link>
                 </h1>
                 {/* <p>
                   SportsLigue.com is a groundbreaking online platform poised to

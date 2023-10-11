@@ -2,13 +2,29 @@
 
 import Image from "next/image"
 import Link from "next/link"
+import { usePathname, useRouter } from "next/navigation"
 import PrimaryNavItems from "./PrimaryNavItems"
 import { useState } from "react"
 import { FiMenu, FiX } from "react-icons/fi"
-import { FaCaretDown } from "react-icons/fa"
+import { FaCaretDown, FaSearch } from "react-icons/fa"
 
 export default function TopLine() {
   const [showMenu, setShowMenu] = useState<boolean>(false)
+  const [query, setQuery] = useState<string>("")
+  const router = useRouter()
+  const pathname = usePathname()
+
+  // const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   e.preventDefault()
+
+  //   setQuery(e.target.value.toLowerCase())
+  // }
+
+  // const handleOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault()
+  //   router.push(`/search`)
+  //   setQuery("")
+  // }
 
   return (
     <div className="top-line">
@@ -27,21 +43,24 @@ export default function TopLine() {
               width={100}
               height={40}
               alt="sportsligue"
+              priority
             />
           </Link>
           {/* </div> */}
           <div className="primary-nav-items">
-            {/* <form className="form-inline">
-                <input
-                  className="form-control mr-sm-2"
-                  type="search"
-                  placeholder="Search for..."
-                  aria-label="Search"
-                />
-                <button className="btn btn-primary my-2 my-sm-0" type="submit">
-                  <i className="fa fa-search"></i>
-                </button>
-              </form> */}
+            {/* <form className="form-inline" onSubmit={handleOnSubmit}>
+              <input
+                className="form-control mr-sm-2"
+                type="search"
+                placeholder="Search for..."
+                aria-label="Search"
+                value={query}
+                onChange={handleOnChange}
+              />
+              <button className="btn btn-primary my-2 my-sm-0" type="submit">
+                <FaSearch size={16} />
+              </button>
+            </form> */}
 
             <PrimaryNavItems />
           </div>

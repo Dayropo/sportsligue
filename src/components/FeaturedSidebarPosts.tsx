@@ -13,7 +13,7 @@ export default async function FeaturedSidebarPosts() {
       <h1>Featured Posts</h1>
 
       <SliderWrapper posts={posts.slice(0, 3)} />
-    
+
       <ul className="small-posts">
         {posts.slice(3, 6).map((post: Post) => (
           <li key={post._id}>
@@ -22,7 +22,7 @@ export default async function FeaturedSidebarPosts() {
                 src={urlFor(post.mainImage).url()}
                 fill
                 sizes="100vw"
-                alt={post.mainImage.caption}
+                alt={post.title}
                 style={{ objectFit: "cover" }}
               />
             </Link>
