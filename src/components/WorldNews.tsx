@@ -35,7 +35,7 @@ export default function WorldNews({ posts }: { posts: Post[] }) {
                       src={urlFor(post.mainImage).url()}
                       fill
                       sizes="100vw"
-                      alt={post.mainImage.caption}
+                      alt={post.title}
                       style={{ objectFit: "cover" }}
                     />
                   </Link>

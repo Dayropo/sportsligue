@@ -2,7 +2,7 @@ import { groq } from "next-sanity"
 import { client } from "./sanity-client"
 import { Author, Category, Post } from "@/src/@types/typings"
 
-export const revalidate = 0
+export const revalidate = 300
 
 export async function getAllPosts(): Promise<Post[]> {
   return client.fetch(
@@ -304,5 +304,30 @@ export async function getOtherCategories(): Promise<Category[]> {
     } | order(title asc)
   `,
     { next: { revalidate } }
+  )
+}
+
+export async function getSearchResults(query: string): Promise<Post[]> {
+  return client.fetch(
+    groq`*[_type == "post" && (title match $query || category->title match $query || subCategory->title match $query)]{
+  _id,
+  _createdAt,
+  title,
+  slug,
+  mainImage,
+  author->,
+  category->,
+  subCategory->,
+  featured,
+  publishedAt,
+  body,
+  tags,
+}`,
+    {
+      query,
+      next: {
+        revalidate,
+      },
+    }
   )
 }

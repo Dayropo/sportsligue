@@ -32,12 +32,12 @@ export default function SliderWrapper({ posts }: Props) {
           <div className="lightbox-slide" key={post._id}>
             <Image
               fill
-              alt={post.mainImage.caption}
+              alt={post.title}
               src={urlFor(post.mainImage).url()}
-              loading="eager"
               draggable={false}
               style={{ objectFit: "cover" }}
               sizes="100vw"
+              priority
             />
             <div className="slider-caption">
               <Link

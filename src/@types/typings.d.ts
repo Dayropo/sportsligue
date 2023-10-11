@@ -26,19 +26,19 @@ interface Author extends Base {
 }
 
 interface Category extends Base {
-  title: string,
-  slug: Slug,
+  title: string
+  slug: Slug
   subCategories: SubCategory[]
 }
 
 interface SubCategory extends Base {
-  title: string,
+  title: string
   slug: Slug
 }
 
 interface Image {
-  _type: "image",
-  asset: Reference,
+  _type: "image"
+  asset: Reference
   caption: string
 }
 
@@ -48,6 +48,6 @@ interface Reference {
 }
 
 interface Slug {
-  _type: "slug",
+  _type: "slug"
   current: string
 }

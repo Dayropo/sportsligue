@@ -371,10 +371,14 @@ header.active .top-line {
   text-transform: uppercase;
 }
 
+input.form-control::placeholder {
+  color: #ccd4da;
+}
+
 .form-inline button.btn-primary {
   position: absolute;
   right: 16px;
-  top: 0 px;
+  top: 0px;
   padding: 8px 0px 8px 20px;
   font-size: 16px;
   margin-left: 2px;
