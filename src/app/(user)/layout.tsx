@@ -18,7 +18,11 @@ export const metadata: Metadata = {
     template: `%s | SportsLigue`,
   },
   icons: {
-    icon: "https://www.sportsligue.com/images/favicon.ico",
+    // icon: {
+    //   url: "https://www.sportsligue.com/images/favicon.ico",
+    //   type: "image/x-icon",
+    //   sizes: "48x48",
+    // },
     apple: [
       {
         url: "https://www.sportsligue.com/images/apple-touch-icon-512.png",
