@@ -21,9 +21,11 @@ import {
 import { FiBook, FiUser, FiEye } from "react-icons/fi"
 import { Post } from "@/src/@types/typings"
 import { notFound } from "next/navigation"
+import SocialShareBox from "@/src/components/ui/SocialShareBox"
+import { headers } from "next/headers"
 
 // export const dynamic = "force-dynamic"
-export const revalidate = 300
+export const revalidate = 30
 
 type Props = {
   params: {
@@ -35,20 +37,59 @@ export const generateMetadata = async ({
   params,
 }: Props): Promise<Metadata> => {
   const slug = params.post
-  const post = await getPost(slug)
 
-  if (post) {
+  try {
+    const post = await getPost(slug)
+
+    if (!post)
+      return {
+        title: "Not Found",
+        description: "The page you are looking for does not exist.",
+      }
+
     return {
-      title: post?.title,
+      title: post.title,
       alternates: {
-        canonical: `/${post?.slug.current}`,
+        canonical: `/${post.slug.current}`,
       },
       keywords: post.tags,
+      openGraph: {
+        title: post.title,
+        url: `/${post.slug.current}`,
+        siteName: "SportsLigue",
+        type: "article",
+        images: {
+          url: urlFor(post.mainImage).url(),
+          width: 1200,
+          height: 720,
+          alt: post.mainImage.caption,
+        },
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: post.title,
+        site: "@SportsLigue",
+        siteId: "1703204312636178432",
+        // creator: "@SportsLigue",
+        // creatorId: "1703204312636178432",
+        images: {
+          url: urlFor(post.mainImage).url(),
+          alt: post.mainImage.caption,
+        },
+      },
+      robots: {
+        index: true,
+        follow: true,
+        nocache: true,
+        nositelinkssearchbox: true,
+      },
     }
-  }
-
-  return {
-    title: "Not Found",
+  } catch (error) {
+    console.error(error)
+    return {
+      title: "Not Found",
+      description: "The page you are looking for does not exist.",
+    }
   }
 }
 
@@ -87,8 +128,8 @@ export default async function Page({ params }: Props) {
                     872 Views
                   </li> */}
                 </ul>
-                {/* <div className="share-post-box">
-                  <ul className="share-box">
+                <div className="share-post-box">
+                  {/* <ul className="share-box">
                     <li>
                       <a className="facebook" href="#">
                         <FaFacebookF size={18} />
@@ -111,8 +152,9 @@ export default async function Page({ params }: Props) {
                         <FaRss size={18} />
                       </a>
                     </li>
-                  </ul>
-                </div> */}
+                  </ul> */}
+                  <SocialShareBox post={post} />
+                </div>
 
                 <figure className="main-image">
                   <Image

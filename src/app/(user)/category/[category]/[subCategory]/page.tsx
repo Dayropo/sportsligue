@@ -7,7 +7,7 @@ import { Metadata } from "next"
 import { notFound } from "next/navigation"
 
 // export const dynamic = "force-dynamic"
-export const revalidate = 300
+export const revalidate = 30
 
 type Props = {
   params: {
@@ -19,9 +19,16 @@ export const generateMetadata = async ({
   params,
 }: Props): Promise<Metadata> => {
   const slug = params.subCategory
-  const posts = await getPostsBySubCategorySlug(slug)
 
-  if (posts.length > 0) {
+  try {
+    const posts = await getPostsBySubCategorySlug(slug)
+
+    if (posts.length < 1)
+      return {
+        title: "Not Found",
+        description: "The page you are looking for does not exist.",
+      }
+
     return {
       title: posts[0].subCategory.title,
       description: `Latest ${posts[0].subCategory.title} news from Sportsligue.com`,
@@ -30,10 +37,12 @@ export const generateMetadata = async ({
       },
       keywords: [posts[0].category.title, posts[0].subCategory.title],
     }
-  }
-
-  return {
-    title: "Not Found",
+  } catch (error) {
+    console.error(error)
+    return {
+      title: "Not Found",
+      description: "The page you are looking for does not exist.",
+    }
   }
 }
 

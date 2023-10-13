@@ -1,4 +1,5 @@
 import Image from "next/image"
+import { Metadata } from "next"
 import Header from "@/components/ui/Header"
 import LatestNews from "@/components/LatestNews"
 import HeadingNews from "@/components/HeadingNews"
@@ -12,7 +13,68 @@ import { Suspense } from "react"
 import HeadlineSkeleton from "@/src/components/skeletons/HeadlineSkeleton"
 
 // export const dynamic = "force-dynamic"
-export const revalidate = 300
+export const revalidate = 30
+
+export const metadata: Metadata = {
+  description:
+    "Stay updated with the latest sports news, scores, and highlights on Sportsligue.com - your one-stop source for all things sports and more.",
+  keywords: [
+    "football",
+    "soccer",
+    "tennis",
+    "basketball",
+    "formula one",
+    "formula 1",
+    "athletics",
+    "boxing",
+    "baseball",
+    "cricket",
+    "golf",
+    "rugby",
+    "gymnastics",
+    "hockey",
+    "volleyball",
+    "transfers",
+    "english premier league",
+    "serie a",
+    "la liga",
+    "ligue 1",
+    "bundesliga",
+    "uefa champions league",
+    "uefa europa league",
+    "uefa conference league",
+    "womens football",
+    "wsl",
+    "world cup",
+    "uefa nations league",
+    "uefa",
+    "caf",
+    "african nations cup",
+    "euro",
+    "olympics",
+    "australian open",
+    "french open",
+    "roland garros",
+    "wimbledon",
+    "us open",
+    "atp",
+    "wta",
+    "nba",
+    "saudi pro league",
+    "mls",
+    "wnba",
+    "euroleague",
+    "efl championship",
+    "heavyweight",
+    "middleweight",
+    "lightweight",
+    "nfl",
+    "college football",
+    "diamond league",
+    "world athletics championships",
+    "mlb",
+  ],
+}
 
 export default async function Home() {
   const posts = await getAllPosts()
