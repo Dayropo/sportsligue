@@ -1,0 +1,41 @@
+{
+  "background_color": "#181818",
+  "display": "browser",
+  "display_override": ["minimal-ui"],
+  "icons": [
+    {
+      "purpose": "any",
+      "sizes": "48x48",
+      "src": "/images/favicon.ico",
+      "type": "image/x-icon"
+    },
+    {
+      "purpose": "any",
+      "sizes": "512x512",
+      "src": "/images/apple-touch-icon-512.png",
+      "type": "image/png"
+    },
+    {
+      "purpose": "any",
+      "sizes": "360x360",
+      "src": "/images/apple-touch-icon-360.png",
+      "type": "image/png"
+    },
+    {
+      "purpose": "any",
+      "sizes": "240x240",
+      "src": "/images/apple-touch-icon-240.png",
+      "type": "image/png"
+    },
+    {
+      "purpose": "any",
+      "sizes": "120x120",
+      "src": "/images/apple-touch-icon-120.png",
+      "type": "image/png"
+    }
+  ],
+  "name": "SportsLigue",
+  "scope": "https://www.sportsligue.com/",
+  "start_url": "https://www.sportsligue.com/",
+  "theme_color": "#181818"
+}
