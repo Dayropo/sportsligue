@@ -13,7 +13,7 @@ import { Suspense } from "react"
 import HeadlineSkeleton from "@/src/components/skeletons/HeadlineSkeleton"
 
 // export const dynamic = "force-dynamic"
-export const revalidate = 30
+export const revalidate = 0
 
 export const metadata: Metadata = {
   description:
@@ -78,7 +78,6 @@ export const metadata: Metadata = {
 
 export default async function Home() {
   const posts = await getAllPosts()
-  const worldNews = await getWorldPosts()
 
   return (
     <div id="container">
@@ -109,7 +108,7 @@ export default async function Home() {
           <div className="row">
             <div className="col-lg-8">
               {/* <!-- Posts-block --> */}
-              <LatestNews posts={posts} />
+              <LatestNews />
               {/* <!-- End Posts-block --> */}
 
               {/* <!-- Posts-block --> */}
@@ -170,7 +169,7 @@ export default async function Home() {
               {/* <!-- End Advertisement --> */}
 
               {/* <!-- Posts-block --> */}
-              <WorldNews posts={worldNews} />
+              <WorldNews />
               {/* <!-- End Posts-block --> */}
             </div>
 

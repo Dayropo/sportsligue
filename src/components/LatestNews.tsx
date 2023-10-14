@@ -4,8 +4,11 @@ import Link from "next/link"
 import urlFor from "@/sanity/urlFor"
 import { PortableText } from "@portabletext/react"
 import { PortableTextComponents } from "./PortableTextComponents"
+import { getAllPosts } from "@/sanity/sanity-utils"
 
-const LatestNews = async ({ posts }: { posts: Post[] }) => {
+const LatestNews = async () => {
+  const posts = await getAllPosts()
+
   return (
     <div className="posts-block standard-box">
       <div className="title-section">

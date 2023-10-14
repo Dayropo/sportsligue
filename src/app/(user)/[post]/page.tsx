@@ -25,7 +25,7 @@ import SocialShareBox from "@/src/components/ui/SocialShareBox"
 import { headers } from "next/headers"
 
 // export const dynamic = "force-dynamic"
-export const revalidate = 30
+export const revalidate = 0
 
 type Props = {
   params: {
