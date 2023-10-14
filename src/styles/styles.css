@@ -3550,19 +3550,20 @@ div.search-box {
 }
 
 .headlines-skeleton-container {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
 }
 
 .headlines-skeleton-main-post {
-  flex: 0 0 calc(50% - 16px);
+  width: calc(50% - 16px);
   aspect-ratio: 700 / 500;
   background: #718096;
 }
 
 .headlines-skeleton-post {
-  flex: 0 0 calc(25% - 16px);
+  width: calc(25% - 16px);
   aspect-ratio: 350 / 500;
   background: #718096;
 }
