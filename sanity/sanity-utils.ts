@@ -2,7 +2,7 @@ import { groq } from "next-sanity"
 import { client } from "./sanity-client"
 import { Author, Category, Post } from "@/src/@types/typings"
 
-export const revalidate = 300
+const revalidate = 60
 
 export async function getAllPosts(): Promise<Post[]> {
   return client.fetch(
