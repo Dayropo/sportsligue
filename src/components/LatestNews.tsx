@@ -5,9 +5,31 @@ import urlFor from "@/sanity/urlFor"
 import { PortableText } from "@portabletext/react"
 import { PortableTextComponents } from "./PortableTextComponents"
 import { getAllPosts } from "@/sanity/sanity-utils"
+import { client } from "@/sanity/sanity-client"
+import { groq } from "next-sanity"
 
 const LatestNews = async () => {
-  const posts = await getAllPosts()
+  const posts = await client.fetch<Post[]>(
+    groq`*[_type == "post"]{
+  _id,
+  _createdAt,
+  title,
+  slug,
+  mainImage,
+  author->,
+  category->,
+  subCategory->,
+  featured,
+  publishedAt,
+  body,
+  tags,
+} | order(publishedAt desc)`,
+    {
+      next: {
+        revalidate: 0,
+      },
+    }
+  )
 
   return (
     <div className="posts-block standard-box">

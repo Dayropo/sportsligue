@@ -1,13 +1,16 @@
+import { client } from "@/sanity/sanity-client"
 import { getPostsByCategorySlug } from "@/sanity/sanity-utils"
+import { Post } from "@/src/@types/typings"
 import Posts from "@/src/components/categories/Posts"
 import Footer from "@/src/components/ui/Footer"
 import Header from "@/src/components/ui/Header"
 import Sidebar from "@/src/components/ui/Sidebar"
 import { Metadata } from "next"
+import { groq } from "next-sanity"
 import { notFound } from "next/navigation"
 
 // export const dynamic = "force-dynamic"
-export const revalidate = 0
+// export const revalidate = 0
 
 type Props = {
   params: {
@@ -21,7 +24,23 @@ export const generateMetadata = async ({
   const slug = params.category
 
   try {
-    const posts = await getPostsByCategorySlug(slug)
+    const posts = await client.fetch<Post[]>(
+      groq`*[_type == "post" && category->slug.current == $slug]{
+  _id,
+  _createdAt,
+  title,
+  slug,
+  mainImage,
+  author->,
+  category->,
+  subCategory->,
+  featured,
+  publishedAt,
+  body,
+  tags,
+} | order(publishedAt desc)`,
+      { slug, next: { revalidate: 0 } }
+    )
 
     if (posts.length < 1)
       return {
@@ -48,7 +67,23 @@ export const generateMetadata = async ({
 
 export default async function Category({ params }: Props) {
   const slug = params.category
-  const posts = await getPostsByCategorySlug(slug)
+  const posts = await client.fetch<Post[]>(
+    groq`*[_type == "post" && category->slug.current == $slug]{
+  _id,
+  _createdAt,
+  title,
+  slug,
+  mainImage,
+  author->,
+  category->,
+  subCategory->,
+  featured,
+  publishedAt,
+  body,
+  tags,
+} | order(publishedAt desc)`,
+    { slug, next: { revalidate: 0 } }
+  )
 
   if (posts.length < 1) {
     notFound()

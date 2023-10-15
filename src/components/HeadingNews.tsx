@@ -4,9 +4,31 @@ import Link from "next/link"
 import urlFor from "@/sanity/urlFor"
 import { FiBook, FiUser } from "react-icons/fi"
 import { getHeadlines } from "@/sanity/sanity-utils"
+import { client } from "@/sanity/sanity-client"
+import { groq } from "next-sanity"
 
 const HeadingNews = async () => {
-  const posts = await getHeadlines()
+  const posts = await client.fetch<Post[]>(
+    groq`*[_type == "post" && headline == true]{
+  _id,
+  _createdAt,
+  title,
+  slug,
+  mainImage,
+  author->,
+  category->,
+  subCategory->,
+  featured,
+  publishedAt,
+  body,
+  tags,
+} | order(publishedAt desc)`,
+    {
+      next: {
+        revalidate: 0,
+      },
+    }
+  )
 
   return (
     <div className="news-headline">

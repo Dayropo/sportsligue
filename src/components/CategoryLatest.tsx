@@ -5,13 +5,36 @@ import Link from "next/link"
 import { Post } from "../@types/typings"
 import { PortableText } from "@portabletext/react"
 import { PortableTextComponents } from "./PortableTextComponents"
+import { client } from "@/sanity/sanity-client"
+import { groq } from "next-sanity"
 
 type Props = {
   category: string
 }
 
 const CategoryLatest = async ({ category }: Props) => {
-  const posts = await getPostsByCategory(category)
+  const posts = await client.fetch<Post[]>(
+    groq`*[_type == "post" && category->title == $category]{
+  _id,
+  _createdAt,
+  title,
+  slug,
+  mainImage,
+  author->,
+  category->,
+  subCategory->,
+  featured,
+  publishedAt,
+  body,
+  tags,
+} | order(publishedAt desc)`,
+    {
+      category,
+      next: {
+        revalidate: 0,
+      },
+    }
+  )
 
   return (
     <div className="col-md-6">

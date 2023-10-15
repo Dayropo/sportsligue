@@ -1,5 +1,8 @@
 import { getRelatedPosts } from "@/sanity/sanity-utils"
 import OwlCarouselWrapper from "./OwlCarouselWrapper"
+import { client } from "@/sanity/sanity-client"
+import { Post } from "../@types/typings"
+import { groq } from "next-sanity"
 
 type Props = {
   category: string
@@ -7,7 +10,29 @@ type Props = {
 }
 
 export default async function RelatedPosts({ category, slug }: Props) {
-  const relatedPosts = await getRelatedPosts(category, slug)
+  const relatedPosts = await client.fetch<Post[]>(
+    groq`*[_type == "post" && category->title == $category && slug.current != $slug]{
+  _id,
+  _createdAt,
+  title,
+  slug,
+  mainImage,
+  author->,
+  category->,
+  subCategory->,
+  featured,
+  publishedAt,
+  body,
+  tags,
+} | order(publishedAt desc)`,
+    {
+      category,
+      slug,
+      next: {
+        revalidate: 0,
+      },
+    }
+  )
 
   return (
     <div className="posts-block featured-box">
