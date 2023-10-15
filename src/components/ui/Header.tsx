@@ -17,6 +17,8 @@ import PrimaryNavItems from "./header/PrimaryNavItems"
 import { Suspense } from "react"
 import NavSkeleton from "../skeletons/NavSkeleton"
 import TopLine from "./header/TopLine"
+import { client } from "@/sanity/sanity-client"
+import { groq } from "next-sanity"
 
 const arrayChunk = (arr: Category[], n: number) => {
   const array = arr.slice()
@@ -26,24 +28,23 @@ const arrayChunk = (arr: Category[], n: number) => {
 }
 
 const Header = async () => {
-  const footballCategory = await getCategoryByTitle("Football")
-  const tennisCategory = await getCategoryByTitle("Tennis")
-  const basketballCategory = await getCategoryByTitle("Basketball")
-  const boxingCategory = await getCategoryByTitle("Boxing")
-  const formula1Category = await getCategoryByTitle("Formula 1")
-  const amFootballCategory = await getCategoryByTitle("American Football")
-  // const athleticsCategory = await getCategoryByTitle("Athletics")
-  const baseballCategory = await getCategoryByTitle("Baseball")
-  const others = await getOtherCategories()
-
-  const footballPosts = await getPostsByCategory("Football")
-  const tennisPosts = await getPostsByCategory("Tennis")
-  const baskeballPosts = await getPostsByCategory("Basketball")
-  const boxingPosts = await getPostsByCategory("Boxing")
-  const formula1Posts = await getPostsByCategory("Formula 1")
-  const amFootballPosts = await getPostsByCategory("American Football")
-  // const athleticsPosts = await getPostsByCategory("Athletics")
-  const baseballPosts = await getPostsByCategory("Baseball")
+  const others = await client.fetch<Category[]>(
+    groq`
+    *[_type == "category" && !(title in ["Football", "Tennis", "Basketball", "Boxing", "Formula 1", "American Football", "Baseball"])]{
+    _id,
+    _createdAt,
+    title,
+    slug,
+    "subCategories": subCategories[]-> {
+      _id,
+      _createdAt,
+      title,
+      slug,
+      }
+    } | order(title asc)
+  `,
+    { next: { revalidate: 0 } }
+  )
 
   return (
     <header className="clearfix">
@@ -60,16 +61,13 @@ const Header = async () => {
                 </a>
               </li> */}
 
-                <NavItem category={footballCategory} posts={footballPosts} />
-                <NavItem category={tennisCategory} posts={tennisPosts} />
-                <NavItem category={basketballCategory} posts={baskeballPosts} />
-                <NavItem category={boxingCategory} posts={boxingPosts} />
-                <NavItem category={formula1Category} posts={formula1Posts} />
-                <NavItem
-                  category={amFootballCategory}
-                  posts={amFootballPosts}
-                />
-                <NavItem category={baseballCategory} posts={baseballPosts} />
+                <NavItem title="Football" />
+                <NavItem title="Tennis" />
+                <NavItem title="Basketball" />
+                <NavItem title="Boxing" />
+                <NavItem title="Formula 1" />
+                <NavItem title="American Football" />
+                <NavItem title="Baseball" />
 
                 <li className="nav-item">
                   <a className="nav-link food" style={{ cursor: "pointer" }}>
