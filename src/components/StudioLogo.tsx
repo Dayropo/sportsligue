@@ -7,7 +7,7 @@ function StudioLogo(props: any) {
     <div className="studio-logo-container">
       <Image
         className="studio-logo"
-        style={{ width: "100px", height: "auto" }}
+        style={{ width: "100px", height: "39" }}
         src="/images/white_logo.png"
         alt="logo"
       />
