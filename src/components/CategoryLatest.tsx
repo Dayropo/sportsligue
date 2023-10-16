@@ -50,6 +50,7 @@ const CategoryLatest = async ({ category }: Props) => {
               sizes="100vw"
               alt={posts[0].title}
               style={{ objectFit: "cover" }}
+              loading="lazy"
             />
           </Link>
           <Link
@@ -79,6 +80,7 @@ const CategoryLatest = async ({ category }: Props) => {
                 sizes="100vw"
                 alt={post.title}
                 style={{ objectFit: "cover" }}
+                loading="lazy"
               />
             </Link>
             <div className="post-cont">

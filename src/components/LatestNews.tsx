@@ -48,6 +48,7 @@ const LatestNews = async () => {
                     sizes="100vw"
                     alt={post.title}
                     style={{ objectFit: "cover" }}
+                    loading="lazy"
                   />
                 </Link>
                 <Link
