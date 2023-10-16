@@ -50,6 +50,7 @@ export default function OwlCarouselWrapper({
                     sizes="100vw"
                     alt={post.title}
                     style={{ objectFit: "cover", objectPosition: "center" }}
+                    loading="lazy"
                   />
                 </Link>
                 <Link

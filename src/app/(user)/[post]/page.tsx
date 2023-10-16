@@ -23,9 +23,11 @@ import { Post } from "@/src/@types/typings"
 import { notFound } from "next/navigation"
 import SocialShareBox from "@/src/components/ui/SocialShareBox"
 import { headers } from "next/headers"
+import { client } from "@/sanity/sanity-client"
+import { groq } from "next-sanity"
 
 // export const dynamic = "force-dynamic"
-export const revalidate = 0
+// export const revalidate = 0
 
 type Props = {
   params: {
@@ -39,7 +41,28 @@ export const generateMetadata = async ({
   const slug = params.post
 
   try {
-    const post = await getPost(slug)
+    const post = await client.fetch<Post>(
+      groq`*[_type == "post" && slug.current == $slug][0]{
+  _id,
+  _createdAt,
+  title,
+  slug,
+  mainImage,
+  author->,
+  category->,
+  subCategory->,
+  featured,
+  publishedAt,
+  body,
+  tags,
+}`,
+      {
+        slug,
+        next: {
+          revalidate: 0,
+        },
+      }
+    )
 
     if (!post)
       return {
@@ -95,7 +118,28 @@ export const generateMetadata = async ({
 
 export default async function Page({ params }: Props) {
   const slug = params.post
-  const post = await getPost(slug)
+  const post = await client.fetch<Post>(
+    groq`*[_type == "post" && slug.current == $slug][0]{
+  _id,
+  _createdAt,
+  title,
+  slug,
+  mainImage,
+  author->,
+  category->,
+  subCategory->,
+  featured,
+  publishedAt,
+  body,
+  tags,
+}`,
+    {
+      slug,
+      next: {
+        revalidate: 0,
+      },
+    }
+  )
 
   if (!post) {
     notFound()

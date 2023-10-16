@@ -4,9 +4,27 @@ import SliderWrapper from "./SliderWrapper"
 import { Post } from "../@types/typings"
 import Link from "next/link"
 import urlFor from "@/sanity/urlFor"
+import { client } from "@/sanity/sanity-client"
+import { groq } from "next-sanity"
 
 export default async function FeaturedSidebarPosts() {
-  const posts = await getFeaturedPosts()
+  const posts = await client.fetch<Post[]>(
+    groq`*[_type == "post" && featured == true]{
+  _id,
+  _createdAt,
+  title,
+  slug,
+  mainImage,
+  author->,
+  category->,
+  subCategory->,
+  featured,
+  publishedAt,
+  body,
+  tags,
+} | order(publishedAt desc)`,
+    { next: { revalidate: 0 } }
+  )
 
   return (
     <div className="widget slider-widget">

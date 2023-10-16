@@ -32,6 +32,7 @@ const Posts = ({ posts }: { posts: Post[] }) => {
                     sizes="100vw"
                     alt={post.title}
                     style={{ objectFit: "cover" }}
+                    loading="lazy"
                   />
                 </Link>
                 <Link

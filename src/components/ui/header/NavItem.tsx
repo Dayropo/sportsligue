@@ -50,7 +50,7 @@ export default function NavItem({ category, posts }: Props) {
                         style={{ objectFit: "cover" }}
                         // blurDataURL="data:..."
                         // placeholder="blur"
-                        priority
+                        loading="lazy"
                       />
                     </Link>
                     <Link

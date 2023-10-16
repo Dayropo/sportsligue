@@ -8,12 +8,11 @@ import Footer from "@/src/components/ui/Footer"
 import CategoryLatest from "@/src/components/CategoryLatest"
 import Sidebar from "@/src/components/ui/Sidebar"
 import WorldNews from "@/src/components/WorldNews"
-import { getAllPosts, getHeadlines, getWorldPosts } from "@/sanity/sanity-utils"
 import { Suspense } from "react"
 import HeadlineSkeleton from "@/src/components/skeletons/HeadlineSkeleton"
 
 // export const dynamic = "force-dynamic"
-export const revalidate = 0
+// export const revalidate = 0
 
 export const metadata: Metadata = {
   description:

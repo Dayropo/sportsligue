@@ -1,5 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css"
 import "../../styles/styles.css"
+// import "../../styles/_general.scss"
 import type { Metadata } from "next"
 import { Roboto_Condensed } from "next/font/google"
 import Script from "next/script"
