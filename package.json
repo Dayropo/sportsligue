@@ -35,7 +35,9 @@
     "react-owl-carousel": "^2.3.3",
     "react-slideshow-image": "^4.2.1",
     "sanity": "^3.15.1",
+    "sass": "^1.69.3",
     "styled-components": "^5.3.9",
+    "swr": "^2.2.4",
     "typescript": "5.1.6",
     "zustand": "^4.4.1"
   },
