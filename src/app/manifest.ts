@@ -6,7 +6,7 @@ export default function manifest(): MetadataRoute.Manifest {
     short_name: "Sportsligue",
     description:
       "Stay updated with the latest sports news, scores, and highlights on Sportsligue.com",
-    start_url: "/",
+    start_url: "https://www.sportsligue.com",
     display: "standalone",
     background_color: "#fff",
     theme_color: "#fff",
