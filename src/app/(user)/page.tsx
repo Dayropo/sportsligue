@@ -12,7 +12,7 @@ import { Suspense } from "react"
 import HeadlineSkeleton from "@/src/components/skeletons/HeadlineSkeleton"
 
 // export const dynamic = "force-dynamic"
-// export const revalidate = 0
+export const revalidate = 0
 
 export const metadata: Metadata = {
   description:
