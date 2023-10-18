@@ -18,31 +18,6 @@ export const metadata: Metadata = {
     default: "SportsLigue",
     template: `%s | SportsLigue`,
   },
-  icons: {
-    // icon: {
-    //   url: "https://www.sportsligue.com/images/favicon.ico",
-    //   type: "image/x-icon",
-    //   sizes: "48x48",
-    // },
-    apple: [
-      {
-        url: "https://www.sportsligue.com/images/apple-touch-icon-512.png",
-        sizes: "512x512",
-      },
-      {
-        url: "https://www.sportsligue.com/images/apple-touch-icon-360.png",
-        sizes: "360x360",
-      },
-      {
-        url: "https://www.sportsligue.com/images/apple-touch-icon-240.png",
-        sizes: "240x240",
-      },
-      {
-        url: "https://www.sportsligue.com/images/apple-touch-icon-120.png",
-        sizes: "120x120",
-      },
-    ],
-  },
   manifest: "https://www.sportsligue.com/manifest.json",
   verification: {
     google: "QKqFYQdbWpV08Qf1MSOAt4WLn-pU4xqDBsFfzfDLBKA",
