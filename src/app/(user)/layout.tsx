@@ -5,6 +5,12 @@ import type { Metadata } from "next"
 import Script from "next/script"
 import { NextAuthProvider } from "@/src/components/auth/Providers"
 import GoogleAnalytics from "@/src/components/analytics/GoogleAnalytics"
+import { Roboto_Condensed } from "next/font/google"
+
+const robotoCondensed = Roboto_Condensed({
+  weight: ["300", "400", "700"],
+  subsets: ["latin"],
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.sportsligue.com"),
@@ -29,18 +35,7 @@ export default function RootLayout({
         <GoogleAnalytics GA_MEASUREMENT_ID="G-0ZER7XKZDG" />
       )}
 
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossOrigin="anonymous"
-      />
-      <link
-        href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
-        rel="stylesheet"
-      />
-
-      <body className="boxed-style">
+      <body className={`${robotoCondensed.className}  boxed-style`}>
         <NextAuthProvider>{children}</NextAuthProvider>
 
         <Script src="https://code.jquery.com/jquery-3.4.1.min.js" />
