@@ -1,6 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css"
-// import "../../styles/styles.css"
-import "../../styles/_general.scss"
+import "../../styles/styles.css"
+// import "../../styles/_general.scss"
 import type { Metadata } from "next"
 import Script from "next/script"
 import { NextAuthProvider } from "@/src/components/auth/Providers"
@@ -28,6 +28,8 @@ export default function RootLayout({
       {process.env.NODE_ENV === "production" && (
         <GoogleAnalytics GA_MEASUREMENT_ID="G-0ZER7XKZDG" />
       )}
+
+      <link rel="preload" href="styles.css" as="style" />
 
       <body className="boxed-style">
         <NextAuthProvider>{children}</NextAuthProvider>
