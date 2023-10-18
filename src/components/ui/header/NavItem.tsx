@@ -1,5 +1,4 @@
-"use client"
-
+import { client } from "@/sanity/sanity-client"
 import urlFor from "@/sanity/urlFor"
 import { Category, Post, SubCategory } from "@/src/@types/typings"
 import useCategoriesStore from "@/src/stores/categories"
@@ -8,11 +7,43 @@ import Link from "next/link"
 import { FaCaretDown } from "react-icons/fa"
 
 type Props = {
-  category: Category
-  posts: Post[]
+  title: string
 }
 
-export default function NavItem({ category, posts }: Props) {
+export default async function NavItem({ title }: Props) {
+  const { posts, category } = await client.fetch(
+    `{
+    "posts": *[_type == "post" && category->title == $title] {
+     _id,
+  _createdAt,
+  title,
+  slug,
+  mainImage,
+  author->,
+  category->,
+  subCategory->,
+  featured,
+  publishedAt,
+  body,
+  tags,
+} | order(publishedAt desc),
+  "category":  *[_type == "category" && title == $title][0]{
+    _id,
+    _createdAt,
+    title,
+    slug,
+    "subCategories": subCategories[]-> {
+      _id,
+      _createdAt,
+      title,
+      slug,
+      }
+    }
+  }`,
+    {
+      title,
+    }
+  )
   return (
     <li className="nav-item">
       <Link className="nav-link" href={`/category/${category.slug.current}`}>

@@ -22,12 +22,12 @@ export default function GoogleAnalytics({
   return (
     <>
       <Script
-        strategy="afterInteractive"
+        strategy="lazyOnload"
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
       />
       <Script
         id="google-analytics"
-        strategy="afterInteractive"
+        strategy="lazyOnload"
         dangerouslySetInnerHTML={{
           __html: `
                 window.dataLayer = window.dataLayer || [];
@@ -45,16 +45,16 @@ export default function GoogleAnalytics({
         async
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1384009601184330"
         crossOrigin="anonymous"
-        strategy="afterInteractive"
+        strategy="lazyOnload"
       />
       <Script
-        strategy="afterInteractive"
+        strategy="lazyOnload"
         async
         src="https://www.googletagmanager.com/gtag/js?id=AW-11334180564"
       />
       <Script
         id="google-adconversion"
-        strategy="afterInteractive"
+        strategy="lazyOnload"
         dangerouslySetInnerHTML={{
           __html: `
                 window.dataLayer = window.dataLayer || [];
