@@ -7,7 +7,7 @@ type Props = {
   tags?: string[]
 }
 
-export default function Sidebar({ tags }: Props) {
+export default async function Sidebar({ tags }: Props) {
   return (
     <div className="col-lg-4 sidebar-sticky">
       {/* <!-- Sidebar --> */}

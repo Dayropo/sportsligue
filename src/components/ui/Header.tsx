@@ -61,7 +61,12 @@ const Header = async () => {
       slug,
       }
     } | order(title asc)
-  `
+  `,
+    {
+      next: {
+        revalidate: 0,
+      },
+    }
   )
 
   return (
