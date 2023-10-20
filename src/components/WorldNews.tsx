@@ -20,7 +20,7 @@ export default async function WorldNews() {
   body,
   tags,
 } | order(publishedAt desc)`,
-    { next: { revalidate: 0 } }
+    { next: { revalidate: 120 } }
   )
 
   return (

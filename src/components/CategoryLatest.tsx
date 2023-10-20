@@ -31,7 +31,7 @@ const CategoryLatest = async ({ category }: Props) => {
     {
       category,
       next: {
-        revalidate: 0,
+        revalidate: 120,
       },
     }
   )

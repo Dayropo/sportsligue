@@ -43,7 +43,7 @@ export default async function NavItem({ title }: Props) {
     {
       title,
       next: {
-        revalidate: 0,
+        revalidate: 120,
       },
     }
   )

@@ -26,7 +26,7 @@ const LatestNews = async () => {
 } | order(publishedAt desc)`,
     {
       next: {
-        revalidate: 0,
+        revalidate: 120,
       },
     }
   )

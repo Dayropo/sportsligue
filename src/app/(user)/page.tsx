@@ -91,7 +91,11 @@ export default async function Home() {
 
           {/* <!-- Advertisement --> */}
           <div className="advertisement">
-            <a href="#">
+            <a
+              href="https://kn6m4zjsiy3.typeform.com/to/JNmi3cD2"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Image
                 src="/images/adsense/728x90.gif"
                 width={620}
@@ -114,7 +118,11 @@ export default async function Home() {
 
               {/* <!-- Advertisement --> */}
               <div className="advertisement">
-                <a href="#">
+                <a
+                  href="https://kn6m4zjsiy3.typeform.com/to/JNmi3cD2"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Image
                     src="/images/adsense/728x90.gif"
                     width={620}
@@ -154,7 +162,11 @@ export default async function Home() {
 
               {/* <!-- Advertisement --> */}
               <div className="advertisement">
-                <a href="#">
+                <a
+                  href="https://kn6m4zjsiy3.typeform.com/to/JNmi3cD2"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Image
                     src="/images/adsense/728x90.gif"
                     width={620}

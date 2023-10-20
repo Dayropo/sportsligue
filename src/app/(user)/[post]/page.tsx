@@ -59,7 +59,7 @@ export const generateMetadata = async ({
       {
         slug,
         next: {
-          revalidate: 0,
+          revalidate: 120,
         },
       }
     )
@@ -136,7 +136,7 @@ export default async function Page({ params }: Props) {
     {
       slug,
       next: {
-        revalidate: 0,
+        revalidate: 120,
       },
     }
   )
@@ -221,7 +221,11 @@ export default async function Page({ params }: Props) {
 
               {/* Advertisement */}
               <div className="advertisement">
-                <a href="#">
+                <a
+                  href="https://kn6m4zjsiy3.typeform.com/to/JNmi3cD2"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Image
                     src="/images/adsense/728x90.gif"
                     width={620}
