@@ -70,10 +70,7 @@ export default function Sidebar({ tags, posts }: Props) {
                     </h2>
                     <ul className="post-tags">
                       <li>
-                        by{" "}
-                        <Link href={`/profile/${post.author.slug.current}`}>
-                          {post.author.name}
-                        </Link>
+                        by <a href="#">{post.author.name}</a>
                       </li>
                     </ul>
                   </div>

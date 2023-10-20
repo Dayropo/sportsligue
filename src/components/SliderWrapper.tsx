@@ -52,10 +52,7 @@ export default function SliderWrapper({ posts }: Props) {
               <ul className="post-tags">
                 <li>
                   <FiUser size={12} style={{ marginRight: "4px" }} />
-                  by{" "}
-                  <Link href={`/profile/${post.author.slug.current}`}>
-                    {post.author.name}
-                  </Link>
+                  by <a href="#">{post.author.name}</a>
                 </li>
                 {/* <li>
                   <a href="#">
