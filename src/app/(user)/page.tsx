@@ -10,6 +10,9 @@ import Sidebar from "@/src/components/ui/Sidebar"
 import WorldNews from "@/src/components/WorldNews"
 import { Suspense } from "react"
 import HeadlineSkeleton from "@/src/components/skeletons/HeadlineSkeleton"
+import { client } from "@/sanity/sanity-client"
+import { Post } from "@/src/@types/typings"
+import { groq } from "next-sanity"
 
 // export const dynamic = "force-dynamic"
 // export const revalidate = 0
@@ -76,6 +79,28 @@ export const metadata: Metadata = {
 }
 
 export default async function Home() {
+  const headlines = await client.fetch<Post[]>(
+    groq`*[_type == "post" && headline == true]{
+  _id,
+  _createdAt,
+  title,
+  slug,
+  mainImage,
+  author->,
+  category->,
+  subCategory->,
+  featured,
+  publishedAt,
+  body,
+  tags,
+} | order(publishedAt desc)`,
+    {
+      cache: "no-store",
+      next: {
+        revalidate: 0,
+      },
+    }
+  )
   return (
     <div id="container">
       <Header />
@@ -84,7 +109,7 @@ export default async function Home() {
         <div className="container">
           {/* <!-- News-Headline --> */}
           <Suspense fallback={<HeadlineSkeleton />}>
-            <HeadingNews />
+            <HeadingNews posts={headlines} />
           </Suspense>
 
           {/* <!-- End News-Headline --> */}

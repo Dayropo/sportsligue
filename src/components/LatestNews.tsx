@@ -25,8 +25,9 @@ const LatestNews = async () => {
   tags,
 } | order(publishedAt desc)`,
     {
+      cache: "no-store",
       next: {
-        revalidate: 120,
+        revalidate: 30,
       },
     }
   )

@@ -42,8 +42,9 @@ export default async function NavItem({ title }: Props) {
   }`,
     {
       title,
+      cache: "no-store",
       next: {
-        revalidate: 120,
+        revalidate: 30,
       },
     }
   )

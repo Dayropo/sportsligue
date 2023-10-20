@@ -63,8 +63,9 @@ const Header = async () => {
     } | order(title asc)
   `,
     {
+      cache: "no-store",
       next: {
-        revalidate: 120,
+        revalidate: 30,
       },
     }
   )
