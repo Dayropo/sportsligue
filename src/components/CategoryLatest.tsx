@@ -30,8 +30,9 @@ const CategoryLatest = async ({ category }: Props) => {
 } | order(publishedAt desc)`,
     {
       category,
+      cache: "no-store",
       next: {
-        revalidate: 120,
+        revalidate: 30,
       },
     }
   )

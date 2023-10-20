@@ -39,7 +39,7 @@ export const generateMetadata = async ({
   body,
   tags,
 } | order(publishedAt desc)`,
-      { slug, next: { revalidate: 120 } }
+      { slug, cache: "no-store", next: { revalidate: 30 } }
     )
 
     if (posts.length < 1)
@@ -82,7 +82,7 @@ export default async function Category({ params }: Props) {
   body,
   tags,
 } | order(publishedAt desc)`,
-    { slug, next: { revalidate: 120 } }
+    { slug, cache: "no-store", next: { revalidate: 30 } }
   )
 
   if (posts.length < 1) {

@@ -7,29 +7,7 @@ import { getHeadlines } from "@/sanity/sanity-utils"
 import { client } from "@/sanity/sanity-client"
 import { groq } from "next-sanity"
 
-const HeadingNews = async () => {
-  const posts = await client.fetch<Post[]>(
-    groq`*[_type == "post" && headline == true]{
-  _id,
-  _createdAt,
-  title,
-  slug,
-  mainImage,
-  author->,
-  category->,
-  subCategory->,
-  featured,
-  publishedAt,
-  body,
-  tags,
-} | order(publishedAt desc)`,
-    {
-      next: {
-        revalidate: 120,
-      },
-    }
-  )
-
+const HeadingNews = async ({ posts }: { posts: Post[] }) => {
   return (
     <div className="news-headline">
       <span className="title-notifier">Headlines</span>

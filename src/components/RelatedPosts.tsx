@@ -28,8 +28,9 @@ export default async function RelatedPosts({ category, slug }: Props) {
     {
       category,
       slug,
+      cache: "no-store",
       next: {
-        revalidate: 120,
+        revalidate: 30,
       },
     }
   )
