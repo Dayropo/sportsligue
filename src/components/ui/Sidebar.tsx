@@ -46,7 +46,11 @@ export default async function Sidebar({ tags }: Props) {
         <FeaturedSidebarPosts />
 
         <div className="advertisement">
-          <a href="#">
+          <a
+            href="https://kn6m4zjsiy3.typeform.com/to/JNmi3cD2"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Image
               src="/images/adsense/300x250latest.gif"
               width={300}

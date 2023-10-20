@@ -64,7 +64,7 @@ const Header = async () => {
   `,
     {
       next: {
-        revalidate: 0,
+        revalidate: 120,
       },
     }
   )

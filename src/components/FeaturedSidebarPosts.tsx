@@ -23,7 +23,7 @@ export default async function FeaturedSidebarPosts() {
   body,
   tags,
 } | order(publishedAt desc)`,
-    { next: { revalidate: 0 } }
+    { next: { revalidate: 120 } }
   )
 
   return (

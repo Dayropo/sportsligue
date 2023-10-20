@@ -29,7 +29,7 @@ export default async function RelatedPosts({ category, slug }: Props) {
       category,
       slug,
       next: {
-        revalidate: 0,
+        revalidate: 120,
       },
     }
   )

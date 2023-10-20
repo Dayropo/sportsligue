@@ -20,7 +20,7 @@ const FeaturedPosts = async () => {
   body,
   tags,
 } | order(publishedAt desc)`,
-    { next: { revalidate: 0 } }
+    { next: { revalidate: 120 } }
   )
 
   return (
