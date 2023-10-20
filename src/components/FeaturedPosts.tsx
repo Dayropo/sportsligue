@@ -4,7 +4,7 @@ import { client } from "@/sanity/sanity-client"
 import { Post } from "../@types/typings"
 import { groq } from "next-sanity"
 
-const FeaturedPosts = async () => {
+export default async function FeaturedPosts() {
   const posts = await client.fetch<Post[]>(
     groq`*[_type == "post" && featured == true]{
   _id,
@@ -20,7 +20,7 @@ const FeaturedPosts = async () => {
   body,
   tags,
 } | order(publishedAt desc)`,
-    { cache: "no-store", next: { revalidate: 30 } }
+    { cache: "force-cache", next: { revalidate: 30 } }
   )
 
   return (
@@ -37,5 +37,3 @@ const FeaturedPosts = async () => {
     </div>
   )
 }
-
-export default FeaturedPosts

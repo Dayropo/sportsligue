@@ -10,33 +10,10 @@ import { groq } from "next-sanity"
 
 type Props = {
   category: string
+  posts: Post[]
 }
 
-const CategoryLatest = async ({ category }: Props) => {
-  const posts = await client.fetch<Post[]>(
-    groq`*[_type == "post" && category->title == $category]{
-  _id,
-  _createdAt,
-  title,
-  slug,
-  mainImage,
-  author->,
-  category->,
-  subCategory->,
-  featured,
-  publishedAt,
-  body,
-  tags,
-} | order(publishedAt desc)`,
-    {
-      category,
-      cache: "no-store",
-      next: {
-        revalidate: 30,
-      },
-    }
-  )
-
+export default async function CategoryLatest({ category, posts }: Props) {
   return (
     <div className="col-md-6">
       <div className="title-section">
@@ -90,10 +67,7 @@ const CategoryLatest = async ({ category }: Props) => {
               </h2>
               <ul className="post-tags">
                 <li>
-                  by{" "}
-                  <Link href={`/profile/${post.author.slug.current}`}>
-                    {post.author.name}
-                  </Link>
+                  by <a href="#">{post.author.name}</a>
                 </li>
               </ul>
             </div>
@@ -103,5 +77,3 @@ const CategoryLatest = async ({ category }: Props) => {
     </div>
   )
 }
-
-export default CategoryLatest

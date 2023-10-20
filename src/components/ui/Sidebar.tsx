@@ -1,13 +1,16 @@
 import Image from "next/image"
 import Link from "next/link"
 import { FaFacebookF, FaGooglePlusG, FaRss, FaTwitter } from "react-icons/fa"
-import FeaturedSidebarPosts from "../FeaturedSidebarPosts"
+import SliderWrapper from "../SliderWrapper"
+import { Post } from "@/src/@types/typings"
+import urlFor from "@/sanity/urlFor"
 
 type Props = {
   tags?: string[]
+  posts: Post[]
 }
 
-export default async function Sidebar({ tags }: Props) {
+export default function Sidebar({ tags, posts }: Props) {
   return (
     <div className="col-lg-4 sidebar-sticky">
       {/* <!-- Sidebar --> */}
@@ -43,7 +46,42 @@ export default async function Sidebar({ tags }: Props) {
           </ul>
         </div> */}
 
-        <FeaturedSidebarPosts />
+        {posts?.length > 0 && (
+          <div className="widget slider-widget">
+            <h1>Featured Posts</h1>
+
+            <SliderWrapper posts={posts.slice(0, 3)} />
+
+            <ul className="small-posts">
+              {posts.slice(3, 6).map((post: Post) => (
+                <li key={post._id}>
+                  <Link href={`/${post.slug.current}`}>
+                    <Image
+                      src={urlFor(post.mainImage).url()}
+                      fill
+                      sizes="100vw"
+                      alt={post.title}
+                      style={{ objectFit: "cover" }}
+                    />
+                  </Link>
+                  <div className="post-cont">
+                    <h2>
+                      <Link href={`/${post.slug.current}`}>{post.title}</Link>
+                    </h2>
+                    <ul className="post-tags">
+                      <li>
+                        by{" "}
+                        <Link href={`/profile/${post.author.slug.current}`}>
+                          {post.author.name}
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
 
         <div className="advertisement">
           <a

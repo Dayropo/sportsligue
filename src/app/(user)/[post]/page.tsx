@@ -58,9 +58,9 @@ export const generateMetadata = async ({
 }`,
       {
         slug,
-        cache: "no-store",
+        cache: "no-cache",
         next: {
-          revalidate: 30,
+          revalidate: 0,
         },
       }
     )
@@ -119,8 +119,10 @@ export const generateMetadata = async ({
 
 export default async function Page({ params }: Props) {
   const slug = params.post
-  const post = await client.fetch<Post>(
-    groq`*[_type == "post" && slug.current == $slug][0]{
+
+  const { post, featuredPosts } = await client.fetch(
+    `{
+    "post": *[_type == "post" && slug.current == $slug][0]{
   _id,
   _createdAt,
   title,
@@ -133,12 +135,27 @@ export default async function Page({ params }: Props) {
   publishedAt,
   body,
   tags,
+},
+"featuredPosts": *[_type == "post" && featured == true]{
+  _id,
+  _createdAt,
+  title,
+  slug,
+  mainImage,
+  author->,
+  category->,
+  subCategory->,
+  featured,
+  publishedAt,
+  body,
+  tags,
+} | order(publishedAt desc),
 }`,
     {
       slug,
-      cache: "no-store",
+      cache: "no-cache",
       next: {
-        revalidate: 30,
+        revalidate: 0,
       },
     }
   )
@@ -237,13 +254,6 @@ export default async function Page({ params }: Props) {
                 </a>
               </div>
               {/* End Advertisement */}
-
-              {/* Posts-block */}
-              <RelatedPosts
-                category={post.category.title}
-                slug={post.slug.current}
-              />
-              {/* <!-- End Posts-block --> */}
 
               {/* <!-- author-profile --> */}
               {/* <AuthorProfile author={post.author} /> */}
@@ -439,7 +449,7 @@ export default async function Page({ params }: Props) {
               {/* <!-- End contact form box --> */}
             </div>
 
-            <Sidebar tags={post.tags} />
+            <Sidebar posts={featuredPosts} tags={post.tags} />
           </div>
         </div>
       </section>
