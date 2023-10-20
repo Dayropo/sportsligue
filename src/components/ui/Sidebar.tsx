@@ -7,7 +7,7 @@ import urlFor from "@/sanity/urlFor"
 
 type Props = {
   tags?: string[]
-  posts: Post[]
+  posts?: Post[]
 }
 
 export default function Sidebar({ tags, posts }: Props) {
@@ -46,7 +46,7 @@ export default function Sidebar({ tags, posts }: Props) {
           </ul>
         </div> */}
 
-        {posts?.length > 0 && (
+        {posts && posts.length > 0 && (
           <div className="widget slider-widget">
             <h1>Featured Posts</h1>
 
