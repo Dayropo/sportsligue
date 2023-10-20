@@ -4,32 +4,14 @@ import { client } from "@/sanity/sanity-client"
 import { groq } from "next-sanity"
 import { Post } from "../@types/typings"
 
-export default async function WorldNews() {
-  const worldNews = await client.fetch<Post[]>(
-    groq`*[_type == "post" && !(category->title in ["Football", "Tennis", "Basketball", "Boxing", "Formula 1", "American Football"])]{
-  _id,
-  _createdAt,
-  title,
-  slug,
-  mainImage,
-  author->,
-  category->,
-  subCategory->,
-  featured,
-  publishedAt,
-  body,
-  tags,
-} | order(publishedAt desc)`,
-    { cache: "no-store", next: { revalidate: 30 } }
-  )
-
+export default async function WorldNews({ posts }: { posts: Post[] }) {
   return (
     <div className="posts-block">
       <div className="title-section">
         <h1>World News</h1>
       </div>
 
-      <Posts posts={worldNews} />
+      <Posts posts={posts} />
     </div>
   )
 }

@@ -1,3 +1,5 @@
+import { client } from "@/sanity/sanity-client"
+import { Post } from "@/src/@types/typings"
 import Footer from "@/src/components/ui/Footer"
 import Header from "@/src/components/ui/Header"
 import Sidebar from "@/src/components/ui/Sidebar"
@@ -12,7 +14,30 @@ export const metadata: Metadata = {
   keywords: ["Awin"],
 }
 
-export default function About() {
+export default async function About() {
+  const featuredPosts = await client.fetch<Post[]>(
+    `*[_type == "post" && featured == true]{
+  _id,
+  _createdAt,
+  title,
+  slug,
+  mainImage,
+  author->,
+  category->,
+  subCategory->,
+  featured,
+  publishedAt,
+  body,
+  tags,
+} | order(publishedAt desc)`,
+    {
+      cache: "no-cache",
+      next: {
+        revalidate: 0,
+      },
+    }
+  )
+
   return (
     <div id="container">
       <Header />
@@ -111,7 +136,7 @@ export default function About() {
               {/* <!-- End team-box --> */}
             </div>
 
-            <Sidebar />
+            <Sidebar posts={featuredPosts} />
           </div>
         </div>
       </section>

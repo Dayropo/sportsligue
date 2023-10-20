@@ -1,6 +1,7 @@
 "use client"
 
-import { useRouter, useSearchParams } from "next/navigation"
+import { client } from "@/sanity/sanity-client"
+import { Post } from "@/src/@types/typings"
 import SearchResults from "@/src/components/search/SearchResults"
 import Footer from "@/src/components/ui/Footer"
 import Header from "@/src/components/ui/Header"
@@ -8,19 +9,33 @@ import Sidebar from "@/src/components/ui/Sidebar"
 import { useState } from "react"
 import { FaSearch } from "react-icons/fa"
 
-export default function Search() {
-  const searchParams = useSearchParams()
-  const query = searchParams.get("q")!
-  const router = useRouter()
-
-  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault()
-    // setSearchParams()
-  }
-
-  const handleOnSubmit = () => {
-    router.push(`/search`)
-  }
+export default async function Search({
+  searchParams,
+}: {
+  searchParams?: { [key: string]: string | string[] | undefined }
+}) {
+  const featuredPosts = await client.fetch<Post[]>(
+    `*[_type == "post" && featured == true]{
+  _id,
+  _createdAt,
+  title,
+  slug,
+  mainImage,
+  author->,
+  category->,
+  subCategory->,
+  featured,
+  publishedAt,
+  body,
+  tags,
+} | order(publishedAt desc)`,
+    {
+      cache: "no-cache",
+      next: {
+        revalidate: 0,
+      },
+    }
+  )
 
   return (
     <div id="container">
@@ -34,33 +49,18 @@ export default function Search() {
               <div className="search-results-box">
                 <div className="search-results-banner">
                   <h1>
-                    Search results for <span>{query}</span>
+                    Search results for <span></span>
                   </h1>
-                </div>
-                <div className="search-box">
-                  <form className="search-form" onSubmit={handleOnSubmit}>
-                    <input
-                      type="text"
-                      id="search"
-                      name="search"
-                      placeholder="Search here"
-                      value={query}
-                      onChange={handleOnChange}
-                    />
-                    <button type="submit" id="search-submit">
-                      <FaSearch size={16} />
-                    </button>
-                  </form>
                 </div>
               </div>
               {/* <!-- End search-results box --> */}
 
               {/* <!-- Posts-block --> */}
-              <SearchResults query={query} />
+              <SearchResults query="" />
               {/* <!-- End Posts-block --> */}
             </div>
 
-            <Sidebar />
+            <Sidebar posts={featuredPosts} />
           </div>
         </div>
       </section>

@@ -42,9 +42,9 @@ export default async function NavItem({ title }: Props) {
   }`,
     {
       title,
-      cache: "no-store",
+      cache: "force-cache",
       next: {
-        revalidate: 30,
+        revalidate: 0,
       },
     }
   )
@@ -55,23 +55,25 @@ export default async function NavItem({ title }: Props) {
 
         {category.subCategories && <FaCaretDown className="nav-icon" />}
       </Link>
-      <div className="mega-posts-menu">
-        <div className="posts-line">
-          {category.subCategories && (
-            <ul className="filter-list">
-              {category.subCategories.map((subCategory: SubCategory) => (
-                <li key={subCategory._id}>
-                  <Link
-                    href={`/category/${category.slug.current}/${subCategory.slug.current}`}
-                  >
-                    {subCategory.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          )}
 
-          <div className="row">
+      {category.subCategories && (
+        <div className="mega-posts-menu">
+          <div className="posts-line">
+            {category.subCategories && (
+              <ul className="filter-list">
+                {category.subCategories.map((subCategory: SubCategory) => (
+                  <li key={subCategory._id}>
+                    <Link
+                      href={`/category/${category.slug.current}/${subCategory.slug.current}`}
+                    >
+                      {subCategory.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            )}
+
+            {/* <div className="row">
             {posts.slice(0, 4).map((post: Post) => (
               <div className="col-lg-3 col-md-6" key={post._id}>
                 <div className="news-post standart-post">
@@ -89,7 +91,7 @@ export default async function NavItem({ title }: Props) {
                       />
                     </Link>
                     <Link
-                      href={`/${post.category.slug.current}`}
+                      href={`/category/${post.category.slug.current}`}
                       className="category"
                     >
                       {post.category.title}
@@ -101,23 +103,22 @@ export default async function NavItem({ title }: Props) {
                   <ul className="post-tags">
                     <li>
                       <i className="lnr lnr-user"></i>by{" "}
-                      <Link href={`/${post.author.slug.current}`}>
-                        {post.author.name}
-                      </Link>
+                      <a href="#">{post.author.name}</a>
                     </li>
-                    {/* <li>
+                    <li>
                       <a href="#">
                         <i className="lnr lnr-book"></i>
                         <span>23 comments</span>
                       </a>
-                    </li> */}
+                    </li>
                   </ul>
                 </div>
               </div>
             ))}
+          </div> */}
           </div>
         </div>
-      </div>
+      )}
     </li>
   )
 }

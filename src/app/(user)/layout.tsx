@@ -2,7 +2,6 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import "../../styles/styles.css"
 // import "../../styles/_general.scss"
 import type { Metadata } from "next"
-import Script from "next/script"
 import { NextAuthProvider } from "@/src/components/auth/Providers"
 import GoogleAnalytics from "@/src/components/analytics/GoogleAnalytics"
 import { Roboto_Condensed } from "next/font/google"
@@ -37,8 +36,6 @@ export default function RootLayout({
 
       <body className={`${robotoCondensed.className}  boxed-style`}>
         <NextAuthProvider>{children}</NextAuthProvider>
-
-        <Script src="https://code.jquery.com/jquery-3.4.1.min.js" />
       </body>
     </html>
   )

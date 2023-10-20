@@ -39,7 +39,7 @@ export const generateMetadata = async ({
   body,
   tags,
 } | order(publishedAt desc)`,
-      { slug, cache: "no-store", next: { revalidate: 30 } }
+      { slug, cache: "no-cache", next: { revalidate: 0 } }
     )
 
     if (posts.length < 1)
@@ -67,8 +67,10 @@ export const generateMetadata = async ({
 
 export default async function SubCategory({ params }: Props) {
   const slug = params.subCategory
-  const posts = await client.fetch<Post[]>(
-    groq`*[_type == "post" && subCategory->slug.current == $slug]{
+
+  const { posts, featuredPosts } = await client.fetch(
+    `{
+    "posts": *[_type == "post" && subCategory->slug.current == $slug]{
   _id,
   _createdAt,
   title,
@@ -81,8 +83,29 @@ export default async function SubCategory({ params }: Props) {
   publishedAt,
   body,
   tags,
-} | order(publishedAt desc)`,
-    { slug, cache: "no-store", next: { revalidate: 30 } }
+} | order(publishedAt desc),
+"featuredPosts": *[_type == "post" && featured == true]{
+  _id,
+  _createdAt,
+  title,
+  slug,
+  mainImage,
+  author->,
+  category->,
+  subCategory->,
+  featured,
+  publishedAt,
+  body,
+  tags,
+} | order(publishedAt desc)
+}`,
+    {
+      slug,
+      cache: "no-cache",
+      next: {
+        revalidate: 0,
+      },
+    }
   )
 
   if (posts.length < 1) {
@@ -117,7 +140,7 @@ export default async function SubCategory({ params }: Props) {
               {/* <!-- End Posts-block --> */}
             </div>
 
-            <Sidebar />
+            <Sidebar posts={featuredPosts} />
           </div>
         </div>
       </section>

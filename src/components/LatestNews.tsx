@@ -8,30 +8,7 @@ import { getAllPosts } from "@/sanity/sanity-utils"
 import { client } from "@/sanity/sanity-client"
 import { groq } from "next-sanity"
 
-const LatestNews = async () => {
-  const posts = await client.fetch<Post[]>(
-    groq`*[_type == "post"]{
-  _id,
-  _createdAt,
-  title,
-  slug,
-  mainImage,
-  author->,
-  category->,
-  subCategory->,
-  featured,
-  publishedAt,
-  body,
-  tags,
-} | order(publishedAt desc)`,
-    {
-      cache: "no-store",
-      next: {
-        revalidate: 30,
-      },
-    }
-  )
-
+export default function LatestNews({ posts }: { posts: Post[] }) {
   return (
     <div className="posts-block standard-box">
       <div className="title-section">
@@ -64,10 +41,7 @@ const LatestNews = async () => {
               </h2>
               <ul className="post-tags">
                 <li>
-                  by{" "}
-                  <Link href={`/profile/${post.author.slug.current}`}>
-                    {post.author.name}
-                  </Link>
+                  by <a href="#">{post.author.name}</a>
                 </li>
                 {/* <li>
                   <a href="#">
@@ -88,5 +62,3 @@ const LatestNews = async () => {
     </div>
   )
 }
-
-export default LatestNews

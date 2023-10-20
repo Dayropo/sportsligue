@@ -7,7 +7,7 @@ import { getHeadlines } from "@/sanity/sanity-utils"
 import { client } from "@/sanity/sanity-client"
 import { groq } from "next-sanity"
 
-const HeadingNews = async ({ posts }: { posts: Post[] }) => {
+export default function HeadingNews({ posts }: { posts: Post[] }) {
   return (
     <div className="news-headline">
       <span className="title-notifier">Headlines</span>
@@ -34,10 +34,7 @@ const HeadingNews = async ({ posts }: { posts: Post[] }) => {
           <ul className="post-tags">
             <li>
               <FiUser size={12} style={{ marginRight: "4px" }} />
-              by{" "}
-              <Link href={`/profile/${posts[0].author.slug.current}`}>
-                {posts[0].author.name}
-              </Link>
+              by <a href="#">{posts[0].author.name}</a>
             </li>
             {/* <li>
               <a href="#">
@@ -72,10 +69,7 @@ const HeadingNews = async ({ posts }: { posts: Post[] }) => {
             <ul className="post-tags">
               <li>
                 <FiUser size={12} style={{ marginRight: "4px" }} />
-                by{" "}
-                <Link href={`/profile/${post.author.slug.current}`}>
-                  {post.author.name}
-                </Link>
+                by <a href="#">{post.author.name}</a>
               </li>
               {/* <li>
                 <a href="#">
@@ -90,5 +84,3 @@ const HeadingNews = async ({ posts }: { posts: Post[] }) => {
     </div>
   )
 }
-
-export default HeadingNews

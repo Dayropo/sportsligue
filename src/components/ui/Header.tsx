@@ -27,7 +27,7 @@ const arrayChunk = (arr: Category[], n: number) => {
   return chunks
 }
 
-const Header = async () => {
+export default async function Header() {
   // const footballCategory = await getCategoryByTitle("Football")
   // const tennisCategory = await getCategoryByTitle("Tennis")
   // const basketballCategory = await getCategoryByTitle("Basketball")
@@ -63,7 +63,7 @@ const Header = async () => {
     } | order(title asc)
   `,
     {
-      cache: "no-store",
+      cache: "force-cache",
       next: {
         revalidate: 30,
       },
@@ -121,5 +121,3 @@ const Header = async () => {
     </header>
   )
 }
-
-export default Header
