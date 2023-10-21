@@ -14,8 +14,9 @@ import { client } from "@/sanity/sanity-client"
 import { Post } from "@/src/@types/typings"
 import { groq } from "next-sanity"
 
-// export const dynamic = "force-dynamic"
+export const dynamic = "force-dynamic"
 // export const revalidate = 0
+//export const fetchCache = "force-no-store"
 
 export const metadata: Metadata = {
   description:
