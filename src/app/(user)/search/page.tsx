@@ -30,7 +30,7 @@ export default async function Search({
   tags,
 } | order(publishedAt desc)`,
     {
-      cache: "no-cache",
+      cache: "no-store",
       next: {
         revalidate: 0,
       },

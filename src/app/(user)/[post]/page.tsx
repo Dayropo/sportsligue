@@ -58,7 +58,7 @@ export const generateMetadata = async ({
 }`,
       {
         slug,
-        cache: "no-cache",
+        cache: "no-store",
         next: {
           revalidate: 0,
         },
@@ -153,7 +153,7 @@ export default async function Page({ params }: Props) {
 }`,
     {
       slug,
-      cache: "no-cache",
+      cache: "no-store",
       next: {
         revalidate: 0,
       },

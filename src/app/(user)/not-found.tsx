@@ -22,7 +22,7 @@ export default async function NotFound() {
   tags,
 } | order(publishedAt desc)`,
     {
-      cache: "no-cache",
+      cache: "no-store",
       next: {
         revalidate: 0,
       },
