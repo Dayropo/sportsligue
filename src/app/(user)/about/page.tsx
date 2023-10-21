@@ -31,7 +31,7 @@ export default async function About() {
   tags,
 } | order(publishedAt desc)`,
     {
-      cache: "no-cache",
+      cache: "no-store",
       next: {
         revalidate: 0,
       },
