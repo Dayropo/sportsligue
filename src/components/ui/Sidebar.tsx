@@ -95,7 +95,7 @@ export default function Sidebar({ tags, posts }: Props) {
           </a>
         </div>
 
-        <div className="advertisement">
+        {/* <div className="advertisement">
           <a
             href="https://refpa4948989.top/L?tag=d_2732079m_1573c_&site=2732079&ad=1573"
             target="_blank"
@@ -108,7 +108,7 @@ export default function Sidebar({ tags, posts }: Props) {
               alt="300x600"
             />
           </a>
-        </div>
+        </div> */}
 
         {tags && (
           <div className="widget tags-widget">
