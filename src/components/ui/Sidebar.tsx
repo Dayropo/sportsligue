@@ -95,6 +95,21 @@ export default function Sidebar({ tags, posts }: Props) {
           </a>
         </div>
 
+        {/* <div className="advertisement">
+          <a
+            href="https://refpa4948989.top/L?tag=d_2732079m_1573c_&site=2732079&ad=1573"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image
+              src="/images/adsense/Media9865__af300_600.gif"
+              width={300}
+              height={600}
+              alt="300x600"
+            />
+          </a>
+        </div> */}
+
         {tags && (
           <div className="widget tags-widget">
             <h1>Tags</h1>

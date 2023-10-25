@@ -24,8 +24,9 @@ export const generateMetadata = async ({
   const slug = params.subCategory
 
   try {
-    const posts = await client.fetch<Post[]>(
-      groq`*[_type == "post" && subCategory->slug.current == $slug]{
+    const { posts, featuredPosts } = await client.fetch(
+      `{
+    "posts": *[_type == "post" && subCategory->slug.current == $slug]{
   _id,
   _createdAt,
   title,
@@ -38,8 +39,29 @@ export const generateMetadata = async ({
   publishedAt,
   body,
   tags,
-} | order(publishedAt desc)`,
-      { slug, cache: "no-store", next: { revalidate: 0 } }
+} | order(publishedAt desc),
+"featuredPosts": *[_type == "post" && featured == true]{
+  _id,
+  _createdAt,
+  title,
+  slug,
+  mainImage,
+  author->,
+  category->,
+  subCategory->,
+  featured,
+  publishedAt,
+  body,
+  tags,
+} | order(publishedAt desc)
+}`,
+      {
+        slug,
+        cache: "no-store",
+        next: {
+          revalidate: 0,
+        },
+      }
     )
 
     if (posts.length < 1)
