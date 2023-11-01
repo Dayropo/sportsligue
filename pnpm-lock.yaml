@@ -95,6 +95,9 @@ dependencies:
   typescript:
     specifier: 5.1.6
     version: 5.1.6
+  use-debounce:
+    specifier: ^9.0.4
+    version: 9.0.4(react@18.2.0)
   zustand:
     specifier: ^4.4.1
     version: 4.4.1(@types/react@18.2.18)(react@18.2.0)
@@ -7088,6 +7091,15 @@ packages:
       '@types/react': 18.2.18
       react: 18.2.0
       tslib: 2.6.1
+    dev: false
+
+  /use-debounce@9.0.4(react@18.2.0):
+    resolution: {integrity: sha512-6X8H/mikbrt0XE8e+JXRtZ8yYVvKkdYRfmIhWZYsP8rcNs9hk3APV8Ua2mFkKRLcJKVdnX2/Vwrmg2GWKUQEaQ==}
+    engines: {node: '>= 10.0.0'}
+    peerDependencies:
+      react: '>=16.8.0'
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /use-device-pixel-ratio@1.1.2(react@18.2.0):
