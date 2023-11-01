@@ -1,6 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css"
-import "../../styles/styles.css"
-// import "../../styles/_general.scss"
+//import "../../styles/styles.css"
+import "../../styles/_general.scss"
 import type { Metadata } from "next"
 import { NextAuthProvider } from "@/src/components/auth/Providers"
 import GoogleAnalytics from "@/src/components/analytics/GoogleAnalytics"

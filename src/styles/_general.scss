@@ -140,6 +140,7 @@ a {
 
 .primary-nav-items {
   display: flex;
+  align-items: flex-end;
 }
 
 .menu {
@@ -399,6 +400,38 @@ input.form-control::placeholder {
 
 .form-inline button.btn-primary:hover {
   opacity: 0.7;
+}
+
+.inputCont {
+  width: 200px;
+  position: relative;
+
+  input {
+    border: 0;
+    border-radius: 8px;
+    width: 100%;
+    padding: 8px 16px 8px 40px;
+    font-size: 16px;
+    line-height: 20px;
+    font-family: inherit;
+    background: #333333;
+    color: #fff;
+
+    &:focus {
+      outline: none;
+    }
+
+    &::placeholder {
+      color: #ccd4da;
+    }
+  }
+
+  svg {
+    position: absolute;
+    top: 10px;
+    left: 12px;
+    cursor: pointer;
+  }
 }
 
 .mega-posts-menu {

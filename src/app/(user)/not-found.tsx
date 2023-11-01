@@ -1,5 +1,6 @@
 import { client } from "@/sanity/sanity-client"
 import { Post } from "@/src/@types/typings"
+import SearchBox from "@/src/components/notFound/SearchBox"
 import Footer from "@/src/components/ui/Footer"
 import Header from "@/src/components/ui/Header"
 import Sidebar from "@/src/components/ui/Sidebar"
@@ -47,19 +48,7 @@ export default async function NotFound() {
                     Maybe try another link or a search?
                   </p>
                 </div>
-                <div className="search-box">
-                  <form role="search" className="search-form">
-                    <input
-                      type="text"
-                      id="search"
-                      name="search"
-                      placeholder="Search here"
-                    />
-                    <button type="submit" id="search-submit">
-                      <i className="fa fa-search"></i>
-                    </button>
-                  </form>
-                </div>
+                <SearchBox />
               </div>
 
               {/* <div className="posts-block categories-box">
