@@ -80,86 +80,9 @@ export const metadata: Metadata = {
 }
 
 export default async function Home() {
-  const headlines = await client.fetch(
-    groq`*[_type == "post" && headline == true]{
-  _id,
-  _createdAt,
-  title,
-  slug,
-  mainImage,
-  author->,
-  category->,
-  subCategory->,
-  featured,
-  publishedAt,
-  body,
-  tags,
-} | order(publishedAt desc)`,
-    {
-      cache: "no-store",
-      next: {
-        revalidate: 0,
-      },
-    }
-  )
-
-  const latestNews = await client.fetch(
-    groq`*[_type == "post"]{
-  _id,
-  _createdAt,
-  title,
-  slug,
-  mainImage,
-  author->,
-  category->,
-  subCategory->,
-  featured,
-  publishedAt,
-  body,
-  tags,
-} | order(publishedAt desc)`,
-    {
-      cache: "no-store",
-      next: {
-        revalidate: 0,
-      },
-    }
-  )
-
-  const featuredPosts = await client.fetch(
-    groq`*[_type == "post" && featured == true]{
-  _id,
-  _createdAt,
-  title,
-  slug,
-  mainImage,
-  author->,
-  category->,
-  subCategory->,
-  featured,
-  publishedAt,
-  body,
-  tags,
-} | order(publishedAt desc)`,
-    {
-      cache: "no-store",
-      next: {
-        revalidate: 0,
-      },
-    }
-  )
-
-  const {
-    footballLatest,
-    tennisLatest,
-    basketballLatest,
-    boxingLatest,
-    formulaOneLatest,
-    americanFootballLatest,
-    worldLatest,
-  } = await client.fetch(
+  const { headlines, latestNews, featuredPosts } = await client.fetch(
     `{ 
-  "footballLatest": *[_type == "post" && category->title == "Football"]{
+  "headlines": *[_type == "post" && headline == true]{
   _id,
   _createdAt,
   title,
@@ -173,7 +96,7 @@ export default async function Home() {
   body,
   tags,
 } | order(publishedAt desc),
-  "basketballLatest": *[_type == "post" && category->title == "Basketball"]{
+  "latestNews": *[_type == "post"]{
   _id,
   _createdAt,
   title,
@@ -187,7 +110,7 @@ export default async function Home() {
   body,
   tags,
 } | order(publishedAt desc),
-  "tennisLatest": *[_type == "post" && category->title == "Tennis"]{
+  "featuredPosts": *[_type == "post" && featured == true]{
   _id,
   _createdAt,
   title,
@@ -201,62 +124,7 @@ export default async function Home() {
   body,
   tags,
 } | order(publishedAt desc),
-  "boxingLatest": *[_type == "post" && category->title == "Boxing"]{
-  _id,
-  _createdAt,
-  title,
-  slug,
-  mainImage,
-  author->,
-  category->,
-  subCategory->,
-  featured,
-  publishedAt,
-  body,
-  tags,
-} | order(publishedAt desc),
-  "formulaOneLatest": *[_type == "post" && category->title == "Formula 1"]{
-  _id,
-  _createdAt,
-  title,
-  slug,
-  mainImage,
-  author->,
-  category->,
-  subCategory->,
-  featured,
-  publishedAt,
-  body,
-  tags,
-} | order(publishedAt desc),
-  "americanFootballLatest": *[_type == "post" && category->title == "American Football"]{
-  _id,
-  _createdAt,
-  title,
-  slug,
-  mainImage,
-  author->,
-  category->,
-  subCategory->,
-  featured,
-  publishedAt,
-  body,
-  tags,
-} | order(publishedAt desc),
-"worldLatest": *[_type == "post" && !(category->title in ["Football", "Tennis", "Basketball", "Boxing", "Formula 1", "American Football"])]{
-  _id,
-  _createdAt,
-  title,
-  slug,
-  mainImage,
-  author->,
-  category->,
-  subCategory->,
-  featured,
-  publishedAt,
-  body,
-  tags,
-} | order(publishedAt desc)
+  
 }`,
     {
       cache: "no-store",
@@ -312,8 +180,8 @@ export default async function Home() {
               {/* <!-- Posts-block --> */}
               <div className="posts-block categories-box">
                 <div className="row">
-                  <CategoryLatest category="Football" posts={footballLatest} />
-                  <CategoryLatest category="Tennis" posts={tennisLatest} />
+                  <CategoryLatest category="Football" />
+                  <CategoryLatest category="Tennis" />
                 </div>
               </div>
               {/* <!-- End Posts-block --> */}
@@ -321,8 +189,8 @@ export default async function Home() {
               {/* <!-- Posts-block --> */}
               <div className="posts-block categories-box">
                 <div className="row">
-                  <CategoryLatest category="Basketball" posts={basketballLatest} />
-                  <CategoryLatest category="Boxing" posts={boxingLatest} />
+                  <CategoryLatest category="Basketball" />
+                  <CategoryLatest category="Boxing" />
                 </div>
               </div>
               {/* <!-- End Posts-block --> */}
@@ -330,8 +198,8 @@ export default async function Home() {
               {/* <!-- Posts-block --> */}
               <div className="posts-block categories-box">
                 <div className="row">
-                  <CategoryLatest category="Formula 1" posts={formulaOneLatest} />
-                  <CategoryLatest category="American Football" posts={americanFootballLatest} />
+                  <CategoryLatest category="Formula 1" />
+                  <CategoryLatest category="American Football" />
                 </div>
               </div>
               {/* <!-- End Posts-block --> */}
@@ -349,7 +217,7 @@ export default async function Home() {
               {/* <!-- End Advertisement --> */}
 
               {/* <!-- Posts-block --> */}
-              <WorldNews posts={worldLatest} />
+              <WorldNews />
               {/* <!-- End Posts-block --> */}
             </div>
 
