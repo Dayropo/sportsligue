@@ -80,20 +80,9 @@ export const metadata: Metadata = {
 }
 
 export default async function Home() {
-  const {
-    headlines,
-    latestNews,
-    footballLatest,
-    tennisLatest,
-    basketballLatest,
-    boxingLatest,
-    formulaOneLatest,
-    americanFootballLatest,
-    worldLatest,
-    featuredPosts,
-  } = await client.fetch(
-    `{
-    "headlines": *[_type == "post" && headline == true]{
+  const { headlines, latestNews, featuredPosts } = await client.fetch(
+    `{ 
+  "headlines": *[_type == "post" && headline == true]{
   _id,
   _createdAt,
   title,
@@ -107,7 +96,7 @@ export default async function Home() {
   body,
   tags,
 } | order(publishedAt desc),
-  "latestNews":  *[_type == "post"]{
+  "latestNews": *[_type == "post"]{
   _id,
   _createdAt,
   title,
@@ -121,7 +110,7 @@ export default async function Home() {
   body,
   tags,
 } | order(publishedAt desc),
-  "footballLatest": *[_type == "post" && category->title == "Football"]{
+  "featuredPosts": *[_type == "post" && featured == true]{
   _id,
   _createdAt,
   title,
@@ -135,104 +124,7 @@ export default async function Home() {
   body,
   tags,
 } | order(publishedAt desc),
-  "basketballLatest": *[_type == "post" && category->title == "Basketball"]{
-  _id,
-  _createdAt,
-  title,
-  slug,
-  mainImage,
-  author->,
-  category->,
-  subCategory->,
-  featured,
-  publishedAt,
-  body,
-  tags,
-} | order(publishedAt desc),
-  "tennisLatest": *[_type == "post" && category->title == "Tennis"]{
-  _id,
-  _createdAt,
-  title,
-  slug,
-  mainImage,
-  author->,
-  category->,
-  subCategory->,
-  featured,
-  publishedAt,
-  body,
-  tags,
-} | order(publishedAt desc),
-  "boxingLatest": *[_type == "post" && category->title == "Boxing"]{
-  _id,
-  _createdAt,
-  title,
-  slug,
-  mainImage,
-  author->,
-  category->,
-  subCategory->,
-  featured,
-  publishedAt,
-  body,
-  tags,
-} | order(publishedAt desc),
-  "formulaOneLatest": *[_type == "post" && category->title == "Formula 1"]{
-  _id,
-  _createdAt,
-  title,
-  slug,
-  mainImage,
-  author->,
-  category->,
-  subCategory->,
-  featured,
-  publishedAt,
-  body,
-  tags,
-} | order(publishedAt desc),
-  "americanFootballLatest": *[_type == "post" && category->title == "American Football"]{
-  _id,
-  _createdAt,
-  title,
-  slug,
-  mainImage,
-  author->,
-  category->,
-  subCategory->,
-  featured,
-  publishedAt,
-  body,
-  tags,
-} | order(publishedAt desc),
-"worldLatest": *[_type == "post" && !(category->title in ["Football", "Tennis", "Basketball", "Boxing", "Formula 1", "American Football"])]{
-  _id,
-  _createdAt,
-  title,
-  slug,
-  mainImage,
-  author->,
-  category->,
-  subCategory->,
-  featured,
-  publishedAt,
-  body,
-  tags,
-} | order(publishedAt desc),
-"featuredPosts": *[_type == "post" && featured == true]{
-  _id,
-  _createdAt,
-  title,
-  slug,
-  mainImage,
-  author->,
-  category->,
-  subCategory->,
-  featured,
-  publishedAt,
-  body,
-  tags,
-} | order(publishedAt desc)
+  
 }`,
     {
       cache: "no-store",
@@ -262,12 +154,7 @@ export default async function Home() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Image
-                src="/images/adsense/728x90.gif"
-                width={620}
-                height={80}
-                alt="728x90"
-              />
+              <Image src="/images/adsense/728x90.gif" width={620} height={80} alt="728x90" />
             </a>
           </div>
           {/* <!-- End Advertisement --> */}
@@ -285,12 +172,7 @@ export default async function Home() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Image
-                    src="/images/adsense/728x90.gif"
-                    width={620}
-                    height={80}
-                    alt="728x90"
-                  />
+                  <Image src="/images/adsense/728x90.gif" width={620} height={80} alt="728x90" />
                 </a>
               </div>
               {/* <!-- End Advertisement --> */}
@@ -298,8 +180,8 @@ export default async function Home() {
               {/* <!-- Posts-block --> */}
               <div className="posts-block categories-box">
                 <div className="row">
-                  <CategoryLatest category="Football" posts={footballLatest} />
-                  <CategoryLatest category="Tennis" posts={tennisLatest} />
+                  <CategoryLatest category="Football" />
+                  <CategoryLatest category="Tennis" />
                 </div>
               </div>
               {/* <!-- End Posts-block --> */}
@@ -307,11 +189,8 @@ export default async function Home() {
               {/* <!-- Posts-block --> */}
               <div className="posts-block categories-box">
                 <div className="row">
-                  <CategoryLatest
-                    category="Basketball"
-                    posts={basketballLatest}
-                  />
-                  <CategoryLatest category="Boxing" posts={boxingLatest} />
+                  <CategoryLatest category="Basketball" />
+                  <CategoryLatest category="Boxing" />
                 </div>
               </div>
               {/* <!-- End Posts-block --> */}
@@ -319,14 +198,8 @@ export default async function Home() {
               {/* <!-- Posts-block --> */}
               <div className="posts-block categories-box">
                 <div className="row">
-                  <CategoryLatest
-                    category="Formula 1"
-                    posts={formulaOneLatest}
-                  />
-                  <CategoryLatest
-                    category="American Football"
-                    posts={americanFootballLatest}
-                  />
+                  <CategoryLatest category="Formula 1" />
+                  <CategoryLatest category="American Football" />
                 </div>
               </div>
               {/* <!-- End Posts-block --> */}
@@ -338,18 +211,13 @@ export default async function Home() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Image
-                    src="/images/adsense/728x90.gif"
-                    width={620}
-                    height={80}
-                    alt="728x90"
-                  />
+                  <Image src="/images/adsense/728x90.gif" width={620} height={80} alt="728x90" />
                 </a>
               </div>
               {/* <!-- End Advertisement --> */}
 
               {/* <!-- Posts-block --> */}
-              <WorldNews posts={worldLatest} />
+              <WorldNews />
               {/* <!-- End Posts-block --> */}
             </div>
 

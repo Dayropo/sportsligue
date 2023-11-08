@@ -10,10 +10,33 @@ import { groq } from "next-sanity"
 
 type Props = {
   category: string
-  posts: Post[]
 }
 
-export default async function CategoryLatest({ category, posts }: Props) {
+export default async function CategoryLatest({ category }: Props) {
+  const posts = await client.fetch<Post[]>(
+    groq`*[_type == "post" && category->title == $category]{
+  _id,
+  _createdAt,
+  title,
+  slug,
+  mainImage,
+  author->,
+  category->,
+  subCategory->,
+  featured,
+  publishedAt,
+  body,
+  tags,
+} | order(publishedAt desc)`,
+    {
+      category,
+      cache: "no-store",
+      next: {
+        revalidate: 0,
+      },
+    }
+  )
+
   return (
     <div className="col-md-6">
       <div className="title-section">
@@ -31,10 +54,7 @@ export default async function CategoryLatest({ category, posts }: Props) {
               loading="lazy"
             />
           </Link>
-          <Link
-            href={`/category/${posts[0].category.slug.current}`}
-            className="category"
-          >
+          <Link href={`/category/${posts[0].category.slug.current}`} className="category">
             {posts[0].category.title}
           </Link>
         </div>
@@ -42,10 +62,7 @@ export default async function CategoryLatest({ category, posts }: Props) {
           <Link href={`/${posts[0].slug.current}`}>{posts[0].title}</Link>
         </h2>
         <div className="description">
-          <PortableText
-            value={posts[0].body}
-            components={PortableTextComponents}
-          />
+          <PortableText value={posts[0].body} components={PortableTextComponents} />
         </div>
       </div>
       <ul className="small-posts">
