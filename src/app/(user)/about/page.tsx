@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `/about`,
   },
-  keywords: ["Awin"],
+  // keywords: ["Awin"],
 }
 
 export default async function About() {
@@ -52,60 +52,47 @@ export default async function About() {
                   <h1>About Us</h1>
                 </div>
                 <div className="about-image">
-                  <Image
-                    src="/images/logo.png"
-                    fill
-                    sizes="100vw"
-                    alt="logo"
-                    priority
-                  />
+                  <Image src="/images/logo.png" fill sizes="100vw" alt="logo" priority />
                 </div>
 
                 <p>
-                  Welcome to SportsLigue.com, your ultimate destination for the
-                  latest and most comprehensive sports news and updates! As avid
-                  sports enthusiasts ourselves, we understand the thrill and
-                  excitement that comes with being a part of the sports world.
-                  Whether you are a die-hard fan or a casual observer, our goal
-                  is to provide you with an unmatched sports news experience
-                  that keeps you informed, engaged, and entertained.
+                  Welcome to SportsLigue.com, your ultimate destination for the latest and most
+                  comprehensive sports news and updates! As avid sports enthusiasts ourselves, we
+                  understand the thrill and excitement that comes with being a part of the sports
+                  world. Whether you are a die-hard fan or a casual observer, our goal is to provide
+                  you with an unmatched sports news experience that keeps you informed, engaged, and
+                  entertained.
                 </p>
 
                 <p>
-                  At SportsLigue.com, we pride ourselves on delivering real-time
-                  and in-depth coverage of a wide range of sports, including
-                  football, basketball, soccer, tennis, cricket, and more. Our
-                  team Awin of experienced and passionate sports journalists
-                  works tirelessly to bring you the most accurate and up-to-date
+                  At SportsLigue.com, we pride ourselves on delivering real-time and in-depth
+                  coverage of a wide range of sports, including football, basketball, soccer,
+                  tennis, cricket, and more. Our team Awin of experienced and passionate sports
+                  journalists works tirelessly to bring you the most accurate and up-to-date
                   information from around the globe.
                 </p>
 
                 <p>
-                  From game highlights and player interviews to transfer rumors
-                  and expert analysis, we strive to keep you at the forefront of
-                  the sporting action. Whether it&apos;s the latest scores,
-                  breaking news, or exclusive interviews with your favorite
-                  athletes, you can count on SportsLigue.com to be your go-to
-                  source for all things sports-related.
+                  From game highlights and player interviews to transfer rumors and expert analysis,
+                  we strive to keep you at the forefront of the sporting action. Whether it&apos;s
+                  the latest scores, breaking news, or exclusive interviews with your favorite
+                  athletes, you can count on SportsLigue.com to be your go-to source for all things
+                  sports-related.
                 </p>
 
                 <p>
-                  In addition to our comprehensive news coverage, we also offer
-                  engaging features, editorials, and opinion pieces that spark
-                  discussions and debates among sports enthusiasts like you. We
-                  encourage our readers to be active participants in the
-                  sporting world and share their thoughts and insights in our
-                  interactive community.
+                  In addition to our comprehensive news coverage, we also offer engaging features,
+                  editorials, and opinion pieces that spark discussions and debates among sports
+                  enthusiasts like you. We encourage our readers to be active participants in the
+                  sporting world and share their thoughts and insights in our interactive community.
                 </p>
 
                 <p>
-                  Join us on this thrilling sports journey as we celebrate the
-                  victories, analyze the strategies, and share in the passion
-                  that unites sports fans worldwide. At SportsLigue.com, we live
-                  and breathe sports, and we can&apos;t wait to share that
-                  passion with you. Let&apos;s stay connected, informed, and
-                  entertained as we dive into the exhilarating world of sports
-                  together!
+                  Join us on this thrilling sports journey as we celebrate the victories, analyze
+                  the strategies, and share in the passion that unites sports fans worldwide. At
+                  SportsLigue.com, we live and breathe sports, and we can&apos;t wait to share that
+                  passion with you. Let&apos;s stay connected, informed, and entertained as we dive
+                  into the exhilarating world of sports together!
                 </p>
               </div>
               {/* <!-- End About-box --> */}

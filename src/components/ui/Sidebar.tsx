@@ -86,12 +86,7 @@ export default function Sidebar({ tags, posts }: Props) {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Image
-              src="/images/adsense/300x250latest.gif"
-              width={300}
-              height={250}
-              alt="300x250"
-            />
+            <Image src="/images/adsense/300x250latest.gif" width={300} height={250} alt="300x250" />
           </a>
         </div>
 
@@ -114,11 +109,15 @@ export default function Sidebar({ tags, posts }: Props) {
           <div className="widget tags-widget">
             <h1>Tags</h1>
             <ul className="tags-list">
-              {tags.map((tag: string) => (
-                <li key={tag}>
-                  <Link href={`/tags/${tag}`}>{tag}</Link>
-                </li>
-              ))}
+              {tags.map((tag: string) => {
+                const encodedTag = tag.split(" ").join("_")
+
+                return (
+                  <li key={tag}>
+                    <Link href={`/tags/${encodedTag}`}>{tag}</Link>
+                  </li>
+                )
+              })}
             </ul>
           </div>
         )}

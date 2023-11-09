@@ -7,11 +7,7 @@ import useCategoriesStore from "@/src/stores/categories"
 import NavItem from "./header/NavItem"
 import { Category } from "@/src/@types/typings"
 import usePostsStore from "@/src/stores/posts"
-import {
-  getCategoryByTitle,
-  getOtherCategories,
-  getPostsByCategory,
-} from "@/sanity/sanity-utils"
+import { getCategoryByTitle, getOtherCategories, getPostsByCategory } from "@/sanity/sanity-utils"
 import { FaCaretDown } from "react-icons/fa"
 import PrimaryNavItems from "./header/PrimaryNavItems"
 import { Suspense } from "react"
@@ -19,6 +15,7 @@ import NavSkeleton from "../skeletons/NavSkeleton"
 import TopLine from "./header/TopLine"
 import { client } from "@/sanity/sanity-client"
 import { groq } from "next-sanity"
+import MobileSearch from "./header/MobileSearch"
 
 const arrayChunk = (arr: Category[], n: number) => {
   const array = arr.slice()
@@ -103,9 +100,7 @@ export default async function Header() {
                         <ul className="col-2 other-categories" key={index}>
                           {arr.map(item => (
                             <li key={item._id}>
-                              <Link href={`/category/${item.slug.current}`}>
-                                {item.title}
-                              </Link>
+                              <Link href={`/category/${item.slug.current}`}>{item.title}</Link>
                             </li>
                           ))}
                         </ul>

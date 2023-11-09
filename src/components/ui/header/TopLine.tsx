@@ -7,6 +7,7 @@ import PrimaryNavItems from "./PrimaryNavItems"
 import { useState } from "react"
 import { FiMenu, FiX } from "react-icons/fi"
 import { FaCaretDown, FaSearch } from "react-icons/fa"
+import MobileSearch from "./MobileSearch"
 
 export default function TopLine() {
   const [showMenu, setShowMenu] = useState<boolean>(false)
@@ -50,10 +51,7 @@ export default function TopLine() {
           </Link>
           {/* </div> */}
           <div className="primary-nav-items">
-            <form
-              className="inputCont"
-              onSubmit={event => handleOnSearch(event)}
-            >
+            <form className="inputCont" onSubmit={event => handleOnSearch(event)}>
               <input
                 type="search"
                 placeholder="Search for..."
@@ -71,11 +69,7 @@ export default function TopLine() {
             {showMenu ? (
               <FiX size={24} color="#fff" onClick={() => setShowMenu(false)} />
             ) : (
-              <FiMenu
-                size={24}
-                color="#fff"
-                onClick={() => setShowMenu(true)}
-              />
+              <FiMenu size={24} color="#fff" onClick={() => setShowMenu(true)} />
             )}
           </div>
         </div>
@@ -83,6 +77,9 @@ export default function TopLine() {
 
       {showMenu && (
         <ul className="mobile-menu">
+          <li>
+            <MobileSearch />
+          </li>
           <li>
             <Link href="/">Home</Link>
           </li>
