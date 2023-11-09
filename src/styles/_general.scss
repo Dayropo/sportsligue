@@ -434,6 +434,31 @@ input.form-control::placeholder {
   }
 }
 
+.mobile-search {
+  width: 100%;
+  position: relative;
+
+  input {
+    border: 0;
+    width: 100%;
+    padding: 8px 16px 8px 0px;
+    font-size: 16px;
+    line-height: 20px;
+    font-family: inherit;
+    background: transparent;
+    color: #fff;
+
+    &:focus {
+      outline: none;
+      border-bottom: 0.4px solid #e7e7e7;
+    }
+
+    &::placeholder {
+      color: #ccd4da;
+    }
+  }
+}
+
 .mega-posts-menu {
   position: absolute;
   border-top: 2px solid #ff7e00;
@@ -474,7 +499,7 @@ input.form-control::placeholder {
   display: inline-block;
   margin-bottom: 3px;
   margin-right: 3px;
-  float: left;
+  //float: left;
 }
 
 .mega-posts-menu ul.filter-list li a {
@@ -1867,10 +1892,7 @@ ul.post-tags li:last-child {
   left: 0;
   text-align: center;
   background: rgba(0, 0, 0, 0.95);
-  background: -webkit-linear-gradient(
-    legacy-direction(transparent),
-    rgba(0, 0, 0, 0.95)
-  );
+  background: -webkit-linear-gradient(legacy-direction(transparent), rgba(0, 0, 0, 0.95));
   background: linear-gradient(transparent, rgba(0, 0, 0, 0.95));
 }
 
@@ -2339,7 +2361,7 @@ ul.small-posts > li:last-child {
   display: inline-block;
   margin-bottom: 3px;
   margin-right: 3px;
-  float: left;
+  // float: left;
 }
 
 .sidebar .tags-widget ul.tags-list li a {
@@ -2449,7 +2471,7 @@ ul.small-posts > li:last-child {
   display: inline-block;
   margin-bottom: 3px;
   margin-right: 3px;
-  float: left;
+  // float: left;
 }
 
 .single-post .text-boxes ul.tags-list li a {
@@ -3121,12 +3143,7 @@ ul.small-posts > li:last-child {
   color: #565656;
 }
 
-.forum-table
-  div.table-row
-  div.forum-post.comment-post
-  .post-autor-date
-  div.content-post-area
-  p {
+.forum-table div.table-row div.forum-post.comment-post .post-autor-date div.content-post-area p {
   margin-top: 10px;
   font-size: 14px;
   line-height: 22px;
@@ -3290,26 +3307,12 @@ ul.author-list > li .autor-box .autor-content .autor-title ul.autor-social li {
   margin-right: 7px;
 }
 
-ul.author-list
-  > li
-  .autor-box
-  .autor-content
-  .autor-title
-  ul.autor-social
-  li
-  a {
+ul.author-list > li .autor-box .autor-content .autor-title ul.autor-social li a {
   color: #565656;
   font-size: 13px;
 }
 
-ul.author-list
-  > li
-  .autor-box
-  .autor-content
-  .autor-title
-  ul.autor-social
-  li
-  a:hover {
+ul.author-list > li .autor-box .autor-content .autor-title ul.autor-social li a:hover {
   color: #ff7e00;
 }
 
@@ -3858,8 +3861,7 @@ body.underconstruction {
   /*
      * Set a base background for 1x environments.
      */
-  background: #111 url("../assets/upload/others/back.jpg") center center
-    no-repeat;
+  background: #111 url("../assets/upload/others/back.jpg") center center no-repeat;
   background-size: cover;
   /*
      * Create an @2x-ish media query.
@@ -3879,16 +3881,14 @@ body.underconstruction {
   all and (min--moz-device-pixel-ratio: 1.5),
   all and (min-device-pixel-ratio: 1.5) {
   body.underconstruction {
-    background: #111 url("../assets/upload/others/back@2x.jpg") center center
-      no-repeat;
+    background: #111 url("../assets/upload/others/back@2x.jpg") center center no-repeat;
     background-size: cover;
   }
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   body.underconstruction {
-    background: #111 url("../assets/upload/others/back@2x.jpg") center center
-      no-repeat;
+    background: #111 url("../assets/upload/others/back@2x.jpg") center center no-repeat;
     background-size: cover;
   }
 }
@@ -4104,7 +4104,7 @@ footer .up-footer .tags-widget ul.tags-list li {
   display: inline-block;
   margin-bottom: 3px;
   margin-right: 3px;
-  float: left;
+  // float: left;
 }
 
 footer .up-footer .tags-widget ul.tags-list li a {
@@ -4529,10 +4529,6 @@ footer .down-footer a.go-top:hover {
     display: none;
   }
 
-  .top-line {
-    text-align: center;
-  }
-
   .top-line ul.social-icons,
   .top-line ul.info-list.right-align {
     text-align: center;
@@ -4607,6 +4603,10 @@ footer .down-footer a.go-top:hover {
 
   .image-post {
     aspect-ratio: 700/500;
+  }
+
+  .pagination-controls {
+    padding: 6px 12px;
   }
 }
 

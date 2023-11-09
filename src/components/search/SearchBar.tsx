@@ -1,20 +1,28 @@
+"use client"
+
 import { useRouter, useSearchParams } from "next/navigation"
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { FaSearch } from "react-icons/fa"
 
-export default function SearchBar() {
-  const searchParams = useSearchParams()
-  const query = searchParams.get("q")!
+export default function SearchBar({ query }: { query: string }) {
+  const [value, setValue] = useState<string>(query)
   const router = useRouter()
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault()
-    // setSearchParams()
+
+    setValue(e.target.value.toLowerCase())
   }
 
-  const handleOnSubmit = () => {
-    router.push(`/search`)
+  const handleOnSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+
+    if (value) {
+      router.push(`/search?q=${value}`)
+      setValue("")
+    }
   }
+
   return (
     <div className="search-box">
       <form className="search-form" onSubmit={handleOnSubmit}>
@@ -23,7 +31,7 @@ export default function SearchBar() {
           id="search"
           name="search"
           placeholder="Search here"
-          value={query}
+          value={value}
           onChange={handleOnChange}
         />
         <button type="submit" id="search-submit">
