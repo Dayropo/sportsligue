@@ -14,8 +14,8 @@ const robotoCondensed = Roboto_Condensed({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.sportsligue.com"),
   title: {
-    default: "SportsLigue",
-    template: `%s | SportsLigue`,
+    default: "SportsLigue - Sports News, Live Scores, Gaming, and Predictions",
+    template: `%s | SportsLigue - Sports News, Live Scores, Gaming, and Predictions`,
   },
   manifest: "https://www.sportsligue.com/manifest.json",
   verification: {
@@ -23,11 +23,7 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       {process.env.NODE_ENV === "production" && (
