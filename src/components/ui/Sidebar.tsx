@@ -4,6 +4,8 @@ import { FaFacebookF, FaGooglePlusG, FaRss, FaTwitter } from "react-icons/fa"
 import SliderWrapper from "../SliderWrapper"
 import { Post } from "@/src/@types/typings"
 import urlFor from "@/sanity/urlFor"
+import Script from "next/script"
+import AdSense300x250 from "../adsense/AdSense300x250"
 
 type Props = {
   tags?: string[]
@@ -81,6 +83,8 @@ export default function Sidebar({ tags, posts }: Props) {
         )}
 
         <div className="advertisement">
+          <AdSense300x250 />
+
           <a
             href="https://kn6m4zjsiy3.typeform.com/to/JNmi3cD2"
             target="_blank"
