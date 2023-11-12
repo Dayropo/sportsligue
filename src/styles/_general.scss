@@ -2412,6 +2412,9 @@ ul.small-posts > li:last-child {
 .sidebar .advertisement {
   text-align: center;
   margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
 /*-------------------------------------------------- */
