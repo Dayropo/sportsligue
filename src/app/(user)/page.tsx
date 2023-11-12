@@ -13,6 +13,7 @@ import HeadlineSkeleton from "@/src/components/skeletons/HeadlineSkeleton"
 import { client } from "@/sanity/sanity-client"
 import { Post } from "@/src/@types/typings"
 import { groq } from "next-sanity"
+import AdSense728x90 from "@/src/components/adsense/Adsense728x90"
 
 export const dynamic = "force-dynamic"
 // export const revalidate = 0
@@ -149,13 +150,15 @@ export default async function Home() {
 
           {/* <!-- Advertisement --> */}
           <div className="advertisement">
-            <a
+            {/* <a
               href="https://kn6m4zjsiy3.typeform.com/to/JNmi3cD2"
               target="_blank"
               rel="noopener noreferrer"
             >
               <Image src="/images/adsense/728x90.gif" width={728} height={90} alt="728x90" />
-            </a>
+            </a> */}
+
+            <AdSense728x90 />
           </div>
           {/* <!-- End Advertisement --> */}
 
@@ -167,13 +170,15 @@ export default async function Home() {
 
               {/* <!-- Advertisement --> */}
               <div className="advertisement">
-                <a
+                {/* <a
                   href="https://kn6m4zjsiy3.typeform.com/to/JNmi3cD2"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <Image src="/images/adsense/728x90.gif" width={728} height={90} alt="728x90" />
-                </a>
+                </a> */}
+
+                <AdSense728x90 />
               </div>
               {/* <!-- End Advertisement --> */}
 
