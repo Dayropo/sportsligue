@@ -11,13 +11,7 @@ import { Metadata } from "next"
 import Head from "next/head"
 import Image from "next/image"
 import Link from "next/link"
-import {
-  FaFacebookF,
-  FaGooglePlusG,
-  FaLinkedinIn,
-  FaRss,
-  FaTwitter,
-} from "react-icons/fa"
+import { FaFacebookF, FaGooglePlusG, FaLinkedinIn, FaRss, FaTwitter } from "react-icons/fa"
 import { FiBook, FiUser, FiEye } from "react-icons/fi"
 import { Post } from "@/src/@types/typings"
 import { notFound } from "next/navigation"
@@ -35,9 +29,7 @@ type Props = {
   }
 }
 
-export const generateMetadata = async ({
-  params,
-}: Props): Promise<Metadata> => {
+export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
   const slug = params.post
 
   try {
@@ -192,30 +184,6 @@ export default async function Page({ params }: Props) {
                   </li> */}
                 </ul>
                 <div className="share-post-box">
-                  {/* <ul className="share-box">
-                    <li>
-                      <a className="facebook" href="#">
-                        <FaFacebookF size={18} />
-                        <span>Share on Facebook</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a className="twitter" href="#">
-                        <FaTwitter size={18} />
-                        <span>Share on Twitter</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a className="linkedin" href="#">
-                        <FaLinkedinIn size={18} />
-                      </a>
-                    </li>
-                    <li>
-                      <a className="rss" href="#">
-                        <FaRss size={18} />
-                      </a>
-                    </li>
-                  </ul> */}
                   <SocialShareBox post={post} />
                 </div>
 
@@ -231,10 +199,7 @@ export default async function Page({ params }: Props) {
                 </figure>
                 <h6 className="figcaption">{post.mainImage.caption}</h6>
 
-                <PortableText
-                  value={post.body}
-                  components={PortableTextComponents}
-                />
+                <PortableText value={post.body} components={PortableTextComponents} />
               </div>
               {/* End single-post  */}
 
@@ -245,12 +210,7 @@ export default async function Page({ params }: Props) {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Image
-                    src="/images/adsense/728x90.gif"
-                    width={620}
-                    height={80}
-                    alt="728x90"
-                  />
+                  <Image src="/images/adsense/728x90.gif" width={728} height={90} alt="728x90" />
                 </a>
               </div>
               {/* End Advertisement */}

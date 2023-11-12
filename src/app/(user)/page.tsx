@@ -154,7 +154,7 @@ export default async function Home() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Image src="/images/adsense/728x90.gif" width={620} height={80} alt="728x90" />
+              <Image src="/images/adsense/728x90.gif" width={728} height={90} alt="728x90" />
             </a>
           </div>
           {/* <!-- End Advertisement --> */}
@@ -172,7 +172,7 @@ export default async function Home() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Image src="/images/adsense/728x90.gif" width={620} height={80} alt="728x90" />
+                  <Image src="/images/adsense/728x90.gif" width={728} height={90} alt="728x90" />
                 </a>
               </div>
               {/* <!-- End Advertisement --> */}
@@ -211,7 +211,7 @@ export default async function Home() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Image src="/images/adsense/728x90.gif" width={620} height={80} alt="728x90" />
+                  <Image src="/images/adsense/728x90.gif" width={728} height={90} alt="728x90" />
                 </a>
               </div>
               {/* <!-- End Advertisement --> */}
