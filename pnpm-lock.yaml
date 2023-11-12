@@ -63,8 +63,8 @@ dependencies:
     specifier: ^5.4.0
     version: 5.4.0(@sanity/client@6.7.0)(@sanity/icons@2.4.1)(@sanity/types@3.15.1)(@sanity/ui@1.7.7)(@types/styled-components@5.1.26)(next@13.5.2)(react@18.2.0)(sanity@3.15.1)(styled-components@5.3.11)
   next-share:
-    specifier: ^0.25.0
-    version: 0.25.0(react@18.2.0)
+    specifier: ^0.27.0
+    version: 0.27.0(react@18.2.0)
   react:
     specifier: 18.2.0
     version: 18.2.0
@@ -5407,8 +5407,8 @@ packages:
       - supports-color
     dev: false
 
-  /next-share@0.25.0(react@18.2.0):
-    resolution: {integrity: sha512-uWL5od4jb1D70CsJbZLtjJnmtuUvAvA85qw1nY1OUL2z2F1pl2Y+h/WsGDLzSIUWAdrOSIfhgTE+AqqsOtwdmQ==}
+  /next-share@0.27.0(react@18.2.0):
+    resolution: {integrity: sha512-Fmfl4LIL61g10vtiDECVldxtNgVNd4OQgnI5vk9IJxn/WMZLdhniUtV15xz4PGpo8UuDdTHwmDT8R/CP60EQHA==}
     engines: {node: '>=8', npm: '>=5'}
     peerDependencies:
       react: '>=17.0.2'

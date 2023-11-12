@@ -20,7 +20,7 @@ export const dynamic = "force-dynamic"
 
 export const metadata: Metadata = {
   description:
-    "Stay updated with the latest sports news, scores, and highlights on Sportsligue.com - your one-stop source for all things sports and more.",
+    "Get the latest sports news, live scores, schedules and standings covering Football, NBA, NFL, MLB, Tennis, F1, Cricket, Rugby, MMA, Hockey & more.",
   keywords: [
     "football",
     "soccer",

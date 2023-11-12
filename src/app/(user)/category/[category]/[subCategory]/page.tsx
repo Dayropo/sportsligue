@@ -18,9 +18,7 @@ type Props = {
   }
 }
 
-export const generateMetadata = async ({
-  params,
-}: Props): Promise<Metadata> => {
+export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
   const slug = params.subCategory
 
   try {
@@ -72,7 +70,7 @@ export const generateMetadata = async ({
 
     return {
       title: posts[0].subCategory.title,
-      description: `Latest ${posts[0].subCategory.title} news from Sportsligue.com`,
+      description: `Get ${posts[0].subCategory.title} News, Live Scores, Updates, Schedule, Player information, Predictions & Match Analysis across the world`,
       alternates: {
         canonical: `/category/${posts[0].category.slug.current}/${posts[0].subCategory.slug.current}`,
       },
