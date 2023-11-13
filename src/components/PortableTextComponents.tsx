@@ -1,5 +1,6 @@
 import urlFor from "@/sanity/urlFor"
 import Image from "next/image"
+import { Tweet } from "react-tweet"
 
 export const PortableTextComponents = {
   types: {
@@ -17,6 +18,13 @@ export const PortableTextComponents = {
           </figure>
           <h6 className="figcaption">{value.caption}</h6>
         </>
+      )
+    },
+    twitter: ({ value }: any) => {
+      return (
+        <div data-theme="light" style={{ display: "flex", justifyContent: "center" }}>
+          <Tweet id={value.id} />
+        </div>
       )
     },
   },
