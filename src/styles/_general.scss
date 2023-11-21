@@ -2427,6 +2427,13 @@ ul.small-posts > li:last-child {
   text-transform: none;
 }
 
+.single-post > h5 {
+  font-weight: 500;
+  margin-bottom: 12px;
+  padding: 0 30px;
+  text-transform: none;
+}
+
 .single-post ul.post-tags {
   margin-bottom: 20px;
   padding: 0 30px;

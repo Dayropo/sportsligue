@@ -40,6 +40,7 @@ export const generateMetadata = async ({ params }: Props): Promise<Metadata> => 
   _createdAt,
   title,
   slug,
+  description,
   mainImage,
   author->,
   category->,
@@ -66,12 +67,14 @@ export const generateMetadata = async ({ params }: Props): Promise<Metadata> => 
 
     return {
       title: post.title,
+      description: post.description ? post.description : "",
       alternates: {
         canonical: `/${post.slug.current}`,
       },
       keywords: post.tags,
       openGraph: {
         title: post.title,
+        description: post.description ? post.description : "",
         url: `/${post.slug.current}`,
         siteName: "SportsLigue",
         type: "article",
@@ -85,6 +88,7 @@ export const generateMetadata = async ({ params }: Props): Promise<Metadata> => 
       twitter: {
         card: "summary_large_image",
         title: post.title,
+        description: post.description ? post.description : "",
         site: "@SportsLigue",
         siteId: "1703204312636178432",
         // creator: "@SportsLigue",
@@ -120,6 +124,7 @@ export default async function Page({ params }: Props) {
   _createdAt,
   title,
   slug,
+  description,
   mainImage,
   author->,
   category->,
@@ -134,6 +139,7 @@ export default async function Page({ params }: Props) {
   _createdAt,
   title,
   slug,
+  description,
   mainImage,
   author->,
   category->,
@@ -168,6 +174,7 @@ export default async function Page({ params }: Props) {
               {/* single-post */}
               <div className="single-post">
                 <h1>{post.title}</h1>
+                {post && post.description && <h5>{post.description}</h5>}
                 <ul className="post-tags">
                   <li>
                     <FiUser size={14} style={{ marginRight: "8px" }} />
