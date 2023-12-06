@@ -21,7 +21,7 @@ import { client } from "@/sanity/sanity-client"
 import { groq } from "next-sanity"
 import AdSense728x90 from "@/src/components/adsense/Adsense728x90"
 
-export const dynamic = "force-dynamic"
+//export const dynamic = "force-dynamic"
 // export const revalidate = 0
 
 type Props = {
@@ -53,9 +53,6 @@ export const generateMetadata = async ({ params }: Props): Promise<Metadata> => 
       {
         slug,
         cache: "no-store",
-        next: {
-          revalidate: 0,
-        },
       }
     )
 
@@ -148,14 +145,11 @@ export default async function Page({ params }: Props) {
   publishedAt,
   body,
   tags,
-} | order(publishedAt desc),
+} | order(publishedAt desc)[0...6],
 }`,
     {
       slug,
       cache: "no-store",
-      next: {
-        revalidate: 0,
-      },
     }
   )
 

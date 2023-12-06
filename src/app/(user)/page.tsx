@@ -5,7 +5,7 @@ import LatestNews from "@/components/LatestNews"
 import HeadingNews from "@/components/HeadingNews"
 import FeaturedPosts from "@/components/FeaturedPosts"
 import Footer from "@/src/components/ui/Footer"
-//import CategoryLatest from "@/src/components/CategoryLatest"
+import CategoryLatest from "@/src/components/CategoryLatest"
 import Sidebar from "@/src/components/ui/Sidebar"
 import WorldNews from "@/src/components/WorldNews"
 import { Suspense } from "react"
@@ -14,13 +14,9 @@ import { client } from "@/sanity/sanity-client"
 import { Post } from "@/src/@types/typings"
 import { groq } from "next-sanity"
 import AdSense728x90 from "@/src/components/adsense/Adsense728x90"
-import dynamic from "next/dynamic"
+//import dynamic from "next/dynamic"
 
-const CategoryLatest = dynamic(() => import("@/src/components/CategoryLatest"), {
-  ssr: false,
-})
-
-// export const dynamic = "force-dynamic"
+export const dynamic = "force-dynamic"
 // export const revalidate = 0
 //export const fetchCache = "force-no-store"
 
@@ -101,7 +97,7 @@ export default async function Home() {
   publishedAt,
   body,
   tags,
-} | order(publishedAt desc),
+} | order(publishedAt desc)[0...3],
   "latestNews": *[_type == "post"]{
   _id,
   _createdAt,
@@ -115,7 +111,7 @@ export default async function Home() {
   publishedAt,
   body,
   tags,
-} | order(publishedAt desc),
+} | order(publishedAt desc)[0...6],
   "featuredPosts": *[_type == "post" && featured == true]{
   _id,
   _createdAt,
@@ -129,14 +125,11 @@ export default async function Home() {
   publishedAt,
   body,
   tags,
-} | order(publishedAt desc),
+} | order(publishedAt desc)[0...6],
   
 }`,
     {
       cache: "no-store",
-      next: {
-        revalidate: 0,
-      },
     }
   )
 

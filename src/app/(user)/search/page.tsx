@@ -55,15 +55,12 @@ export default async function Search({
   publishedAt,
   body,
   tags,
-} | order(publishedAt desc)
+} | order(publishedAt desc)[0...6]
 }`,
     {
       query,
       queryConcat,
       cache: "no-store",
-      next: {
-        revalidate: 0,
-      },
     }
   )
 

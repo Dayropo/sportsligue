@@ -35,10 +35,7 @@ const Posts = ({ posts }: { posts: Post[] }) => {
                     loading="lazy"
                   />
                 </Link>
-                <Link
-                  href={`/category/${post.category.slug.current}`}
-                  className="category"
-                >
+                <Link href={`/category/${post.category.slug.current}`} className="category">
                   {post.category.title}
                 </Link>
               </div>
@@ -60,22 +57,19 @@ const Posts = ({ posts }: { posts: Post[] }) => {
                   </li> */}
               </ul>
               <div className="description">
-                <PortableText
-                  value={post.body}
-                  components={PortableTextComponents}
-                />
+                <PortableText value={post.body} components={PortableTextComponents} />
               </div>
             </div>
           </div>
         </div>
       ))}
 
-      <Pagination
+      {/* <Pagination
         itemsPerPage={postsPerPage}
         totalItems={posts.length}
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
-      />
+      /> */}
     </div>
   )
 }

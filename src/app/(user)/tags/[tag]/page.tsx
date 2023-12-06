@@ -6,7 +6,7 @@ import Header from "@/src/components/ui/Header"
 import Footer from "@/src/components/ui/Footer"
 import { Metadata } from "next"
 
-export const dynamic = "force-dynamic"
+//export const dynamic = "force-dynamic"
 
 type Props = {
   params: {
@@ -60,14 +60,11 @@ export default async function Tag({ params }: Props) {
   publishedAt,
   body,
   tags,
-} | order(publishedAt desc)
+} | order(publishedAt desc)[0...6]
 }`,
     {
       decodedSlug,
       cache: "no-store",
-      next: {
-        revalidate: 0,
-      },
     }
   )
 

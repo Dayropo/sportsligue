@@ -19,12 +19,9 @@ export default async function WorldNews() {
   publishedAt,
   body,
   tags,
-} | order(publishedAt desc)`,
+} | order(publishedAt desc)[0...5]`,
     {
       cache: "no-store",
-      next: {
-        revalidate: 0,
-      },
     }
   )
 
