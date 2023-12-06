@@ -27,13 +27,10 @@ export default async function CategoryLatest({ category }: Props) {
   publishedAt,
   body,
   tags,
-} | order(publishedAt desc)`,
+} | order(publishedAt desc)[0...4]`,
     {
       category,
       cache: "no-store",
-      next: {
-        revalidate: 0,
-      },
     }
   )
 

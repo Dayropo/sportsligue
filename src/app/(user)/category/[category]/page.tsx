@@ -9,7 +9,7 @@ import { Metadata } from "next"
 import { groq } from "next-sanity"
 import { notFound } from "next/navigation"
 
-export const dynamic = "force-dynamic"
+//export const dynamic = "force-dynamic"
 // export const revalidate = 0
 
 type Props = {
@@ -51,14 +51,11 @@ export const generateMetadata = async ({ params }: Props): Promise<Metadata> => 
   publishedAt,
   body,
   tags,
-} | order(publishedAt desc)
+} | order(publishedAt desc)[0...6]
 }`,
       {
         slug,
         cache: "no-store",
-        next: {
-          revalidate: 0,
-        },
       }
     )
 
@@ -117,14 +114,11 @@ export default async function Category({ params }: Props) {
   publishedAt,
   body,
   tags,
-} | order(publishedAt desc)
+} | order(publishedAt desc)[0...6]
 }`,
     {
       slug,
       cache: "no-store",
-      next: {
-        revalidate: 0,
-      },
     }
   )
 

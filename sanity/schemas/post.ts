@@ -20,6 +20,8 @@ export default defineType({
         slugify: input =>
           input
             .toLowerCase()
+            .trim()
+            .replace(" - ", "-")
             .replace(/\s+/g, "-")
             .replace(/[&\/\\#,;+()$~%'.":*?<>{}]/g, ""),
       },
