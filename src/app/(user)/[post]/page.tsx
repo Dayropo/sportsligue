@@ -11,7 +11,13 @@ import { Metadata } from "next"
 import Head from "next/head"
 import Image from "next/image"
 import Link from "next/link"
-import { FaFacebookF, FaGooglePlusG, FaLinkedinIn, FaRss, FaTwitter } from "react-icons/fa"
+import {
+  FaFacebookF,
+  FaGooglePlusG,
+  FaLinkedinIn,
+  FaRss,
+  FaTwitter,
+} from "react-icons/fa"
 import { FiBook, FiUser, FiEye } from "react-icons/fi"
 import { Post } from "@/src/@types/typings"
 import { notFound } from "next/navigation"
@@ -21,7 +27,7 @@ import { client } from "@/sanity/sanity-client"
 import { groq } from "next-sanity"
 import AdSense728x90 from "@/src/components/adsense/Adsense728x90"
 
-//export const dynamic = "force-dynamic"
+export const dynamic = "force-dynamic"
 // export const revalidate = 0
 
 type Props = {
@@ -30,7 +36,9 @@ type Props = {
   }
 }
 
-export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
+export const generateMetadata = async ({
+  params,
+}: Props): Promise<Metadata> => {
   const slug = params.post
 
   try {
@@ -201,7 +209,10 @@ export default async function Page({ params }: Props) {
                 </figure>
                 <h6 className="figcaption">{post.mainImage.caption}</h6>
 
-                <PortableText value={post.body} components={PortableTextComponents} />
+                <PortableText
+                  value={post.body}
+                  components={PortableTextComponents}
+                />
               </div>
               {/* End single-post  */}
 

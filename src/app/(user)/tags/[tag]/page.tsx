@@ -6,7 +6,7 @@ import Header from "@/src/components/ui/Header"
 import Footer from "@/src/components/ui/Footer"
 import { Metadata } from "next"
 
-//export const dynamic = "force-dynamic"
+export const dynamic = "force-dynamic"
 
 type Props = {
   params: {
@@ -14,7 +14,9 @@ type Props = {
   }
 }
 
-export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
+export const generateMetadata = async ({
+  params,
+}: Props): Promise<Metadata> => {
   const slug = params.tag
   const decodedSlug = slug.split("_").join(" ")
 

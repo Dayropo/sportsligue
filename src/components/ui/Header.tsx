@@ -7,7 +7,11 @@ import useCategoriesStore from "@/src/stores/categories"
 import NavItem from "./header/NavItem"
 import { Category } from "@/src/@types/typings"
 import usePostsStore from "@/src/stores/posts"
-import { getCategoryByTitle, getOtherCategories, getPostsByCategory } from "@/sanity/sanity-utils"
+import {
+  getCategoryByTitle,
+  getOtherCategories,
+  getPostsByCategory,
+} from "@/sanity/sanity-utils"
 import { FaCaretDown } from "react-icons/fa"
 import PrimaryNavItems from "./header/PrimaryNavItems"
 import { Suspense } from "react"
@@ -74,42 +78,42 @@ export default async function Header() {
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container">
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <Suspense fallback={<NavSkeleton />}>
-              <ul className="navbar-nav mr-auto">
-                {/* <li className="nav-item active">
+            <ul className="navbar-nav mr-auto">
+              {/* <li className="nav-item active">
                 <a className="nav-link" href="index.html">
                   Live Scores
                 </a>
               </li> */}
 
-                <NavItem title="Football" />
-                <NavItem title="Tennis" />
-                <NavItem title="Basketball" />
-                <NavItem title="Boxing" />
-                <NavItem title="Formula 1" />
-                <NavItem title="American Football" />
-                <NavItem title="Baseball" />
+              <NavItem title="Football" />
+              <NavItem title="Tennis" />
+              <NavItem title="Basketball" />
+              <NavItem title="Boxing" />
+              <NavItem title="Formula 1" />
+              <NavItem title="American Football" />
+              <NavItem title="Baseball" />
 
-                <li className="nav-item">
-                  <a className="nav-link food" style={{ cursor: "pointer" }}>
-                    • • •
-                  </a>
-                  <div className="mega-posts-menu">
-                    <div className="row">
-                      {arrayChunk(others, 4).map((arr, index) => (
-                        <ul className="col-2 other-categories" key={index}>
-                          {arr.map(item => (
-                            <li key={item._id}>
-                              <Link href={`/category/${item.slug.current}`}>{item.title}</Link>
-                            </li>
-                          ))}
-                        </ul>
-                      ))}
-                    </div>
+              <li className="nav-item">
+                <a className="nav-link food" style={{ cursor: "pointer" }}>
+                  • • •
+                </a>
+                <div className="mega-posts-menu">
+                  <div className="row">
+                    {arrayChunk(others, 4).map((arr, index) => (
+                      <ul className="col-2 other-categories" key={index}>
+                        {arr.map(item => (
+                          <li key={item._id}>
+                            <Link href={`/category/${item.slug.current}`}>
+                              {item.title}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    ))}
                   </div>
-                </li>
-              </ul>
-            </Suspense>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       </nav>
