@@ -9,7 +9,7 @@ import { Metadata } from "next"
 import { groq } from "next-sanity"
 import { notFound } from "next/navigation"
 
-//export const dynamic = "force-dynamic"
+export const dynamic = "force-dynamic"
 // export const revalidate = 0
 
 type Props = {
@@ -18,7 +18,9 @@ type Props = {
   }
 }
 
-export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
+export const generateMetadata = async ({
+  params,
+}: Props): Promise<Metadata> => {
   const slug = params.category
 
   try {
