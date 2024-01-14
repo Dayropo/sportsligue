@@ -29,16 +29,15 @@ export default function LatestNews({ posts }: { posts: Post[] }) {
                     loading="lazy"
                   />
                 </Link>
-                <Link
-                  href={`/category/${post.category.slug.current}`}
-                  className="category"
-                >
+                <Link href={`/category/${post.category.slug.current}`} className="category">
                   {post.category.title}
                 </Link>
               </div>
+
               <h2>
                 <Link href={`/${post.slug.current}`}>{post.title}</Link>
               </h2>
+
               <ul className="post-tags">
                 <li>
                   by <a href="#">{post.author.name}</a>
@@ -49,11 +48,9 @@ export default function LatestNews({ posts }: { posts: Post[] }) {
                   </a>
                 </li> */}
               </ul>
+
               <div className="description">
-                <PortableText
-                  value={post.body}
-                  components={PortableTextComponents}
-                />
+                <PortableText value={post.body} components={PortableTextComponents} />
               </div>
             </div>
           </div>
