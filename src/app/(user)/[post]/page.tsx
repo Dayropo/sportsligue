@@ -11,13 +11,7 @@ import { Metadata } from "next"
 import Head from "next/head"
 import Image from "next/image"
 import Link from "next/link"
-import {
-  FaFacebookF,
-  FaGooglePlusG,
-  FaLinkedinIn,
-  FaRss,
-  FaTwitter,
-} from "react-icons/fa"
+import { FaFacebookF, FaGooglePlusG, FaLinkedinIn, FaRss, FaTwitter } from "react-icons/fa"
 import { FiBook, FiUser, FiEye } from "react-icons/fi"
 import { Post } from "@/src/@types/typings"
 import { notFound } from "next/navigation"
@@ -36,9 +30,7 @@ type Props = {
   }
 }
 
-export const generateMetadata = async ({
-  params,
-}: Props): Promise<Metadata> => {
+export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
   const slug = params.post
 
   try {
@@ -176,7 +168,7 @@ export default async function Page({ params }: Props) {
               {/* single-post */}
               <div className="single-post">
                 <h1>{post.title}</h1>
-                {post && post.description && <h5>{post.description}</h5>}
+                {/* {post && post.description && <h5>{post.description}</h5>} */}
                 <ul className="post-tags">
                   <li>
                     <FiUser size={14} style={{ marginRight: "8px" }} />
@@ -209,10 +201,7 @@ export default async function Page({ params }: Props) {
                 </figure>
                 <h6 className="figcaption">{post.mainImage.caption}</h6>
 
-                <PortableText
-                  value={post.body}
-                  components={PortableTextComponents}
-                />
+                <PortableText value={post.body} components={PortableTextComponents} />
               </div>
               {/* End single-post  */}
 

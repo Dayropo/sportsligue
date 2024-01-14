@@ -19,6 +19,7 @@ export default async function CategoryLatest({ category }: Props) {
   _createdAt,
   title,
   slug,
+  description,
   mainImage,
   author->,
   category->,
