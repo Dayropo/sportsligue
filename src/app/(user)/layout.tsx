@@ -33,8 +33,23 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           strategy="beforeInteractive"
         />
       </head>
+
       {process.env.NODE_ENV === "production" && (
         <GoogleAnalytics GA_MEASUREMENT_ID="G-0ZER7XKZDG" />
+      )}
+
+      {process.env.NODE_ENV === "production" && (
+        <Script strategy="lazyOnload">{`
+        (function(w,d,o,g,r,a,m){
+        var cid='zone_1331476653';
+        w[r]=w[r]||function(){(w[r+'l']=w[r+'l']||[]).push(arguments)};
+        function e(b,w,r){if((w[r+'h']=b.pop())&&!w.ABN){
+            var a=d.createElement(o),p=d.getElementsByTagName(o)[0];a.async=1;
+            a.src='https://cdn.'+w[r+'h']+'/libs/e.js';a.onerror=function(){e(g,w,r)};
+            p.parentNode.insertBefore(a,p)}}e(g,w,r);
+        w[r](cid,{id:1331476653,domain:w[r+'h']});
+        })(window,document,'script',['ftd.agency'],'ABNS');
+      `}</Script>
       )}
 
       <body className={`${robotoCondensed.className}  boxed-style`}>

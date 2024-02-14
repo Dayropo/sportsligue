@@ -168,7 +168,6 @@ export default async function Home() {
               {/* <!-- Posts-block --> */}
               <LatestNews posts={latestNews} />
               {/* <!-- End Posts-block --> */}
-
               {/* <!-- Advertisement --> */}
               <div className="advertisement">
                 {/* <a
@@ -182,7 +181,6 @@ export default async function Home() {
                 <AdSense728x90 />
               </div>
               {/* <!-- End Advertisement --> */}
-
               {/* <!-- Posts-block --> */}
               <div className="posts-block categories-box">
                 <div className="row">
@@ -191,7 +189,6 @@ export default async function Home() {
                 </div>
               </div>
               {/* <!-- End Posts-block --> */}
-
               {/* <!-- Posts-block --> */}
               <div className="posts-block categories-box">
                 <div className="row">
@@ -200,7 +197,6 @@ export default async function Home() {
                 </div>
               </div>
               {/* <!-- End Posts-block --> */}
-
               {/* <!-- Posts-block --> */}
               <div className="posts-block categories-box">
                 <div className="row">
@@ -209,7 +205,6 @@ export default async function Home() {
                 </div>
               </div>
               {/* <!-- End Posts-block --> */}
-
               {/* <!-- Advertisement --> */}
               <div className="advertisement">
                 <a
@@ -221,10 +216,11 @@ export default async function Home() {
                 </a>
               </div>
               {/* <!-- End Advertisement --> */}
-
               {/* <!-- Posts-block --> */}
               <WorldNews />
               {/* <!-- End Posts-block --> */}
+
+              <div id="zone_1331476653"></div>
             </div>
 
             <Sidebar posts={featuredPosts} />
