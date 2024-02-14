@@ -39,7 +39,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       )}
 
       {process.env.NODE_ENV === "production" && (
-        <Script strategy="lazyOnload">{`
+        <Script id="1xbet-ad" strategy="lazyOnload">{`
         (function(w,d,o,g,r,a,m){
         var cid='zone_1331476653';
         w[r]=w[r]||function(){(w[r+'l']=w[r+'l']||[]).push(arguments)};
