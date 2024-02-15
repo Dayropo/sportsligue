@@ -54,6 +54,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
       <body className={`${robotoCondensed.className}  boxed-style`}>
         <NextAuthProvider>{children}</NextAuthProvider>
+
+        <div id="zone_1331476653"></div>
       </body>
     </html>
   )
