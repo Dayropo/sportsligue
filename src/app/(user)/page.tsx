@@ -219,8 +219,6 @@ export default async function Home() {
               {/* <!-- Posts-block --> */}
               <WorldNews />
               {/* <!-- End Posts-block --> */}
-
-              <div id="zone_1331476653"></div>
             </div>
 
             <Sidebar posts={featuredPosts} />
