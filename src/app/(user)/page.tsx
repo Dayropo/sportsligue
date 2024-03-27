@@ -82,59 +82,122 @@ export const metadata: Metadata = {
 }
 
 export default async function Home() {
-  const { headlines, latestNews, featuredPosts } = await client.fetch(
-    `{ 
-  "headlines": *[_type == "post" && headline == true]{
-  _id,
-  _createdAt,
-  title,
-  slug,
-  description,
-  mainImage,
-  author->,
-  category->,
-  subCategory->,
-  featured,
-  publishedAt,
-  body,
-  tags,
-} | order(publishedAt desc)[0...3],
-  "latestNews": *[_type == "post"]{
-  _id,
-  _createdAt,
-  title,
-  slug,
-  description,
-  mainImage,
-  author->,
-  category->,
-  subCategory->,
-  featured,
-  publishedAt,
-  body,
-  tags,
-} | order(publishedAt desc)[0...6],
-  "featuredPosts": *[_type == "post" && featured == true]{
-  _id,
-  _createdAt,
-  title,
-  slug,
-  description,
-  mainImage,
-  author->,
-  category->,
-  subCategory->,
-  featured,
-  publishedAt,
-  body,
-  tags,
-} | order(publishedAt desc)[0...6],
-  
-}`,
+  const headlines = await client.fetch<Post[]>(
+    groq`*[_type == "post" && headline == true]{
+    _id,
+    _createdAt,
+    title,
+    slug,
+    description,
+    mainImage,
+    author->,
+    category->,
+    subCategory->,
+    featured,
+    publishedAt,
+    body,
+    tags,
+    } | order(publishedAt desc)[0...3]`,
     {
       cache: "no-store",
     }
   )
+
+  const latestNews = await client.fetch<Post[]>(
+    groq`*[_type == "post"]{
+      _id,
+      _createdAt,
+      title,
+      slug,
+      description,
+      mainImage,
+      author->,
+      category->,
+      subCategory->,
+      featured,
+      publishedAt,
+      body,
+      tags,
+    } | order(publishedAt desc)[0...6]`,
+    {
+      cache: "no-store",
+    }
+  )
+
+  const featuredPosts = await client.fetch<Post[]>(
+    groq`*[_type == "post" && featured == true]{
+      _id,
+      _createdAt,
+      title,
+      slug,
+      description,
+      mainImage,
+      author->,
+      category->,
+      subCategory->,
+      featured,
+      publishedAt,
+      body,
+      tags,
+    } | order(publishedAt desc)[0...6]`,
+    {
+      cache: "no-store",
+    }
+  )
+
+  //   const { headlines, latestNews, featuredPosts } = await client.fetch(
+  //     `{
+  //   "headlines": *[_type == "post" && headline == true]{
+  //   _id,
+  //   _createdAt,
+  //   title,
+  //   slug,
+  //   description,
+  //   mainImage,
+  //   author->,
+  //   category->,
+  //   subCategory->,
+  //   featured,
+  //   publishedAt,
+  //   body,
+  //   tags,
+  // } ,
+  //   "latestNews": *[_type == "post"]{
+  //   _id,
+  //   _createdAt,
+  //   title,
+  //   slug,
+  //   description,
+  //   mainImage,
+  //   author->,
+  //   category->,
+  //   subCategory->,
+  //   featured,
+  //   publishedAt,
+  //   body,
+  //   tags,
+  // } | order(publishedAt desc)[0...6],
+  //   "featuredPosts": *[_type == "post" && featured == true]{
+  //   _id,
+  //   _createdAt,
+  //   title,
+  //   slug,
+  //   description,
+  //   mainImage,
+  //   author->,
+  //   category->,
+  //   subCategory->,
+  //   featured,
+  //   publishedAt,
+  //   body,
+  //   tags,
+  // } | order(publishedAt desc)[0...6],
+
+  // }`,
+  //     {
+  //       cache: "no-store",
+  //     }
+  //   )
 
   return (
     <div id="container">

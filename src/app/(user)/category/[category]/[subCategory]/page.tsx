@@ -18,43 +18,25 @@ type Props = {
   }
 }
 
-export const generateMetadata = async ({
-  params,
-}: Props): Promise<Metadata> => {
+export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
   const slug = params.subCategory
 
   try {
-    const { posts, featuredPosts } = await client.fetch(
-      `{
-    "posts": *[_type == "post" && subCategory->slug.current == $slug]{
-  _id,
-  _createdAt,
-  title,
-  slug,
-  mainImage,
-  author->,
-  category->,
-  subCategory->,
-  featured,
-  publishedAt,
-  body,
-  tags,
-} | order(publishedAt desc),
-"featuredPosts": *[_type == "post" && featured == true]{
-  _id,
-  _createdAt,
-  title,
-  slug,
-  mainImage,
-  author->,
-  category->,
-  subCategory->,
-  featured,
-  publishedAt,
-  body,
-  tags,
-} | order(publishedAt desc)[0...6]
-}`,
+    const posts = await client.fetch<Post[]>(
+      groq`*[_type == "post" && subCategory->slug.current == $slug]{
+        _id,
+        _createdAt,
+        title,
+        slug,
+        mainImage,
+        author->,
+        category->,
+        subCategory->,
+        featured,
+        publishedAt,
+        body,
+        tags,
+      } | order(publishedAt desc)`,
       {
         slug,
         cache: "no-store",
@@ -87,42 +69,84 @@ export const generateMetadata = async ({
 export default async function SubCategory({ params }: Props) {
   const slug = params.subCategory
 
-  const { posts, featuredPosts } = await client.fetch(
-    `{
-    "posts": *[_type == "post" && subCategory->slug.current == $slug]{
-  _id,
-  _createdAt,
-  title,
-  slug,
-  mainImage,
-  author->,
-  category->,
-  subCategory->,
-  featured,
-  publishedAt,
-  body,
-  tags,
-} | order(publishedAt desc),
-"featuredPosts": *[_type == "post" && featured == true]{
-  _id,
-  _createdAt,
-  title,
-  slug,
-  mainImage,
-  author->,
-  category->,
-  subCategory->,
-  featured,
-  publishedAt,
-  body,
-  tags,
-} | order(publishedAt desc)[0...6]
-}`,
+  const posts = await client.fetch<Post[]>(
+    groq`*[_type == "post" && subCategory->slug.current == $slug]{
+      _id,
+      _createdAt,
+      title,
+      slug,
+      mainImage,
+      author->,
+      category->,
+      subCategory->,
+      featured,
+      publishedAt,
+      body,
+      tags,
+    } | order(publishedAt desc)`,
     {
       slug,
       cache: "no-store",
     }
   )
+
+  const featuredPosts = await client.fetch<Post[]>(
+    groq`*[_type == "post" && featured == true]{
+      _id,
+      _createdAt,
+      title,
+      slug,
+      description,
+      mainImage,
+      author->,
+      category->,
+      subCategory->,
+      featured,
+      publishedAt,
+      body,
+      tags,
+    } | order(publishedAt desc)[0...6]`,
+    {
+      cache: "no-store",
+    }
+  )
+
+  //   const { posts, featuredPosts } = await client.fetch(
+  //     `{
+  //     "posts": *[_type == "post" && subCategory->slug.current == $slug]{
+  //   _id,
+  //   _createdAt,
+  //   title,
+  //   slug,
+  //   mainImage,
+  //   author->,
+  //   category->,
+  //   subCategory->,
+  //   featured,
+  //   publishedAt,
+  //   body,
+  //   tags,
+  // } | order(publishedAt desc),
+  // "featuredPosts": *[_type == "post" && featured == true]{
+  //   _id,
+  //   _createdAt,
+  //   title,
+  //   slug,
+  //   mainImage,
+  //   author->,
+  //   category->,
+  //   subCategory->,
+  //   featured,
+  //   publishedAt,
+  //   body,
+  //   tags,
+  // } | order(publishedAt desc)[0...6]
+  // }`,
+  //     {
+  //       slug,
+  //       cache: "no-store",
+  //     }
+  //   )
 
   if (posts.length < 1) {
     notFound()

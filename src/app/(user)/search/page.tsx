@@ -6,6 +6,7 @@ import Footer from "@/src/components/ui/Footer"
 import Header from "@/src/components/ui/Header"
 import Sidebar from "@/src/components/ui/Sidebar"
 import { Metadata } from "next"
+import { groq } from "next-sanity"
 import { useState } from "react"
 import { FaSearch } from "react-icons/fa"
 
@@ -26,43 +27,86 @@ export default async function Search({
   const query = searchParams.q as string
   const queryConcat = `${query}*`
 
-  const { posts, featuredPosts } = await client.fetch(
-    `{
-    "posts": *[_type == "post" && (title == $query || title match $query || title match $queryConcat)]{
-  _id,
-  _createdAt,
-  title,
-  slug,
-  mainImage,
-  author->,
-  category->,
-  subCategory->,
-  featured,
-  publishedAt,
-  body,
-  tags,
-} | order(publishedAt desc),
-"featuredPosts": *[_type == "post" && featured == true]{
-  _id,
-  _createdAt,
-  title,
-  slug,
-  mainImage,
-  author->,
-  category->,
-  subCategory->,
-  featured,
-  publishedAt,
-  body,
-  tags,
-} | order(publishedAt desc)[0...6]
-}`,
+  const posts = await client.fetch<Post[]>(
+    groq`*[_type == "post" && (title == $query || title match $query || title match $queryConcat)]{
+      _id,
+      _createdAt,
+      title,
+      slug,
+      mainImage,
+      author->,
+      category->,
+      subCategory->,
+      featured,
+      publishedAt,
+      body,
+      tags,
+    } | order(publishedAt desc)`,
     {
       query,
       queryConcat,
       cache: "no-store",
     }
   )
+
+  const featuredPosts = await client.fetch<Post[]>(
+    groq`*[_type == "post" && featured == true]{
+      _id,
+      _createdAt,
+      title,
+      slug,
+      description,
+      mainImage,
+      author->,
+      category->,
+      subCategory->,
+      featured,
+      publishedAt,
+      body,
+      tags,
+    } | order(publishedAt desc)[0...6]`,
+    {
+      cache: "no-store",
+    }
+  )
+
+//   const { posts, featuredPosts } = await client.fetch(
+//     `{
+//     "posts": *[_type == "post" && (title == $query || title match $query || title match $queryConcat)]{
+//   _id,
+//   _createdAt,
+//   title,
+//   slug,
+//   mainImage,
+//   author->,
+//   category->,
+//   subCategory->,
+//   featured,
+//   publishedAt,
+//   body,
+//   tags,
+// } | order(publishedAt desc),
+// "featuredPosts": *[_type == "post" && featured == true]{
+//   _id,
+//   _createdAt,
+//   title,
+//   slug,
+//   mainImage,
+//   author->,
+//   category->,
+//   subCategory->,
+//   featured,
+//   publishedAt,
+//   body,
+//   tags,
+// } | order(publishedAt desc)[0...6]
+// }`,
+//     {
+//       query,
+//       queryConcat,
+//       cache: "no-store",
+//     }
+//   )
 
   return (
     <div id="container">

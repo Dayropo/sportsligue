@@ -5,6 +5,8 @@ import Sidebar from "@/src/components/ui/Sidebar"
 import Header from "@/src/components/ui/Header"
 import Footer from "@/src/components/ui/Footer"
 import { Metadata } from "next"
+import { groq } from "next-sanity"
+import { Post } from "@/src/@types/typings"
 
 export const dynamic = "force-dynamic"
 
@@ -14,9 +16,7 @@ type Props = {
   }
 }
 
-export const generateMetadata = async ({
-  params,
-}: Props): Promise<Metadata> => {
+export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
   const slug = params.tag
   const decodedSlug = slug.split("_").join(" ")
 
@@ -33,42 +33,84 @@ export default async function Tag({ params }: Props) {
   const slug = params.tag
   const decodedSlug = slug.split("_").join(" ")
 
-  const { posts, featuredPosts } = await client.fetch(
-    `{
-    "posts": *[_type == "post" && ($decodedSlug in tags)]{
-  _id,
-  _createdAt,
-  title,
-  slug,
-  mainImage,
-  author->,
-  category->,
-  subCategory->,
-  featured,
-  publishedAt,
-  body,
-  tags,
-} | order(publishedAt desc),
-"featuredPosts": *[_type == "post" && featured == true]{
-  _id,
-  _createdAt,
-  title,
-  slug,
-  mainImage,
-  author->,
-  category->,
-  subCategory->,
-  featured,
-  publishedAt,
-  body,
-  tags,
-} | order(publishedAt desc)[0...6]
-}`,
+  const posts = await client.fetch<Post[]>(
+    groq`*[_type == "post" && ($decodedSlug in tags)]{
+    _id,
+    _createdAt,
+    title,
+    slug,
+    mainImage,
+    author->,
+    category->,
+    subCategory->,
+    featured,
+    publishedAt,
+    body,
+    tags,
+  } | order(publishedAt desc)`,
     {
       decodedSlug,
       cache: "no-store",
     }
   )
+
+  const featuredPosts = await client.fetch<Post[]>(
+    groq`*[_type == "post" && featured == true]{
+      _id,
+      _createdAt,
+      title,
+      slug,
+      description,
+      mainImage,
+      author->,
+      category->,
+      subCategory->,
+      featured,
+      publishedAt,
+      body,
+      tags,
+    } | order(publishedAt desc)[0...6]`,
+    {
+      cache: "no-store",
+    }
+  )
+
+  //   const { posts, featuredPosts } = await client.fetch(
+  //     `{
+  //     "posts": *[_type == "post" && ($decodedSlug in tags)]{
+  //   _id,
+  //   _createdAt,
+  //   title,
+  //   slug,
+  //   mainImage,
+  //   author->,
+  //   category->,
+  //   subCategory->,
+  //   featured,
+  //   publishedAt,
+  //   body,
+  //   tags,
+  // } | order(publishedAt desc),
+  // "featuredPosts": *[_type == "post" && featured == true]{
+  //   _id,
+  //   _createdAt,
+  //   title,
+  //   slug,
+  //   mainImage,
+  //   author->,
+  //   category->,
+  //   subCategory->,
+  //   featured,
+  //   publishedAt,
+  //   body,
+  //   tags,
+  // } | order(publishedAt desc)[0...6]
+  // }`,
+  //     {
+  //       decodedSlug,
+  //       cache: "no-store",
+  //     }
+  //   )
 
   return (
     <div id="container">
