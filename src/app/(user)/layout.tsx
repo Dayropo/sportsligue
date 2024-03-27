@@ -6,10 +6,12 @@ import { NextAuthProvider } from "@/src/components/auth/Providers"
 import GoogleAnalytics from "@/src/components/analytics/GoogleAnalytics"
 import { Roboto_Condensed } from "next/font/google"
 import Script from "next/script"
+import TanstackProvider from "../../providers/TanstackProvider"
 
 const robotoCondensed = Roboto_Condensed({
-  weight: ["300", "400", "700"],
+  weight: ["400", "700"],
   subsets: ["latin"],
+  display: "swap",
 })
 
 export const metadata: Metadata = {
@@ -52,10 +54,25 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       `}</Script>
       )}
 
+      <Script id="1xbet_ad_2" strategy="lazyOnload">{` 
+        (function(w,d,o,g,r,a,m){
+        var cid='zone_1541984750';
+        w[r]=w[r]||function(){(w[r+'l']=w[r+'l']||[]).push(arguments)};
+        function e(b,w,r){if((w[r+'h']=b.pop())&&!w.ABN){
+            var a=d.createElement(o),p=d.getElementsByTagName(o)[0];a.async=1;
+            a.src='https://cdn.'+w[r+'h']+'/libs/e.js';a.onerror=function(){e(g,w,r)};
+            p.parentNode.insertBefore(a,p)}}e(g,w,r);
+        w[r](cid,{id:1541984750,domain:w[r+'h']});
+        })(window,document,'script',['ftd.agency'],'ABNS');
+    `}</Script>
+
       <body className={`${robotoCondensed.className}  boxed-style`}>
-        <NextAuthProvider>{children}</NextAuthProvider>
+        <NextAuthProvider>
+          <TanstackProvider>{children}</TanstackProvider>
+        </NextAuthProvider>
 
         <div id="zone_1331476653"></div>
+        <div id="zone_1541984750"></div>
       </body>
     </html>
   )

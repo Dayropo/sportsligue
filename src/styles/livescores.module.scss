@@ -1,0 +1,75 @@
+.league {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &_header {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 8px;
+    background: lightblue;
+    font-size: 18px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &_matches {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    &_item {
+      width: 100%;
+      padding: 16px 24px;
+      border-bottom: 1px solid #e5e5e5;
+      display: flex;
+      align-items: center;
+
+      &_fixt {
+        width: 40px;
+      }
+
+      &_home {
+        width: 300px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 10px;
+
+        p {
+          font-size: 16px;
+          line-height: 24px;
+          margin: 0px;
+        }
+      }
+
+      &_score {
+        width: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        p {
+          font-size: 16px;
+          line-height: 24px;
+          margin: 0px;
+        }
+      }
+
+      &_away {
+        width: 300px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        p {
+          font-size: 16px;
+          line-height: 24px;
+          margin: 0px;
+        }
+      }
+    }
+  }
+}
