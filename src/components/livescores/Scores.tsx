@@ -156,7 +156,7 @@ export default function Scores() {
       {data && (
         <div style={{ width: "100%", display: "flex", flexDirection: "column", gap: "16px" }}>
           {pinnedLeagues.map((leagueId: number) => (
-            <GroupedScoresByLeagueId data={data.response} id={leagueId} />
+            <GroupedScoresByLeagueId data={data.response} id={leagueId} key={leagueId} />
           ))}
         </div>
       )}
