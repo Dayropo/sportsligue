@@ -14,29 +14,29 @@ export const metadata: Metadata = {
   // keywords: ["Awin"],
 }
 
-export default async function About() {
-  const featuredPosts = await client.fetch<Post[]>(
-    `*[_type == "post" && featured == true]{
-  _id,
-  _createdAt,
-  title,
-  slug,
-  mainImage,
-  author->,
-  category->,
-  subCategory->,
-  featured,
-  publishedAt,
-  body,
-  tags,
-} | order(publishedAt desc)`,
-    {
-      cache: "no-store",
-      next: {
-        revalidate: 0,
-      },
-    }
-  )
+export default function About() {
+  //   const featuredPosts = await client.fetch<Post[]>(
+  //     `*[_type == "post" && featured == true]{
+  //   _id,
+  //   _createdAt,
+  //   title,
+  //   slug,
+  //   mainImage,
+  //   author->,
+  //   category->,
+  //   subCategory->,
+  //   featured,
+  //   publishedAt,
+  //   body,
+  //   tags,
+  // } | order(publishedAt desc)`,
+  //     {
+  //       cache: "no-store",
+  //       next: {
+  //         revalidate: 0,
+  //       },
+  //     }
+  //   )
 
   return (
     <div id="container">
@@ -123,7 +123,7 @@ export default async function About() {
               {/* <!-- End team-box --> */}
             </div>
 
-            <Sidebar posts={featuredPosts} />
+            <Sidebar />
           </div>
         </div>
       </section>

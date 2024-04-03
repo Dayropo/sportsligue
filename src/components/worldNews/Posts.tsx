@@ -11,7 +11,7 @@ import { PortableTextComponents } from "../PortableTextComponents"
 import Pagination from "../ui/Pagination"
 
 const Posts = ({ posts }: { posts: Post[] }) => {
-  const [currentPage, setCurrentPage] = useState<number>(1)
+  const [currentPage] = useState<number>(1)
   const [postsPerPage] = useState<number>(5)
 
   const indexOfLastPost = currentPage * postsPerPage
@@ -40,6 +40,7 @@ const Posts = ({ posts }: { posts: Post[] }) => {
                 </Link>
               </div>
             </div>
+            
             <div className="col-sm-7" style={{ overflow: "hidden" }}>
               <h2>
                 <Link href={`/${post.slug.current}`}>{post.title}</Link>

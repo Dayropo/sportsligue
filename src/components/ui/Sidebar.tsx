@@ -1,18 +1,48 @@
+"use client"
+
 import Image from "next/image"
 import Link from "next/link"
 import { FaFacebookF, FaGooglePlusG, FaRss, FaTwitter } from "react-icons/fa"
 import SliderWrapper from "../SliderWrapper"
 import { Post } from "@/src/@types/typings"
 import urlFor from "@/sanity/urlFor"
-import Script from "next/script"
 import AdSense300x250 from "../adsense/AdSense300x250"
+import { client } from "@/sanity/sanity-client"
+import { groq } from "next-sanity"
+import { useQuery } from "@tanstack/react-query"
+import Skeleton from "@mui/material/Skeleton"
 
-type Props = {
-  tags?: string[]
-  posts?: Post[]
-}
+export default function Sidebar({ tags }: { tags?: string[] }) {
+  const { data, isLoading, isError, error } = useQuery({
+    queryKey: ["featured"],
+    queryFn: async () => {
+      const response = await client.fetch<Post[]>(
+        groq`*[_type == "post" && featured == true]{
+          _id,
+          _createdAt,
+          title,
+          slug,
+          description,
+          mainImage,
+          author->,
+          category->,
+          subCategory->,
+          featured,
+          publishedAt,
+          body,
+          tags,
+        } | order(publishedAt desc)[0...6]`,
+        {
+          cache: "no-store",
+        }
+      )
 
-export default function Sidebar({ tags, posts }: Props) {
+      return response
+    },
+  })
+
+  isError && console.error(error)
+
   return (
     <div className="col-lg-4 sidebar-sticky">
       {/* <!-- Sidebar --> */}
@@ -48,14 +78,51 @@ export default function Sidebar({ tags, posts }: Props) {
           </ul>
         </div> */}
 
-        {posts && posts.length > 0 && (
+        {isLoading && (
+          <div className="widget slider-widget">
+            <Skeleton animation="wave"
+              variant="text"
+              sx={{ fontSize: "18px", width: "100px", marginBottom: "12px", paddingBottom: "15px" }}
+            />
+
+            <div className="lightbox-slide">
+              <Skeleton animation="wave"
+                variant="rectangular"
+                sx={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
+              />
+            </div>
+
+            <ul className="small-posts">
+              {[...Array(3)].map((x, i) => (
+                <li key={i}>
+                  <Skeleton animation="wave"
+                    variant="rectangular"
+                    width={80}
+                    height={80}
+                    sx={{ marginRight: "20px", float: "left" }}
+                  />
+
+                  <div className="post-cont">
+                    <Skeleton animation="wave" variant="text" sx={{ fontSize: "14px" }} />
+
+                    <ul className="post-tags">
+                      <Skeleton animation="wave" variant="text" sx={{ fontSize: "12px", width: "100px" }} />
+                    </ul>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {data && data.length > 0 && (
           <div className="widget slider-widget">
             <h1>Featured Posts</h1>
 
-            <SliderWrapper posts={posts.slice(0, 3)} />
+            <SliderWrapper posts={data.slice(0, 3)} />
 
             <ul className="small-posts">
-              {posts.slice(3, 6).map((post: Post) => (
+              {data.slice(3, 6).map((post: Post) => (
                 <li key={post._id}>
                   <Link href={`/${post.slug.current}`}>
                     <Image
@@ -82,17 +149,24 @@ export default function Sidebar({ tags, posts }: Props) {
           </div>
         )}
 
-        <div className="advertisement">
-          <AdSense300x250 />
+        {data && data.length > 0 && (
+          <div className="advertisement">
+            <AdSense300x250 />
 
-          <a
-            href="https://kn6m4zjsiy3.typeform.com/to/JNmi3cD2"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image src="/images/adsense/300x250latest.gif" width={300} height={250} alt="300x250" />
-          </a>
-        </div>
+            <a
+              href="https://kn6m4zjsiy3.typeform.com/to/JNmi3cD2"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image
+                src="/images/adsense/300x250latest.gif"
+                width={300}
+                height={250}
+                alt="300x250"
+              />
+            </a>
+          </div>
+        )}
 
         {/* <div className="advertisement">
           <a
@@ -109,7 +183,19 @@ export default function Sidebar({ tags, posts }: Props) {
           </a>
         </div> */}
 
-        {tags && (
+        {isLoading && (
+          <div className="widget tags-widget">
+            <Skeleton animation="wave" variant="text" sx={{ fontSize: "18px", width: "60px" }} />
+
+            <ul className="tags-list" style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+              <Skeleton animation="wave" variant="text" sx={{ fontSize: "24px", width: "100px" }} />
+              <Skeleton animation="wave" variant="text" sx={{ fontSize: "24px", width: "100px" }} />
+              <Skeleton animation="wave" variant="text" sx={{ fontSize: "24px", width: "100px" }} />
+            </ul>
+          </div>
+        )}
+
+        {data && data.length > 0 && tags && (
           <div className="widget tags-widget">
             <h1>Tags</h1>
             <ul className="tags-list">

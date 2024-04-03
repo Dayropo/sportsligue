@@ -3,7 +3,7 @@ import Header from "@/src/components/ui/Header"
 import Footer from "@/src/components/ui/Footer"
 import Scores from "@/src/components/livescores/Scores"
 
-export default async function Livescores() {
+export default function Livescores() {
   return (
     <div id="container">
       <Header />

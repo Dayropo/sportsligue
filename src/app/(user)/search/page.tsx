@@ -7,10 +7,8 @@ import Header from "@/src/components/ui/Header"
 import Sidebar from "@/src/components/ui/Sidebar"
 import { Metadata } from "next"
 import { groq } from "next-sanity"
-import { useState } from "react"
-import { FaSearch } from "react-icons/fa"
 
-export const dynamic = "force-dynamic"
+// export const dynamic = "force-dynamic"
 
 export const metadata: Metadata = {
   title: "Search",
@@ -19,7 +17,7 @@ export const metadata: Metadata = {
   },
 }
 
-export default async function Search({
+export default function Search({
   searchParams,
 }: {
   searchParams: { [key: string]: string | string[] | undefined }
@@ -27,86 +25,86 @@ export default async function Search({
   const query = searchParams.q as string
   const queryConcat = `${query}*`
 
-  const posts = await client.fetch<Post[]>(
-    groq`*[_type == "post" && (title == $query || title match $query || title match $queryConcat)]{
-      _id,
-      _createdAt,
-      title,
-      slug,
-      mainImage,
-      author->,
-      category->,
-      subCategory->,
-      featured,
-      publishedAt,
-      body,
-      tags,
-    } | order(publishedAt desc)`,
-    {
-      query,
-      queryConcat,
-      cache: "no-store",
-    }
-  )
+  // const posts = await client.fetch<Post[]>(
+  //   groq`*[_type == "post" && (title == $query || title match $query || title match $queryConcat)]{
+  //     _id,
+  //     _createdAt,
+  //     title,
+  //     slug,
+  //     mainImage,
+  //     author->,
+  //     category->,
+  //     subCategory->,
+  //     featured,
+  //     publishedAt,
+  //     body,
+  //     tags,
+  //   } | order(publishedAt desc)`,
+  //   {
+  //     query,
+  //     queryConcat,
+  //     cache: "no-store",
+  //   }
+  // )
 
-  const featuredPosts = await client.fetch<Post[]>(
-    groq`*[_type == "post" && featured == true]{
-      _id,
-      _createdAt,
-      title,
-      slug,
-      description,
-      mainImage,
-      author->,
-      category->,
-      subCategory->,
-      featured,
-      publishedAt,
-      body,
-      tags,
-    } | order(publishedAt desc)[0...6]`,
-    {
-      cache: "no-store",
-    }
-  )
+  // const featuredPosts = await client.fetch<Post[]>(
+  //   groq`*[_type == "post" && featured == true]{
+  //     _id,
+  //     _createdAt,
+  //     title,
+  //     slug,
+  //     description,
+  //     mainImage,
+  //     author->,
+  //     category->,
+  //     subCategory->,
+  //     featured,
+  //     publishedAt,
+  //     body,
+  //     tags,
+  //   } | order(publishedAt desc)[0...6]`,
+  //   {
+  //     cache: "no-store",
+  //   }
+  // )
 
-//   const { posts, featuredPosts } = await client.fetch(
-//     `{
-//     "posts": *[_type == "post" && (title == $query || title match $query || title match $queryConcat)]{
-//   _id,
-//   _createdAt,
-//   title,
-//   slug,
-//   mainImage,
-//   author->,
-//   category->,
-//   subCategory->,
-//   featured,
-//   publishedAt,
-//   body,
-//   tags,
-// } | order(publishedAt desc),
-// "featuredPosts": *[_type == "post" && featured == true]{
-//   _id,
-//   _createdAt,
-//   title,
-//   slug,
-//   mainImage,
-//   author->,
-//   category->,
-//   subCategory->,
-//   featured,
-//   publishedAt,
-//   body,
-//   tags,
-// } | order(publishedAt desc)[0...6]
-// }`,
-//     {
-//       query,
-//       queryConcat,
-//       cache: "no-store",
-//     }
-//   )
+  //   const { posts, featuredPosts } = await client.fetch(
+  //     `{
+  //     "posts": *[_type == "post" && (title == $query || title match $query || title match $queryConcat)]{
+  //   _id,
+  //   _createdAt,
+  //   title,
+  //   slug,
+  //   mainImage,
+  //   author->,
+  //   category->,
+  //   subCategory->,
+  //   featured,
+  //   publishedAt,
+  //   body,
+  //   tags,
+  // } | order(publishedAt desc),
+  // "featuredPosts": *[_type == "post" && featured == true]{
+  //   _id,
+  //   _createdAt,
+  //   title,
+  //   slug,
+  //   mainImage,
+  //   author->,
+  //   category->,
+  //   subCategory->,
+  //   featured,
+  //   publishedAt,
+  //   body,
+  //   tags,
+  // } | order(publishedAt desc)[0...6]
+  // }`,
+  //     {
+  //       query,
+  //       queryConcat,
+  //       cache: "no-store",
+  //     }
+  //   )
 
   return (
     <div id="container">
@@ -128,11 +126,11 @@ export default async function Search({
               {/* <!-- End search-results box --> */}
 
               {/* <!-- Posts-block --> */}
-              <SearchResults posts={posts} />
+              <SearchResults query={query} queryConcat={queryConcat} />
               {/* <!-- End Posts-block --> */}
             </div>
 
-            <Sidebar posts={featuredPosts} />
+            <Sidebar />
           </div>
         </div>
       </section>
