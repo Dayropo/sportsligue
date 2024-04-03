@@ -183,7 +183,19 @@ export default function Sidebar({ tags }: { tags?: string[] }) {
           </a>
         </div> */}
 
-        {tags && (
+        {isLoading && (
+          <div className="widget tags-widget">
+            <Skeleton variant="text" sx={{ fontSize: "18px", width: "60px" }} />
+
+            <ul className="tags-list" style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+              <Skeleton variant="text" sx={{ fontSize: "24px", width: "100px" }} />
+              <Skeleton variant="text" sx={{ fontSize: "24px", width: "100px" }} />
+              <Skeleton variant="text" sx={{ fontSize: "24px", width: "100px" }} />
+            </ul>
+          </div>
+        )}
+
+        {data && tags && (
           <div className="widget tags-widget">
             <h1>Tags</h1>
             <ul className="tags-list">

@@ -37,6 +37,7 @@ export const generateMetadata = async ({ params }: Props): Promise<Metadata> => 
 
 export default function SubCategory({ params }: Props) {
   const slug = params.subCategory
+  const category = params.category
 
   // const posts = await client.fetch<Post[]>(
   //   groq`*[_type == "post" && subCategory->slug.current == $slug]{
@@ -124,7 +125,7 @@ export default function SubCategory({ params }: Props) {
   return (
     <div id="container">
       <Header />
-      <Posts slug={slug} />
+      <Posts slug={slug} category={category} />
       <Footer />
     </div>
   )

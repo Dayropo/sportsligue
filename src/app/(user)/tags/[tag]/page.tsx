@@ -133,7 +133,7 @@ export default async function Tag({ params }: Props) {
               {/* End Posts block */}
             </div>
 
-            <Sidebar posts={featuredPosts} />
+            <Sidebar />
           </div>
         </div>
       </section>

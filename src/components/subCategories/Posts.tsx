@@ -14,8 +14,9 @@ import { groq } from "next-sanity"
 import { useQuery } from "@tanstack/react-query"
 import Skeleton from "@mui/material/Skeleton"
 import Sidebar from "@/src/components/ui/Sidebar"
+import { getTitle } from "@/src/utils/helpers"
 
-export default function Posts({ slug }: { slug: string }) {
+export default function Posts({ slug, category }: { slug: string; category: string }) {
   const [currentPage, setCurrentPage] = useState<number>(1)
   const [postsPerPage] = useState<number>(5)
 
@@ -26,7 +27,7 @@ export default function Posts({ slug }: { slug: string }) {
     queryKey: [`subCategory-${slug}`],
     queryFn: async () => {
       const response = await client.fetch<Post[]>(
-        groq`*[_type == "post" && subCategory->slug.current == $slug]{
+        groq`*[_type == "post" && category->slug.current == $category && subCategory->slug.current == $slug]{
             _id,
             _createdAt,
             title,
@@ -41,6 +42,7 @@ export default function Posts({ slug }: { slug: string }) {
             tags,
           } | order(publishedAt desc)`,
         {
+          category,
           slug,
           cache: "no-store",
         }
@@ -110,7 +112,7 @@ export default function Posts({ slug }: { slug: string }) {
               {data.length > 0 ? (
                 <div className="posts-block">
                   <div className="title-section">
-                    <h1>{`${data[0].category.title}  /  ${data[0].subCategory.title}`}</h1>
+                    <h1>{`${getTitle(category)}  /  ${getTitle(slug)}`}</h1>
                   </div>
 
                   <div className="articles-box-style">
