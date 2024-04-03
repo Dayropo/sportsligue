@@ -16,7 +16,7 @@ import Skeleton from "@mui/material/Skeleton"
 
 export default function PostBody({ slug }: { slug: string }) {
   const { data, isLoading, isError, error } = useQuery({
-    queryKey: ["latestPosts"],
+    queryKey: ["post"],
     queryFn: async () => {
       const response = await client.fetch<Post>(
         groq`*[_type == "post" && slug.current == $slug][0]{
@@ -46,6 +46,8 @@ export default function PostBody({ slug }: { slug: string }) {
 
   isError && console.error(error)
 
+  console.log({data})
+
   return (
     <section id="content-section">
       <div className="container">
@@ -53,22 +55,22 @@ export default function PostBody({ slug }: { slug: string }) {
           <div className="row">
             <div className="col-lg-8">
               <div className="single-post">
-                <Skeleton variant="text" sx={{ fontSize: "36px", marginLeft: "12px" }} />
+                <Skeleton animation="wave" variant="text" sx={{ fontSize: "36px", marginLeft: "12px" }} />
 
                 <ul className="post-tags">
-                  <Skeleton variant="text" sx={{ fontSize: "16px", width: "100px" }} />
+                  <Skeleton animation="wave" variant="text" sx={{ fontSize: "16px", width: "100px" }} />
                 </ul>
 
                 <div
                   className="share-post-box"
                   style={{ display: "flex", alignItems: "center", gap: "8px" }}
                 >
-                  <Skeleton variant="circular" width={32} height={32} />
-                  <Skeleton variant="circular" width={32} height={32} />
+                  <Skeleton animation="wave" variant="circular" width={32} height={32} />
+                  <Skeleton animation="wave" variant="circular" width={32} height={32} />
                 </div>
 
                 <figure className="main-image">
-                  <Skeleton
+                  <Skeleton animation="wave"
                     variant="rectangular"
                     sx={{
                       position: "absolute",
@@ -80,19 +82,19 @@ export default function PostBody({ slug }: { slug: string }) {
                   />
                 </figure>
 
-                <Skeleton variant="text" sx={{ fontSize: "20px" }} />
-                <Skeleton variant="text" sx={{ fontSize: "20px" }} />
-                <Skeleton variant="text" sx={{ fontSize: "20px" }} />
-                <Skeleton variant="text" sx={{ fontSize: "20px" }} />
-                <Skeleton variant="text" sx={{ fontSize: "20px" }} />
-                <Skeleton variant="text" sx={{ fontSize: "20px" }} />
+                <Skeleton animation="wave" variant="text" sx={{ fontSize: "20px" }} />
+                <Skeleton animation="wave" variant="text" sx={{ fontSize: "20px" }} />
+                <Skeleton animation="wave" variant="text" sx={{ fontSize: "20px" }} />
+                <Skeleton animation="wave" variant="text" sx={{ fontSize: "20px" }} />
+                <Skeleton animation="wave" variant="text" sx={{ fontSize: "20px" }} />
+                <Skeleton animation="wave" variant="text" sx={{ fontSize: "20px" }} />
               </div>
             </div>
 
             <div className="col-lg-4 sidebar-sticky">
               <div className="sidebar theiaStickySidebar">
                 <div className="widget slider-widget">
-                  <Skeleton
+                  <Skeleton animation="wave"
                     variant="text"
                     sx={{
                       fontSize: "18px",
@@ -103,7 +105,7 @@ export default function PostBody({ slug }: { slug: string }) {
                   />
 
                   <div className="lightbox-slide">
-                    <Skeleton
+                    <Skeleton animation="wave"
                       variant="rectangular"
                       sx={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
                     />
@@ -112,7 +114,7 @@ export default function PostBody({ slug }: { slug: string }) {
                   <ul className="small-posts">
                     {[...Array(3)].map((x, i) => (
                       <li key={i}>
-                        <Skeleton
+                        <Skeleton animation="wave"
                           variant="rectangular"
                           width={80}
                           height={80}
@@ -120,10 +122,10 @@ export default function PostBody({ slug }: { slug: string }) {
                         />
 
                         <div className="post-cont">
-                          <Skeleton variant="text" sx={{ fontSize: "14px" }} />
+                          <Skeleton animation="wave" variant="text" sx={{ fontSize: "14px" }} />
 
                           <ul className="post-tags">
-                            <Skeleton variant="text" sx={{ fontSize: "12px", width: "100px" }} />
+                            <Skeleton animation="wave" variant="text" sx={{ fontSize: "12px", width: "100px" }} />
                           </ul>
                         </div>
                       </li>
@@ -132,15 +134,15 @@ export default function PostBody({ slug }: { slug: string }) {
                 </div>
 
                 <div className="widget tags-widget">
-                  <Skeleton variant="text" sx={{ fontSize: "18px", width: "60px" }} />
+                  <Skeleton animation="wave" variant="text" sx={{ fontSize: "18px", width: "60px" }} />
 
                   <ul
                     className="tags-list"
                     style={{ display: "flex", alignItems: "center", gap: "4px" }}
                   >
-                    <Skeleton variant="text" sx={{ fontSize: "24px", width: "100px" }} />
-                    <Skeleton variant="text" sx={{ fontSize: "24px", width: "100px" }} />
-                    <Skeleton variant="text" sx={{ fontSize: "24px", width: "100px" }} />
+                    <Skeleton animation="wave" variant="text" sx={{ fontSize: "24px", width: "100px" }} />
+                    <Skeleton animation="wave" variant="text" sx={{ fontSize: "24px", width: "100px" }} />
+                    <Skeleton animation="wave" variant="text" sx={{ fontSize: "24px", width: "100px" }} />
                   </ul>
                 </div>
               </div>

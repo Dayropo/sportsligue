@@ -74,29 +74,29 @@ export default function CategoryLatest({ category }: Props) {
       {isLoading && (
         <>
           <div className="title-section">
-            <Skeleton variant="text" sx={{ fontSize: "18px", width: "100px" }} />
+            <Skeleton animation="wave" variant="text" sx={{ fontSize: "18px", width: "100px" }} />
           </div>
 
           <div className="news-post standart-post">
             <div className="post-image">
-              <Skeleton
+              <Skeleton animation="wave"
                 variant="rectangular"
                 sx={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
               />
             </div>
 
-            <Skeleton variant="text" sx={{ fontSize: "16px" }} />
+            <Skeleton animation="wave" variant="text" sx={{ fontSize: "16px" }} />
 
             <div className="description">
-              <Skeleton variant="text" sx={{ fontSize: "14px" }} />
-              <Skeleton variant="text" sx={{ fontSize: "14px" }} />
+              <Skeleton animation="wave" variant="text" sx={{ fontSize: "14px" }} />
+              <Skeleton animation="wave" variant="text" sx={{ fontSize: "14px" }} />
             </div>
           </div>
 
           <ul className="small-posts">
             {[...Array(3)].map((x, i) => (
               <li key={i}>
-                <Skeleton
+                <Skeleton animation="wave"
                   variant="rectangular"
                   width={80}
                   height={80}
@@ -104,10 +104,10 @@ export default function CategoryLatest({ category }: Props) {
                 />
 
                 <div className="post-cont">
-                  <Skeleton variant="text" sx={{ fontSize: "14px" }} />
+                  <Skeleton animation="wave" variant="text" sx={{ fontSize: "14px" }} />
 
                   <ul className="post-tags">
-                    <Skeleton variant="text" sx={{ fontSize: "12px", width: "100px" }} />
+                    <Skeleton animation="wave" variant="text" sx={{ fontSize: "12px", width: "100px" }} />
                   </ul>
                 </div>
               </li>
@@ -116,7 +116,7 @@ export default function CategoryLatest({ category }: Props) {
         </>
       )}
 
-      {data && (
+      {data && data.length > 0 && (
         <>
           <div className="title-section">
             <h1>{category}</h1>

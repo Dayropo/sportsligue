@@ -121,12 +121,12 @@ export default function Header() {
               {isLoading && (
                 <li className="nav-item">
                   <div className="nav-link food">
-                    <Skeleton variant="text" sx={{ fontSize: "19px", width: "80px" }} />
+                    <Skeleton animation="wave" variant="text" sx={{ fontSize: "19px", width: "80px" }} />
                   </div>
                 </li>
               )}
 
-              {data && (
+              {data && data.length > 0 && (
                 <li className="nav-item">
                   <a className="nav-link food" style={{ cursor: "pointer" }}>
                     • • •

@@ -63,7 +63,7 @@ export default function WorldNews() {
       {isLoading && (
         <>
           <div className="title-section">
-            <Skeleton variant="text" sx={{ fontSize: "18px", width: "100px" }} />
+            <Skeleton animation="wave" variant="text" sx={{ fontSize: "18px", width: "100px" }} />
           </div>
 
           <div className="articles-box-style">
@@ -72,7 +72,7 @@ export default function WorldNews() {
                 <div className="row">
                   <div className="col-sm-5">
                     <div className="post-image">
-                      <Skeleton
+                      <Skeleton animation="wave"
                         variant="rectangular"
                         sx={{
                           position: "absolute",
@@ -86,15 +86,15 @@ export default function WorldNews() {
                   </div>
 
                   <div className="col-sm-7">
-                    <Skeleton variant="text" sx={{ fontSize: "20px" }} />
+                    <Skeleton animation="wave" variant="text" sx={{ fontSize: "20px" }} />
 
                     <ul className="post-tags">
-                      <Skeleton variant="text" sx={{ fontSize: "12px", width: "100px" }} />
+                      <Skeleton animation="wave" variant="text" sx={{ fontSize: "12px", width: "100px" }} />
                     </ul>
 
                     <div className="description">
-                      <Skeleton variant="text" sx={{ fontSize: "14px" }} />
-                      <Skeleton variant="text" sx={{ fontSize: "14px" }} />
+                      <Skeleton animation="wave" variant="text" sx={{ fontSize: "14px" }} />
+                      <Skeleton animation="wave" variant="text" sx={{ fontSize: "14px" }} />
                     </div>
                   </div>
                 </div>
@@ -104,7 +104,7 @@ export default function WorldNews() {
         </>
       )}
 
-      {data && (
+      {data && data.length > 0 && (
         <>
           <div className="title-section">
             <h1>World News</h1>

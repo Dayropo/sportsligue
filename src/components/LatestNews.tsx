@@ -47,7 +47,7 @@ export default function LatestNews() {
       {isLoading && (
         <>
           <div className="title-section">
-            <Skeleton variant="text" sx={{ fontSize: "18px", width: "100px" }} />
+            <Skeleton animation="wave" variant="text" sx={{ fontSize: "18px", width: "100px" }} />
           </div>
 
           <div className="row">
@@ -55,21 +55,21 @@ export default function LatestNews() {
               <div className="col-sm-6" key={i}>
                 <div className="news-post standart-post">
                   <div className="post-image">
-                    <Skeleton
+                    <Skeleton animation="wave"
                       variant="rectangular"
                       sx={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
                     />
                   </div>
 
-                  <Skeleton variant="text" sx={{ fontSize: "16px" }} />
+                  <Skeleton animation="wave" variant="text" sx={{ fontSize: "16px" }} />
 
                   <ul className="post-tags">
-                    <Skeleton variant="text" sx={{ fontSize: "12px", width: "100px" }} />
+                    <Skeleton animation="wave" variant="text" sx={{ fontSize: "12px", width: "100px" }} />
                   </ul>
 
                   <div className="description">
-                    <Skeleton variant="text" sx={{ fontSize: "14px" }} />
-                    <Skeleton variant="text" sx={{ fontSize: "14px" }} />
+                    <Skeleton animation="wave" variant="text" sx={{ fontSize: "14px" }} />
+                    <Skeleton animation="wave" variant="text" sx={{ fontSize: "14px" }} />
                   </div>
                 </div>
               </div>
@@ -78,7 +78,7 @@ export default function LatestNews() {
         </>
       )}
 
-      {data && (
+      {data && data.length > 0 && (
         <>
           <div className="title-section">
             <h1>Latest News</h1>

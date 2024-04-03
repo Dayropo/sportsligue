@@ -80,13 +80,13 @@ export default function Sidebar({ tags }: { tags?: string[] }) {
 
         {isLoading && (
           <div className="widget slider-widget">
-            <Skeleton
+            <Skeleton animation="wave"
               variant="text"
               sx={{ fontSize: "18px", width: "100px", marginBottom: "12px", paddingBottom: "15px" }}
             />
 
             <div className="lightbox-slide">
-              <Skeleton
+              <Skeleton animation="wave"
                 variant="rectangular"
                 sx={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
               />
@@ -95,7 +95,7 @@ export default function Sidebar({ tags }: { tags?: string[] }) {
             <ul className="small-posts">
               {[...Array(3)].map((x, i) => (
                 <li key={i}>
-                  <Skeleton
+                  <Skeleton animation="wave"
                     variant="rectangular"
                     width={80}
                     height={80}
@@ -103,10 +103,10 @@ export default function Sidebar({ tags }: { tags?: string[] }) {
                   />
 
                   <div className="post-cont">
-                    <Skeleton variant="text" sx={{ fontSize: "14px" }} />
+                    <Skeleton animation="wave" variant="text" sx={{ fontSize: "14px" }} />
 
                     <ul className="post-tags">
-                      <Skeleton variant="text" sx={{ fontSize: "12px", width: "100px" }} />
+                      <Skeleton animation="wave" variant="text" sx={{ fontSize: "12px", width: "100px" }} />
                     </ul>
                   </div>
                 </li>
@@ -115,7 +115,7 @@ export default function Sidebar({ tags }: { tags?: string[] }) {
           </div>
         )}
 
-        {data && (
+        {data && data.length > 0 && (
           <div className="widget slider-widget">
             <h1>Featured Posts</h1>
 
@@ -149,7 +149,7 @@ export default function Sidebar({ tags }: { tags?: string[] }) {
           </div>
         )}
 
-        {data && (
+        {data && data.length > 0 && (
           <div className="advertisement">
             <AdSense300x250 />
 
@@ -185,17 +185,17 @@ export default function Sidebar({ tags }: { tags?: string[] }) {
 
         {isLoading && (
           <div className="widget tags-widget">
-            <Skeleton variant="text" sx={{ fontSize: "18px", width: "60px" }} />
+            <Skeleton animation="wave" variant="text" sx={{ fontSize: "18px", width: "60px" }} />
 
             <ul className="tags-list" style={{ display: "flex", alignItems: "center", gap: "4px" }}>
-              <Skeleton variant="text" sx={{ fontSize: "24px", width: "100px" }} />
-              <Skeleton variant="text" sx={{ fontSize: "24px", width: "100px" }} />
-              <Skeleton variant="text" sx={{ fontSize: "24px", width: "100px" }} />
+              <Skeleton animation="wave" variant="text" sx={{ fontSize: "24px", width: "100px" }} />
+              <Skeleton animation="wave" variant="text" sx={{ fontSize: "24px", width: "100px" }} />
+              <Skeleton animation="wave" variant="text" sx={{ fontSize: "24px", width: "100px" }} />
             </ul>
           </div>
         )}
 
-        {data && tags && (
+        {data && data.length > 0 && tags && (
           <div className="widget tags-widget">
             <h1>Tags</h1>
             <ul className="tags-list">

@@ -46,21 +46,21 @@ export default function HeadingNews() {
       {isLoading && (
         <>
           <div className="news-post image-post main-post">
-            <Skeleton
+            <Skeleton animation="wave"
               variant="rectangular"
               sx={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
             />
           </div>
 
           <div className="news-post image-post">
-            <Skeleton
+            <Skeleton animation="wave"
               variant="rectangular"
               sx={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
             />
           </div>
 
           <div className="news-post image-post">
-            <Skeleton
+            <Skeleton animation="wave"
               variant="rectangular"
               sx={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
             />
@@ -68,7 +68,7 @@ export default function HeadingNews() {
         </>
       )}
 
-      {data && (
+      {data && data.length > 0 && (
         <>
           <span className="title-notifier">Headlines</span>
 

@@ -6,29 +6,29 @@ import Header from "@/src/components/ui/Header"
 import Sidebar from "@/src/components/ui/Sidebar"
 import React from "react"
 
-export default async function NotFound() {
-  const featuredPosts = await client.fetch<Post[]>(
-    `*[_type == "post" && featured == true]{
-  _id,
-  _createdAt,
-  title,
-  slug,
-  mainImage,
-  author->,
-  category->,
-  subCategory->,
-  featured,
-  publishedAt,
-  body,
-  tags,
-} | order(publishedAt desc)`,
-    {
-      cache: "no-store",
-      next: {
-        revalidate: 0,
-      },
-    }
-  )
+export default function NotFound() {
+  //   const featuredPosts = await client.fetch<Post[]>(
+  //     `*[_type == "post" && featured == true]{
+  //   _id,
+  //   _createdAt,
+  //   title,
+  //   slug,
+  //   mainImage,
+  //   author->,
+  //   category->,
+  //   subCategory->,
+  //   featured,
+  //   publishedAt,
+  //   body,
+  //   tags,
+  // } | order(publishedAt desc)`,
+  //     {
+  //       cache: "no-store",
+  //       next: {
+  //         revalidate: 0,
+  //       },
+  //     }
+  //   )
 
   return (
     <div id="container">
@@ -44,8 +44,8 @@ export default async function NotFound() {
                     Error <span>404</span>
                   </h1>
                   <p>
-                    Oops! It looks like nothing was found at this location.
-                    Maybe try another link or a search?
+                    Oops! It looks like nothing was found at this location. Maybe try another link
+                    or a search?
                   </p>
                 </div>
                 <SearchBox />
@@ -212,7 +212,7 @@ export default async function NotFound() {
               </div> */}
             </div>
 
-            <Sidebar posts={featuredPosts} />
+            <Sidebar />
           </div>
         </div>
       </section>

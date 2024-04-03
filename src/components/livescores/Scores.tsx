@@ -41,7 +41,7 @@ export default function Scores() {
       {/* <div>
         <span>Premier League</span>
 
-        {data &&
+        {data && data.length > 0 &&
           data.response
             .filter((item: IMatch) => item.league.id === 39)
             .map((item: IMatch, index: number) => (
@@ -96,7 +96,7 @@ export default function Scores() {
             ))}
       </div> */}
 
-      {/* {data &&
+      {/* {data && data.length > 0 &&
         data.response.map((item: IMatch, index: number) => (
           <div>
             <span>{item.league.name}</span>
@@ -153,7 +153,7 @@ export default function Scores() {
           </div>
         ))} */}
 
-      {data && (
+      {data && data.length > 0 && (
         <div style={{ width: "100%", display: "flex", flexDirection: "column", gap: "16px" }}>
           {pinnedLeagues.map((leagueId: number) => (
             <GroupedScoresByLeagueId data={data.response} id={leagueId} key={leagueId} />

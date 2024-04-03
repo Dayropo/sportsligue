@@ -8,7 +8,7 @@ import { Metadata } from "next"
 import { groq } from "next-sanity"
 import { Post } from "@/src/@types/typings"
 
-export const dynamic = "force-dynamic"
+// export const dynamic = "force-dynamic"
 
 type Props = {
   params: {
@@ -21,7 +21,7 @@ export const generateMetadata = async ({ params }: Props): Promise<Metadata> => 
   const decodedSlug = slug.split("_").join(" ")
 
   return {
-    title: decodedSlug,
+    //title: decodedSlug,
     alternates: {
       canonical: `/tags/${slug}`,
     },
@@ -29,51 +29,51 @@ export const generateMetadata = async ({ params }: Props): Promise<Metadata> => 
   }
 }
 
-export default async function Tag({ params }: Props) {
+export default function Tag({ params }: Props) {
   const slug = params.tag
   const decodedSlug = slug.split("_").join(" ")
 
-  const posts = await client.fetch<Post[]>(
-    groq`*[_type == "post" && ($decodedSlug in tags)]{
-    _id,
-    _createdAt,
-    title,
-    slug,
-    mainImage,
-    author->,
-    category->,
-    subCategory->,
-    featured,
-    publishedAt,
-    body,
-    tags,
-  } | order(publishedAt desc)`,
-    {
-      decodedSlug,
-      cache: "no-store",
-    }
-  )
+  // const posts = await client.fetch<Post[]>(
+  //   groq`*[_type == "post" && ($decodedSlug in tags)]{
+  //   _id,
+  //   _createdAt,
+  //   title,
+  //   slug,
+  //   mainImage,
+  //   author->,
+  //   category->,
+  //   subCategory->,
+  //   featured,
+  //   publishedAt,
+  //   body,
+  //   tags,
+  // } | order(publishedAt desc)`,
+  //   {
+  //     decodedSlug,
+  //     cache: "no-store",
+  //   }
+  // )
 
-  const featuredPosts = await client.fetch<Post[]>(
-    groq`*[_type == "post" && featured == true]{
-      _id,
-      _createdAt,
-      title,
-      slug,
-      description,
-      mainImage,
-      author->,
-      category->,
-      subCategory->,
-      featured,
-      publishedAt,
-      body,
-      tags,
-    } | order(publishedAt desc)[0...6]`,
-    {
-      cache: "no-store",
-    }
-  )
+  // const featuredPosts = await client.fetch<Post[]>(
+  //   groq`*[_type == "post" && featured == true]{
+  //     _id,
+  //     _createdAt,
+  //     title,
+  //     slug,
+  //     description,
+  //     mainImage,
+  //     author->,
+  //     category->,
+  //     subCategory->,
+  //     featured,
+  //     publishedAt,
+  //     body,
+  //     tags,
+  //   } | order(publishedAt desc)[0...6]`,
+  //   {
+  //     cache: "no-store",
+  //   }
+  // )
 
   //   const { posts, featuredPosts } = await client.fetch(
   //     `{
@@ -115,29 +115,7 @@ export default async function Tag({ params }: Props) {
   return (
     <div id="container">
       <Header />
-
-      <section id="content-section">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-8">
-              {/* archive box */}
-              <div className="archive-box">
-                <h1>
-                  Tag: <span>{decodedSlug}</span>
-                </h1>
-              </div>
-              {/* End archive box */}
-
-              {/* Posts block */}
-              <Posts posts={posts} />
-              {/* End Posts block */}
-            </div>
-
-            <Sidebar />
-          </div>
-        </div>
-      </section>
-
+      <Posts slug={slug} decodedSlug={decodedSlug} />
       <Footer />
     </div>
   )

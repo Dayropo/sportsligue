@@ -87,7 +87,7 @@ export default function NavItem({ title }: Props) {
       {isLoading && (
         <div className="nav-item">
           <div className="nav-link">
-            <Skeleton variant="text" sx={{ fontSize: "19px", width: "80px" }} />
+            <Skeleton animation="wave" variant="text" sx={{ fontSize: "19px", width: "80px" }} />
           </div>
         </div>
       )}
