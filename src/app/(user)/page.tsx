@@ -16,9 +16,7 @@ import { groq } from "next-sanity"
 import AdSense728x90 from "@/src/components/adsense/Adsense728x90"
 //import dynamic from "next/dynamic"
 
-export const dynamic = "force-dynamic"
-// export const revalidate = 0
-//export const fetchCache = "force-no-store"
+// export const dynamic = "force-dynamic"
 
 export const metadata: Metadata = {
   description:
@@ -81,73 +79,9 @@ export const metadata: Metadata = {
   ],
 }
 
-export default async function Home() {
-  const headlines = await client.fetch<Post[]>(
-    groq`*[_type == "post" && headline == true]{
-    _id,
-    _createdAt,
-    title,
-    slug,
-    description,
-    mainImage,
-    author->,
-    category->,
-    subCategory->,
-    featured,
-    publishedAt,
-    body,
-    tags,
-    } | order(publishedAt desc)[0...3]`,
-    {
-      cache: "no-store",
-    }
-  )
-
-  const latestNews = await client.fetch<Post[]>(
-    groq`*[_type == "post"]{
-      _id,
-      _createdAt,
-      title,
-      slug,
-      description,
-      mainImage,
-      author->,
-      category->,
-      subCategory->,
-      featured,
-      publishedAt,
-      body,
-      tags,
-    } | order(publishedAt desc)[0...6]`,
-    {
-      cache: "no-store",
-    }
-  )
-
-  const featuredPosts = await client.fetch<Post[]>(
-    groq`*[_type == "post" && featured == true]{
-      _id,
-      _createdAt,
-      title,
-      slug,
-      description,
-      mainImage,
-      author->,
-      category->,
-      subCategory->,
-      featured,
-      publishedAt,
-      body,
-      tags,
-    } | order(publishedAt desc)[0...6]`,
-    {
-      cache: "no-store",
-    }
-  )
-
-  //   const { headlines, latestNews, featuredPosts } = await client.fetch(
-  //     `{
-  //   "headlines": *[_type == "post" && headline == true]{
+export default function Home() {
+  // const headlines = await client.fetch<Post[]>(
+  //   groq`*[_type == "post" && headline == true]{
   //   _id,
   //   _createdAt,
   //   title,
@@ -161,43 +95,53 @@ export default async function Home() {
   //   publishedAt,
   //   body,
   //   tags,
-  // } ,
-  //   "latestNews": *[_type == "post"]{
-  //   _id,
-  //   _createdAt,
-  //   title,
-  //   slug,
-  //   description,
-  //   mainImage,
-  //   author->,
-  //   category->,
-  //   subCategory->,
-  //   featured,
-  //   publishedAt,
-  //   body,
-  //   tags,
-  // } | order(publishedAt desc)[0...6],
-  //   "featuredPosts": *[_type == "post" && featured == true]{
-  //   _id,
-  //   _createdAt,
-  //   title,
-  //   slug,
-  //   description,
-  //   mainImage,
-  //   author->,
-  //   category->,
-  //   subCategory->,
-  //   featured,
-  //   publishedAt,
-  //   body,
-  //   tags,
-  // } | order(publishedAt desc)[0...6],
+  //   } | order(publishedAt desc)[0...3]`,
+  //   {
+  //     cache: "no-store",
+  //   }
+  // )
 
-  // }`,
-  //     {
-  //       cache: "no-store",
-  //     }
-  //   )
+  // const latestNews = await client.fetch<Post[]>(
+  //   groq`*[_type == "post"]{
+  //     _id,
+  //     _createdAt,
+  //     title,
+  //     slug,
+  //     description,
+  //     mainImage,
+  //     author->,
+  //     category->,
+  //     subCategory->,
+  //     featured,
+  //     publishedAt,
+  //     body,
+  //     tags,
+  //   } | order(publishedAt desc)[0...6]`,
+  //   {
+  //     cache: "no-store",
+  //   }
+  // )
+
+  // const featuredPosts = await client.fetch<Post[]>(
+  //   groq`*[_type == "post" && featured == true]{
+  //     _id,
+  //     _createdAt,
+  //     title,
+  //     slug,
+  //     description,
+  //     mainImage,
+  //     author->,
+  //     category->,
+  //     subCategory->,
+  //     featured,
+  //     publishedAt,
+  //     body,
+  //     tags,
+  //   } | order(publishedAt desc)[0...6]`,
+  //   {
+  //     cache: "no-store",
+  //   }
+  // )
 
   return (
     <div id="container">
@@ -205,12 +149,7 @@ export default async function Home() {
 
       <section id="content-section">
         <div className="container">
-          {/* <!-- News-Headline --> */}
-          <Suspense fallback={<HeadlineSkeleton />}>
-            <HeadingNews posts={headlines} />
-          </Suspense>
-
-          {/* <!-- End News-Headline --> */}
+          <HeadingNews />
 
           {/* <!-- Advertisement --> */}
           <div className="advertisement">
@@ -229,7 +168,7 @@ export default async function Home() {
           <div className="row">
             <div className="col-lg-8">
               {/* <!-- Posts-block --> */}
-              <LatestNews posts={latestNews} />
+              <LatestNews />
               {/* <!-- End Posts-block --> */}
               {/* <!-- Advertisement --> */}
               <div className="advertisement">
@@ -284,7 +223,7 @@ export default async function Home() {
               {/* <!-- End Posts-block --> */}
             </div>
 
-            <Sidebar posts={featuredPosts} />
+            <Sidebar />
           </div>
         </div>
       </section>

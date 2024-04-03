@@ -1,3 +1,5 @@
+"use client"
+
 import Image from "next/image"
 import Link from "next/link"
 import { ClockIcon } from "@heroicons/react/24/outline"
@@ -7,11 +9,7 @@ import useCategoriesStore from "@/src/stores/categories"
 import NavItem from "./header/NavItem"
 import { Category } from "@/src/@types/typings"
 import usePostsStore from "@/src/stores/posts"
-import {
-  getCategoryByTitle,
-  getOtherCategories,
-  getPostsByCategory,
-} from "@/sanity/sanity-utils"
+import { getCategoryByTitle, getOtherCategories, getPostsByCategory } from "@/sanity/sanity-utils"
 import { FaCaretDown } from "react-icons/fa"
 import PrimaryNavItems from "./header/PrimaryNavItems"
 import { Suspense } from "react"
@@ -20,6 +18,8 @@ import TopLine from "./header/TopLine"
 import { client } from "@/sanity/sanity-client"
 import { groq } from "next-sanity"
 import MobileSearch from "./header/MobileSearch"
+import { useQuery } from "@tanstack/react-query"
+import Skeleton from "@mui/material/Skeleton"
 
 const arrayChunk = (arr: Category[], n: number) => {
   const array = arr.slice()
@@ -28,7 +28,7 @@ const arrayChunk = (arr: Category[], n: number) => {
   return chunks
 }
 
-export default async function Header() {
+export default function Header() {
   // const footballCategory = await getCategoryByTitle("Football")
   // const tennisCategory = await getCategoryByTitle("Tennis")
   // const basketballCategory = await getCategoryByTitle("Basketball")
@@ -48,28 +48,53 @@ export default async function Header() {
   // const athleticsPosts = await getPostsByCategory("Athletics")
   //const baseballPosts = await getPostsByCategory("Baseball")
 
-  const others = await client.fetch<Category[]>(
-    groq`
-    *[_type == "category" && !(title in ["Football", "Tennis", "Basketball", "Boxing", "Formula 1", "American Football", "Baseball"])]{
-    _id,
-    _createdAt,
-    title,
-    slug,
-    "subCategories": subCategories[]-> {
-      _id,
-      _createdAt,
-      title,
-      slug,
-      }
-    } | order(title asc)
-  `,
-    {
-      cache: "force-cache",
-      next: {
-        revalidate: 30,
-      },
-    }
-  )
+  // const others = await client.fetch<Category[]>(
+  //   groq`
+  //   *[_type == "category" && !(title in ["Football", "Tennis", "Basketball", "Boxing", "Formula 1", "American Football", "Baseball"])]{
+  //   _id,
+  //   _createdAt,
+  //   title,
+  //   slug,
+  //   "subCategories": subCategories[]-> {
+  //     _id,
+  //     _createdAt,
+  //     title,
+  //     slug,
+  //     }
+  //   } | order(title asc)
+  // `,
+  //   {
+  //     cache: "force-cache",
+  //     next: {
+  //       revalidate: 30,
+  //     },
+  //   }
+  // )
+
+  const { data, isLoading, isError, error } = useQuery({
+    queryKey: ["others"],
+    queryFn: async () => {
+      const response = await client.fetch<Category[]>(
+        groq`*[_type == "category" && !(title in ["Football", "Tennis", "Basketball", "Boxing", "Formula 1", "American Football", "Baseball"])]{
+          _id,
+          _createdAt,
+          title,
+          slug,
+          "subCategories": subCategories[]-> {
+            _id,
+            _createdAt,
+            title,
+            slug,
+            }
+          } | order(title asc)`,
+        {
+          cache: "no-store",
+        }
+      )
+
+      return response
+    },
+  })
 
   return (
     <header className="clearfix">
@@ -93,26 +118,34 @@ export default async function Header() {
               <NavItem title="American Football" />
               <NavItem title="Baseball" />
 
-              <li className="nav-item">
-                <a className="nav-link food" style={{ cursor: "pointer" }}>
-                  • • •
-                </a>
-                <div className="mega-posts-menu">
-                  <div className="row">
-                    {arrayChunk(others, 4).map((arr, index) => (
-                      <ul className="col-2 other-categories" key={index}>
-                        {arr.map(item => (
-                          <li key={item._id}>
-                            <Link href={`/category/${item.slug.current}`}>
-                              {item.title}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    ))}
+              {isLoading && (
+                <li className="nav-item">
+                  <div className="nav-link food">
+                    <Skeleton variant="text" sx={{ fontSize: "19px", width: "80px" }} />
                   </div>
-                </div>
-              </li>
+                </li>
+              )}
+
+              {data && (
+                <li className="nav-item">
+                  <a className="nav-link food" style={{ cursor: "pointer" }}>
+                    • • •
+                  </a>
+                  <div className="mega-posts-menu">
+                    <div className="row">
+                      {arrayChunk(data, 4).map((arr, index) => (
+                        <ul className="col-2 other-categories" key={index}>
+                          {arr.map(item => (
+                            <li key={item._id}>
+                              <Link href={`/category/${item.slug.current}`}>{item.title}</Link>
+                            </li>
+                          ))}
+                        </ul>
+                      ))}
+                    </div>
+                  </div>
+                </li>
+              )}
             </ul>
           </div>
         </div>
