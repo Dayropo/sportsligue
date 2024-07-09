@@ -11,6 +11,8 @@ import { client } from "@/sanity/sanity-client"
 import { groq } from "next-sanity"
 import { useQuery } from "@tanstack/react-query"
 import Skeleton from "@mui/material/Skeleton"
+import Tag300x250 from "../adpublisher/Tag300x250"
+import Tag300x600 from "../adpublisher/Tag300x600"
 
 export default function Sidebar({ tags }: { tags?: string[] }) {
   const { data, isLoading, isError, error } = useQuery({
@@ -80,13 +82,15 @@ export default function Sidebar({ tags }: { tags?: string[] }) {
 
         {isLoading && (
           <div className="widget slider-widget">
-            <Skeleton animation="wave"
+            <Skeleton
+              animation="wave"
               variant="text"
               sx={{ fontSize: "18px", width: "100px", marginBottom: "12px", paddingBottom: "15px" }}
             />
 
             <div className="lightbox-slide">
-              <Skeleton animation="wave"
+              <Skeleton
+                animation="wave"
                 variant="rectangular"
                 sx={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
               />
@@ -95,7 +99,8 @@ export default function Sidebar({ tags }: { tags?: string[] }) {
             <ul className="small-posts">
               {[...Array(3)].map((x, i) => (
                 <li key={i}>
-                  <Skeleton animation="wave"
+                  <Skeleton
+                    animation="wave"
                     variant="rectangular"
                     width={80}
                     height={80}
@@ -106,7 +111,11 @@ export default function Sidebar({ tags }: { tags?: string[] }) {
                     <Skeleton animation="wave" variant="text" sx={{ fontSize: "14px" }} />
 
                     <ul className="post-tags">
-                      <Skeleton animation="wave" variant="text" sx={{ fontSize: "12px", width: "100px" }} />
+                      <Skeleton
+                        animation="wave"
+                        variant="text"
+                        sx={{ fontSize: "12px", width: "100px" }}
+                      />
                     </ul>
                   </div>
                 </li>
@@ -153,6 +162,8 @@ export default function Sidebar({ tags }: { tags?: string[] }) {
           <div className="advertisement">
             <AdSense300x250 />
 
+            <Tag300x250 />
+
             <a
               href="https://kn6m4zjsiy3.typeform.com/to/JNmi3cD2"
               target="_blank"
@@ -168,8 +179,10 @@ export default function Sidebar({ tags }: { tags?: string[] }) {
           </div>
         )}
 
-        {/* <div className="advertisement">
-          <a
+        <div className="advertisement">
+          <Tag300x600 />
+
+          {/* <a
             href="https://refpa4948989.top/L?tag=d_2732079m_1573c_&site=2732079&ad=1573"
             target="_blank"
             rel="noopener noreferrer"
@@ -180,8 +193,8 @@ export default function Sidebar({ tags }: { tags?: string[] }) {
               height={600}
               alt="300x600"
             />
-          </a>
-        </div> */}
+          </a> */}
+        </div>
 
         {isLoading && (
           <div className="widget tags-widget">

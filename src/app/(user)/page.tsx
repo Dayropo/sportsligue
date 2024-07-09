@@ -14,6 +14,8 @@ import { client } from "@/sanity/sanity-client"
 import { Post } from "@/src/@types/typings"
 import { groq } from "next-sanity"
 import AdSense728x90 from "@/src/components/adsense/Adsense728x90"
+import { AdSlot } from "@/src/components/adpublisher/Slots"
+import { gpSlots } from "@/src/components/adpublisher/adSlots"
 //import dynamic from "next/dynamic"
 
 // export const dynamic = "force-dynamic"
@@ -145,6 +147,8 @@ export default function Home() {
 
   return (
     <div id="container">
+      <AdSlot slots={gpSlots} />
+      
       <Header />
 
       <section id="content-section">

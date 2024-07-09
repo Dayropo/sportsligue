@@ -139,6 +139,9 @@ devDependencies:
   '@sanity/eslint-config-studio':
     specifier: ^3.0.0
     version: 3.0.0(eslint@8.46.0)(typescript@5.1.6)
+  '@types/google-publisher-tag':
+    specifier: ^1.20240701.0
+    version: 1.20240701.0
 
 packages:
 
@@ -2877,6 +2880,10 @@ packages:
       '@types/minimatch': 5.1.2
       '@types/node': 20.4.8
     dev: false
+
+  /@types/google-publisher-tag@1.20240701.0:
+    resolution: {integrity: sha512-in9UvIyaIMnQc+d33I3287d3OCGt2sJw3SsTebinaMDYyzG8ZcduuXofagPM8VN1di/66pGrxga2EG839g/jMg==}
+    dev: true
 
   /@types/gtag.js@0.0.17:
     resolution: {integrity: sha512-OsSO6Yyuygr3DeeTovOY0ppLiAVHoXg4CSanO9/vzDQCV+e8pkZNE+HR2dVxGJfUbtRe2IqzC97PYuHSNUepJw==}

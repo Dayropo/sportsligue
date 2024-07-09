@@ -5,11 +5,7 @@ import { usePathname, useSearchParams } from "next/navigation"
 import { useEffect } from "react"
 import { pageview } from "@/src/libs/gtag"
 
-export default function GoogleAnalytics({
-  GA_MEASUREMENT_ID,
-}: {
-  GA_MEASUREMENT_ID: string
-}) {
+export default function GoogleAnalytics({ GA_MEASUREMENT_ID }: { GA_MEASUREMENT_ID: string }) {
   const pathname = usePathname()
   const searchParams = useSearchParams()
 
@@ -25,6 +21,7 @@ export default function GoogleAnalytics({
         strategy="lazyOnload"
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
       />
+
       <Script
         id="google-analytics"
         strategy="lazyOnload"
@@ -40,6 +37,7 @@ export default function GoogleAnalytics({
                 `,
         }}
       />
+
       <Script
         id="adsbygoogle-init"
         async
@@ -47,11 +45,13 @@ export default function GoogleAnalytics({
         crossOrigin="anonymous"
         strategy="lazyOnload"
       />
+
       <Script
         strategy="lazyOnload"
         async
         src="https://www.googletagmanager.com/gtag/js?id=AW-11334180564"
       />
+
       <Script
         id="google-adconversion"
         strategy="lazyOnload"
