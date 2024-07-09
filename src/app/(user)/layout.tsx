@@ -7,6 +7,7 @@ import GoogleAnalytics from "@/src/components/analytics/GoogleAnalytics"
 import { Roboto_Condensed } from "next/font/google"
 import Script from "next/script"
 import TanstackProvider from "../../providers/TanstackProvider"
+import GooglePublisher from "@/src/components/adpublisher/GooglePublisher"
 
 const robotoCondensed = Roboto_Condensed({
   weight: ["400", "700"],
@@ -65,6 +66,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         w[r](cid,{id:1541984750,domain:w[r+'h']});
         })(window,document,'script',['ftd.agency'],'ABNS');
     `}</Script>
+
+      <GooglePublisher />
 
       <body className={`${robotoCondensed.className}  boxed-style`}>
         <NextAuthProvider>

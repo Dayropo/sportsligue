@@ -55,6 +55,7 @@
     "zustand": "^4.4.1"
   },
   "devDependencies": {
-    "@sanity/eslint-config-studio": "^3.0.0"
+    "@sanity/eslint-config-studio": "^3.0.0",
+    "@types/google-publisher-tag": "^1.20240701.0"
   }
 }
