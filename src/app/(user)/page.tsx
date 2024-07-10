@@ -14,8 +14,7 @@ import { client } from "@/sanity/sanity-client"
 import { Post } from "@/src/@types/typings"
 import { groq } from "next-sanity"
 import AdSense728x90 from "@/src/components/adsense/Adsense728x90"
-import { AdSlot } from "@/src/components/adpublisher/Slots"
-import { gpSlots } from "@/src/components/adpublisher/adSlots"
+import { DefineAdSlot, RequestAds } from "@/src/components/adpublisher/GPT"
 //import dynamic from "next/dynamic"
 
 // export const dynamic = "force-dynamic"
@@ -147,8 +146,6 @@ export default function Home() {
 
   return (
     <div id="container">
-      <AdSlot slots={gpSlots} />
-      
       <Header />
 
       <section id="content-section">
@@ -165,7 +162,12 @@ export default function Home() {
               <Image src="/images/adsense/728x90.gif" width={728} height={90} alt="728x90" />
             </a> */}
 
-            <AdSense728x90 />
+            {/* <AdSense728x90 /> */}
+            <DefineAdSlot
+              adUnit="/23072633878/728x90"
+              size={[728, 90]}
+              slotId="div-gpt-ad-1720451550067-0"
+            />
           </div>
           {/* <!-- End Advertisement --> */}
 
