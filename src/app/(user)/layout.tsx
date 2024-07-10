@@ -7,7 +7,7 @@ import GoogleAnalytics from "@/src/components/analytics/GoogleAnalytics"
 import { Roboto_Condensed } from "next/font/google"
 import Script from "next/script"
 import TanstackProvider from "../../providers/TanstackProvider"
-import GooglePublisher from "@/src/components/adpublisher/GooglePublisher"
+import { InitializeGPT } from "@/src/components/adpublisher/GPT"
 
 const robotoCondensed = Roboto_Condensed({
   weight: ["400", "700"],
@@ -67,7 +67,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         })(window,document,'script',['ftd.agency'],'ABNS');
     `}</Script>
 
-      <GooglePublisher />
+      {/* <GooglePublisher /> */}
+
+      <InitializeGPT />
 
       <body className={`${robotoCondensed.className}  boxed-style`}>
         <NextAuthProvider>

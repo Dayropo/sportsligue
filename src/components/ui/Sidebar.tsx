@@ -11,8 +11,7 @@ import { client } from "@/sanity/sanity-client"
 import { groq } from "next-sanity"
 import { useQuery } from "@tanstack/react-query"
 import Skeleton from "@mui/material/Skeleton"
-import Tag300x250 from "../adpublisher/Tag300x250"
-import Tag300x600 from "../adpublisher/Tag300x600"
+import { DefineAdSlot, RequestAds } from "../adpublisher/GPT"
 
 export default function Sidebar({ tags }: { tags?: string[] }) {
   const { data, isLoading, isError, error } = useQuery({
@@ -162,7 +161,12 @@ export default function Sidebar({ tags }: { tags?: string[] }) {
           <div className="advertisement">
             <AdSense300x250 />
 
-            <Tag300x250 />
+            {/* <Tag300x250 /> */}
+            <DefineAdSlot
+              adUnit="/23072633878/300x250"
+              size={[300, 250]}
+              slotId="div-gpt-ad-1720450834557-0"
+            />
 
             <a
               href="https://kn6m4zjsiy3.typeform.com/to/JNmi3cD2"
@@ -180,7 +184,12 @@ export default function Sidebar({ tags }: { tags?: string[] }) {
         )}
 
         <div className="advertisement">
-          <Tag300x600 />
+          {/* <Tag300x600 /> */}
+          <DefineAdSlot
+            adUnit="/23072633878/300x600"
+            size={[300, 600]}
+            slotId="div-gpt-ad-1720451125756-0"
+          />
 
           {/* <a
             href="https://refpa4948989.top/L?tag=d_2732079m_1573c_&site=2732079&ad=1573"
