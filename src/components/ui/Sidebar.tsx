@@ -165,7 +165,7 @@ export default function Sidebar({ tags }: { tags?: string[] }) {
             <DefineAdSlot
               adUnit="/23072633878/300x250"
               size={[300, 250]}
-              slotId="div-gpt-ad-1720450834557-0"
+             // slotId="div-gpt-ad-1720450834557-0"
             />
 
             <a
@@ -188,7 +188,7 @@ export default function Sidebar({ tags }: { tags?: string[] }) {
           <DefineAdSlot
             adUnit="/23072633878/300x600"
             size={[300, 600]}
-            slotId="div-gpt-ad-1720451125756-0"
+            //slotId="div-gpt-ad-1720451125756-0"
           />
 
           {/* <a

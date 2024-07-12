@@ -25,7 +25,7 @@ import AdSense300x250 from "./adsense/AdSense300x250"
 
 export default function HomePage() {
   const [isMobile, setIsMobile] = useState(false)
-  
+
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["featured"],
     queryFn: async () => {
@@ -98,13 +98,13 @@ export default function HomePage() {
                   [320, 50],
                   [320, 100],
                 ]}
-                slotId="div-gpt-ad-1720451500054-0"
+                // slotId="div-gpt-ad-1720451500054-0"
               />
             ) : (
               <DefineAdSlot
                 adUnit="/23072633878/728x90"
                 size={[728, 90]}
-                slotId="div-gpt-ad-1720451550067-0"
+                // slotId="div-gpt-ad-1720451550067-0"
               />
             )}
           </div>
@@ -300,7 +300,7 @@ export default function HomePage() {
                     <DefineAdSlot
                       adUnit="/23072633878/300x250"
                       size={[300, 250]}
-                      slotId="div-gpt-ad-1720450834557-0"
+                      // slotId="div-gpt-ad-1720450834557-0"
                     />
 
                     <a
@@ -323,7 +323,7 @@ export default function HomePage() {
                   <DefineAdSlot
                     adUnit="/23072633878/300x600"
                     size={[300, 600]}
-                    slotId="div-gpt-ad-1720451125756-0"
+                    // slotId="div-gpt-ad-1720451125756-0"
                   />
 
                   {/* <a

@@ -55,12 +55,14 @@ export function InitializeGPT() {
 export function DefineAdSlot({
   adUnit,
   size,
-  slotId,
-}: {
+}: // slotId,
+{
   adUnit: string
   size: googletag.GeneralSize
-  slotId: string
+  // slotId: string
 }) {
+  const slotId = `slot-${adSlotCount++}`
+
   useEffect(() => {
     // Register the slot with GPT when the component is loaded.
     googletag.cmd.push(() => {
