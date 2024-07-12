@@ -58,7 +58,7 @@ export function DefineAdSlot({
   slotId,
 }: {
   adUnit: string
-  size: [number, number]
+  size: googletag.GeneralSize
   slotId: string
 }) {
   useEffect(() => {
@@ -115,7 +115,7 @@ export function RequestAds() {
  * [Minimize layout shift](https://developers.google.com/publisher-tag/guides/minimize-layout-shift)
  * to learn more about strategies for sizing ad slot containers.
  */
-function getMinimumSlotSize(size: [number, number]) {
+function getMinimumSlotSize(size: googletag.GeneralSize) {
   const maxValue = Number.MAX_VALUE
 
   let minW = Number.MAX_VALUE
@@ -126,10 +126,10 @@ function getMinimumSlotSize(size: [number, number]) {
     const sizes = size.length <= 2 && !Array.isArray(size[0]) ? [size] : size
 
     for (const size of sizes) {
-      //   if (Array.isArray(size) && size[0] !== "fluid") {
-      if (Array.isArray(size)) {
-        minW = Math.min(size[0], minW)
-        minH = Math.min(size[1], minH)
+      if (Array.isArray(size) && size[0] !== "fluid") {
+        // if (Array.isArray(size)) {
+        minW = Math.min(Number(size[0]), minW)
+        minH = Math.min(Number(size[1]), minH)
       }
     }
   }
