@@ -78,6 +78,21 @@ export default function HomePage() {
   // }, [])
 
   useEffect(() => {
+    if (typeof window !== "undefined") {
+      // Ensure we can interact with the GPT command array.
+      window.googletag = window.googletag || { cmd: [] }
+
+      // Prepare GPT to display ads.
+      googletag.cmd.push(() => {
+        // Disable initial load, to precisely control when ads are requested.
+        googletag.pubads().disableInitialLoad()
+
+        // Enable SRA and services.
+        googletag.pubads().enableSingleRequest()
+        googletag.enableServices()
+      })
+    }
+
     googletag.cmd.push(() => {
       const slot1 = googletag.defineSlot(
         "/23072633878/728x90",
@@ -132,8 +147,8 @@ export default function HomePage() {
     //     ?.addService(googletag.pubads())
     // )
 
-    googletag.pubads().enableSingleRequest()
-    googletag.enableServices()
+    // googletag.pubads().enableSingleRequest()
+    // googletag.enableServices()
 
     return () => {
       googletag.cmd.push(() => {
