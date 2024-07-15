@@ -22,8 +22,13 @@ import SliderWrapper from "./SliderWrapper"
 import Link from "next/link"
 import urlFor from "@/sanity/urlFor"
 import AdSense300x250 from "./adsense/AdSense300x250"
+import { usePathname, useRouter, useSearchParams } from "next/navigation"
+
+let adSlots: googletag.Slot[] = []
 
 export default function HomePage() {
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
   const [isMobile, setIsMobile] = useState(false)
 
   const { data, isLoading, isError, error } = useQuery({
@@ -56,21 +61,84 @@ export default function HomePage() {
 
   isError && console.error(error)
 
-  RequestAds()
+  // RequestAds()
+
+  // useEffect(() => {
+  //   const handleResize = () => {
+  //     setIsMobile(window.innerWidth <= 768) // Adjust the breakpoint as needed
+  //   }
+
+  //   handleResize() // Check the initial screen size
+
+  //   window.addEventListener("resize", handleResize) // Listen for window resize events
+
+  //   return () => {
+  //     window.removeEventListener("resize", handleResize) // Clean up the event listener
+  //   }
+  // }, [])
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768) // Adjust the breakpoint as needed
-    }
+    googletag.cmd.push(() => {
+      const slot1 = googletag.defineSlot(
+        "/23072633878/728x90",
+        [728, 90],
+        "div-gpt-ad-1720451550067-0"
+      )
+      if (slot1) {
+        slot1.addService(googletag.pubads())
+        googletag.display(slot1)
+        adSlots.push(slot1)
+      }
 
-    handleResize() // Check the initial screen size
+      const slot2 = googletag.defineSlot(
+        "/23072633878/300x250",
+        [300, 250],
+        "div-gpt-ad-1720450834557-0"
+      )
+      if (slot2) {
+        slot2.addService(googletag.pubads())
+        googletag.display(slot2)
+        adSlots.push(slot2)
+      }
 
-    window.addEventListener("resize", handleResize) // Listen for window resize events
+      const slot3 = googletag.defineSlot(
+        "/23072633878/300x600",
+        [300, 600],
+        "div-gpt-ad-1720451125756-0"
+      )
+      if (slot3) {
+        slot3.addService(googletag.pubads())
+        googletag.display(slot3)
+        adSlots.push(slot3)
+      }
+    })
+
+    // adSlots.push(
+    //   googletag
+    //     .defineSlot("/23072633878/728x90", [728, 90], "div-gpt-ad-1720451550067-0")
+    //     ?.addService(googletag.pubads())
+    // )
+    // adSlots.push(
+    //   googletag
+    //     .defineSlot("/23072633878/300x250", [300, 250], "div-gpt-ad-1720450834557-0")
+    //     ?.addService(googletag.pubads())
+    // )
+    // adSlots.push(
+    //   googletag
+    //     .defineSlot("/23072633878/300x600", [300, 600], "div-gpt-ad-1720451125756-0")
+    //     ?.addService(googletag.pubads())
+    // )
+
+    googletag.pubads().enableSingleRequest()
+    googletag.enableServices()
 
     return () => {
-      window.removeEventListener("resize", handleResize) // Clean up the event listener
+      googletag.cmd.push(() => {
+        adSlots.forEach(slot => googletag.destroySlots([slot]))
+        adSlots = []
+      })
     }
-  }, [])
+  }, [pathname, searchParams])
 
   return (
     <div id="container">
@@ -91,7 +159,7 @@ export default function HomePage() {
           </a> */}
 
             {/* <AdSense728x90 /> */}
-            {isMobile ? (
+            {/* {isMobile ? (
               <DefineAdSlot
                 adUnit="/23072633878/320x100"
                 size={[
@@ -106,7 +174,7 @@ export default function HomePage() {
                 size={[728, 90]}
                 // slotId="div-gpt-ad-1720451550067-0"
               />
-            )}
+            )} */}
           </div>
           {/* <!-- End Advertisement --> */}
 
