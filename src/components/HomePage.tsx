@@ -86,7 +86,6 @@ export default function HomePage() {
       )
       if (slot1) {
         slot1.addService(googletag.pubads())
-        googletag.display(slot1)
         adSlots.push(slot1)
       }
 
@@ -97,7 +96,6 @@ export default function HomePage() {
       )
       if (slot2) {
         slot2.addService(googletag.pubads())
-        googletag.display(slot2)
         adSlots.push(slot2)
       }
 
@@ -108,9 +106,14 @@ export default function HomePage() {
       )
       if (slot3) {
         slot3.addService(googletag.pubads())
-        googletag.display(slot3)
         adSlots.push(slot3)
       }
+    })
+
+    googletag.cmd.push(() => {
+      googletag.display("div-gpt-ad-1720451550067-0")
+      googletag.display("div-gpt-ad-1720450834557-0")
+      googletag.display("div-gpt-ad-1720451125756-0")
     })
 
     // adSlots.push(
@@ -175,6 +178,10 @@ export default function HomePage() {
                 // slotId="div-gpt-ad-1720451550067-0"
               />
             )} */}
+            <div
+              id="div-gpt-ad-1720451550067-0"
+              style={{ minWidth: "728px", minHeight: "90px" }}
+            ></div>
           </div>
           {/* <!-- End Advertisement --> */}
 
@@ -365,11 +372,15 @@ export default function HomePage() {
                     <AdSense300x250 />
 
                     {/* <Tag300x250 /> */}
-                    <DefineAdSlot
+                    {/* <DefineAdSlot
                       adUnit="/23072633878/300x250"
                       size={[300, 250]}
                       // slotId="div-gpt-ad-1720450834557-0"
-                    />
+                    /> */}
+                    <div
+                      id="div-gpt-ad-1720450834557-0"
+                      style={{ minWidth: "300px", minHeight: "250px" }}
+                    ></div>
 
                     <a
                       href="https://kn6m4zjsiy3.typeform.com/to/JNmi3cD2"
@@ -388,11 +399,15 @@ export default function HomePage() {
 
                 <div className="advertisement">
                   {/* <Tag300x600 /> */}
-                  <DefineAdSlot
+                  {/* <DefineAdSlot
                     adUnit="/23072633878/300x600"
                     size={[300, 600]}
                     // slotId="div-gpt-ad-1720451125756-0"
-                  />
+                  /> */}
+                  <div
+                    id="div-gpt-ad-1720451125756-0"
+                    style={{ minWidth: "300px", minHeight: "600px" }}
+                  ></div>
 
                   {/* <a
             href="https://refpa4948989.top/L?tag=d_2732079m_1573c_&site=2732079&ad=1573"
