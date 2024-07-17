@@ -292,22 +292,28 @@ export default function PostBody({ slug }: { slug: string }) {
                 </a> */}
 
                 {/* <AdSense728x90 /> */}
-                {isMobile ? (
+                {/* {isMobile ? (
                   <DefineAdSlot
                     adUnit="/23072633878/320x100"
                     size={[
                       [320, 50],
                       [320, 100],
                     ]}
-                    // slotId="div-gpt-ad-1720451500054-0"
+                    slotId="div-gpt-ad-1720451500054-0"
                   />
                 ) : (
                   <DefineAdSlot
                     adUnit="/23072633878/728x90"
                     size={[728, 90]}
-                    //  slotId="div-gpt-ad-1720451550067-0"
+                    slotId="div-gpt-ad-1720451550067-0"
                   />
-                )}
+                )} */}
+
+                <DefineAdSlot
+                  adUnit="/23072633878/728x90"
+                  size={[728, 90]}
+                  slotId="div-gpt-ad-1720451550067-0"
+                />
               </div>
               {/* End Advertisement */}
 
@@ -637,7 +643,7 @@ export default function PostBody({ slug }: { slug: string }) {
                     <DefineAdSlot
                       adUnit="/23072633878/300x250"
                       size={[300, 250]}
-                      // slotId="div-gpt-ad-1720450834557-0"
+                      slotId="div-gpt-ad-1720450834557-0"
                     />
 
                     <a
@@ -660,7 +666,7 @@ export default function PostBody({ slug }: { slug: string }) {
                   <DefineAdSlot
                     adUnit="/23072633878/300x600"
                     size={[300, 600]}
-                    // slotId="div-gpt-ad-1720451125756-0"
+                    slotId="div-gpt-ad-1720451125756-0"
                   />
 
                   {/* <a
