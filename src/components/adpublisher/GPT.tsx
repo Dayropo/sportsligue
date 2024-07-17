@@ -30,9 +30,6 @@ const GPT_LIMITED_ADS_URL = "https://pagead2.googlesyndication.com/tag/js/gpt.js
 let adSlots: AdSlot[] = []
 let adSlotCount = 0
 
-const pathname = usePathname()
-const searchParams = useSearchParams()
-
 if (typeof window !== "undefined") {
   // Ensure we can interact with the GPT command array.
   window.googletag = window.googletag || { cmd: [] }
@@ -73,6 +70,8 @@ export function DefineAdSlot({
   slotId: string
 }) {
   // const slotId = `slot-${adSlotCount++}`
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
 
   useEffect(() => {
     // Register the slot with GPT when the component is loaded.
@@ -85,6 +84,7 @@ export function DefineAdSlot({
         adSlots.push({ id: slotId, slot })
       }
     })
+    console.log("define slot")
 
     // Clean up the slot when the component is unloaded.
     return () => {
@@ -102,6 +102,8 @@ export function DefineAdSlot({
           }
         }
       })
+
+      console.log("define slot cleanup")
     }
   }, [pathname, searchParams])
 
@@ -116,6 +118,9 @@ export function DefineAdSlot({
 }
 
 export function RequestAds() {
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
+
   useEffect(() => {
     googletag.cmd.push(() => {
       // Request ads for all ad slots defined up to this point.
@@ -129,6 +134,8 @@ export function RequestAds() {
       const slots = adSlots.map(adSlot => adSlot.slot)
       googletag.pubads().refresh(slots)
     })
+
+    console.log("request ads")
   }, [pathname, searchParams])
 }
 
