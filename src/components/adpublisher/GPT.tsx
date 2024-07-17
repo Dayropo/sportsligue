@@ -84,7 +84,6 @@ export function DefineAdSlot({
         adSlots.push({ id: slotId, slot })
       }
     })
-    console.log("define slot")
 
     // Clean up the slot when the component is unloaded.
     return () => {
@@ -102,8 +101,6 @@ export function DefineAdSlot({
           }
         }
       })
-
-      console.log("define slot cleanup")
     }
   }, [pathname, searchParams])
 
@@ -135,9 +132,7 @@ export function RequestAds() {
         const slots = adSlots.map(adSlot => adSlot.slot)
         googletag.pubads().refresh(slots)
       })
-
-      console.log("request ads")
-    }, 5000)
+    }, 3000)
   }, [pathname, searchParams])
 }
 
