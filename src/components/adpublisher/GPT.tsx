@@ -122,20 +122,22 @@ export function RequestAds() {
   const searchParams = useSearchParams()
 
   useEffect(() => {
-    googletag.cmd.push(() => {
-      // Request ads for all ad slots defined up to this point.
-      //
-      // In many real world scenarios, requesting ads for *all*
-      // slots is not optimal. Instead, care should be taken to
-      // only refresh newly added/updated slots.
-      //  const slots = Object.values(adSlots)
-      //googletag.pubads().refresh(slots)
+    setTimeout(() => {
+      googletag.cmd.push(() => {
+        // Request ads for all ad slots defined up to this point.
+        //
+        // In many real world scenarios, requesting ads for *all*
+        // slots is not optimal. Instead, care should be taken to
+        // only refresh newly added/updated slots.
+        //  const slots = Object.values(adSlots)
+        //googletag.pubads().refresh(slots)
 
-      const slots = adSlots.map(adSlot => adSlot.slot)
-      googletag.pubads().refresh(slots)
-    })
+        const slots = adSlots.map(adSlot => adSlot.slot)
+        googletag.pubads().refresh(slots)
+      })
 
-    console.log("request ads")
+      console.log("request ads")
+    }, 5000)
   }, [pathname, searchParams])
 }
 
