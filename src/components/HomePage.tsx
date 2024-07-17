@@ -22,13 +22,8 @@ import SliderWrapper from "./SliderWrapper"
 import Link from "next/link"
 import urlFor from "@/sanity/urlFor"
 import AdSense300x250 from "./adsense/AdSense300x250"
-import { usePathname, useRouter, useSearchParams } from "next/navigation"
-
-let adSlots: googletag.Slot[] = []
 
 export default function HomePage() {
-  const pathname = usePathname()
-  const searchParams = useSearchParams()
   const [isMobile, setIsMobile] = useState(false)
 
   const { data, isLoading, isError, error } = useQuery({
@@ -77,87 +72,6 @@ export default function HomePage() {
   //   }
   // }, [])
 
-  // useEffect(() => {
-  //   if (typeof window !== "undefined") {
-  //     // Ensure we can interact with the GPT command array.
-  //     window.googletag = window.googletag || { cmd: [] }
-
-  //     // Prepare GPT to display ads.
-  //     googletag.cmd.push(() => {
-  //       // Disable initial load, to precisely control when ads are requested.
-  //       googletag.pubads().disableInitialLoad()
-
-  //       // Enable SRA and services.
-  //       googletag.pubads().enableSingleRequest()
-  //       googletag.enableServices()
-  //     })
-  //   }
-
-  //   googletag.cmd.push(() => {
-  //     const slot1 = googletag.defineSlot(
-  //       "/23072633878/728x90",
-  //       [728, 90],
-  //       "div-gpt-ad-1720451550067-0"
-  //     )
-  //     if (slot1) {
-  //       slot1.addService(googletag.pubads())
-  //       adSlots.push(slot1)
-  //     }
-
-  //     const slot2 = googletag.defineSlot(
-  //       "/23072633878/300x250",
-  //       [300, 250],
-  //       "div-gpt-ad-1720450834557-0"
-  //     )
-  //     if (slot2) {
-  //       slot2.addService(googletag.pubads())
-  //       adSlots.push(slot2)
-  //     }
-
-  //     const slot3 = googletag.defineSlot(
-  //       "/23072633878/300x600",
-  //       [300, 600],
-  //       "div-gpt-ad-1720451125756-0"
-  //     )
-  //     if (slot3) {
-  //       slot3.addService(googletag.pubads())
-  //       adSlots.push(slot3)
-  //     }
-  //   })
-
-  //   googletag.cmd.push(() => {
-  //     googletag.display("div-gpt-ad-1720451550067-0")
-  //     googletag.display("div-gpt-ad-1720450834557-0")
-  //     googletag.display("div-gpt-ad-1720451125756-0")
-  //   })
-
-  //   // adSlots.push(
-  //   //   googletag
-  //   //     .defineSlot("/23072633878/728x90", [728, 90], "div-gpt-ad-1720451550067-0")
-  //   //     ?.addService(googletag.pubads())
-  //   // )
-  //   // adSlots.push(
-  //   //   googletag
-  //   //     .defineSlot("/23072633878/300x250", [300, 250], "div-gpt-ad-1720450834557-0")
-  //   //     ?.addService(googletag.pubads())
-  //   // )
-  //   // adSlots.push(
-  //   //   googletag
-  //   //     .defineSlot("/23072633878/300x600", [300, 600], "div-gpt-ad-1720451125756-0")
-  //   //     ?.addService(googletag.pubads())
-  //   // )
-
-  //   // googletag.pubads().enableSingleRequest()
-  //   // googletag.enableServices()
-
-  //   return () => {
-  //     googletag.cmd.push(() => {
-  //       adSlots.forEach(slot => googletag.destroySlots([slot]))
-  //       adSlots = []
-  //     })
-  //   }
-  // }, [pathname, searchParams])
-
   return (
     <div id="container">
       <Header />
@@ -199,11 +113,6 @@ export default function HomePage() {
               size={[728, 90]}
               slotId="div-gpt-ad-1720451550067-0"
             />
-
-            {/* <div
-              id="div-gpt-ad-1720451550067-0"
-              style={{ minWidth: "728px", minHeight: "90px" }}
-            ></div> */}
           </div>
           {/* <!-- End Advertisement --> */}
 
@@ -214,15 +123,13 @@ export default function HomePage() {
               {/* <!-- End Posts-block --> */}
               {/* <!-- Advertisement --> */}
               <div className="advertisement">
-                {/* <a
-                href="https://kn6m4zjsiy3.typeform.com/to/JNmi3cD2"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Image src="/images/adsense/728x90.gif" width={728} height={90} alt="728x90" />
-              </a> */}
-
-                <AdSense728x90 />
+                <a
+                  href="https://kn6m4zjsiy3.typeform.com/to/JNmi3cD2"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Image src="/images/adsense/728x90.gif" width={728} height={90} alt="728x90" />
+                </a>
               </div>
               {/* <!-- End Advertisement --> */}
               {/* <!-- Posts-block --> */}
@@ -251,13 +158,15 @@ export default function HomePage() {
               {/* <!-- End Posts-block --> */}
               {/* <!-- Advertisement --> */}
               <div className="advertisement">
-                <a
+                {/* <a
                   href="https://kn6m4zjsiy3.typeform.com/to/JNmi3cD2"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <Image src="/images/adsense/728x90.gif" width={728} height={90} alt="728x90" />
-                </a>
+                </a> */}
+
+                <AdSense728x90 />
               </div>
               {/* <!-- End Advertisement --> */}
               {/* <!-- Posts-block --> */}
@@ -393,16 +302,11 @@ export default function HomePage() {
                   <div className="advertisement">
                     <AdSense300x250 />
 
-                    {/* <Tag300x250 /> */}
                     <DefineAdSlot
                       adUnit="/23072633878/300x250"
                       size={[300, 250]}
                       slotId="div-gpt-ad-1720450834557-0"
                     />
-                    {/* <div
-                      id="div-gpt-ad-1720450834557-0"
-                      style={{ minWidth: "300px", minHeight: "250px" }}
-                    ></div> */}
 
                     <a
                       href="https://kn6m4zjsiy3.typeform.com/to/JNmi3cD2"
@@ -419,31 +323,20 @@ export default function HomePage() {
                   </div>
                 )}
 
-                <div className="advertisement">
-                  {/* <Tag300x600 /> */}
-                  <DefineAdSlot
-                    adUnit="/23072633878/300x600"
-                    size={[300, 600]}
-                    slotId="div-gpt-ad-1720451125756-0"
-                  />
-                  {/* <div
-                    id="div-gpt-ad-1720451125756-0"
-                    style={{ minWidth: "300px", minHeight: "600px" }}
-                  ></div> */}
-
-                  {/* <a
-            href="https://refpa4948989.top/L?tag=d_2732079m_1573c_&site=2732079&ad=1573"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              src="/images/adsense/Media9865__af300_600.gif"
-              width={300}
-              height={600}
-              alt="300x600"
-            />
-          </a> */}
-                </div>
+                {/* <div className="advertisement">
+                  <a
+                    href="https://refpa4948989.top/L?tag=d_2732079m_1573c_&site=2732079&ad=1573"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Image
+                      src="/images/adsense/Media9865__af300_600.gif"
+                      width={300}
+                      height={600}
+                      alt="300x600"
+                    />
+                  </a>
+                </div> */}
 
                 {isLoading && (
                   <div className="widget tags-widget">

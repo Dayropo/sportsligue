@@ -161,7 +161,6 @@ export default function Sidebar({ tags }: { tags?: string[] }) {
           <div className="advertisement">
             <AdSense300x250 />
 
-            {/* <Tag300x250 /> */}
             <DefineAdSlot
               adUnit="/23072633878/300x250"
               size={[300, 250]}
@@ -183,15 +182,8 @@ export default function Sidebar({ tags }: { tags?: string[] }) {
           </div>
         )}
 
-        <div className="advertisement">
-          {/* <Tag300x600 /> */}
-          <DefineAdSlot
-            adUnit="/23072633878/300x600"
-            size={[300, 600]}
-            slotId="div-gpt-ad-1720451125756-0"
-          />
-
-          {/* <a
+        {/* <div className="advertisement">
+          <a
             href="https://refpa4948989.top/L?tag=d_2732079m_1573c_&site=2732079&ad=1573"
             target="_blank"
             rel="noopener noreferrer"
@@ -202,8 +194,8 @@ export default function Sidebar({ tags }: { tags?: string[] }) {
               height={600}
               alt="300x600"
             />
-          </a> */}
-        </div>
+          </a>
+        </div> */}
 
         {isLoading && (
           <div className="widget tags-widget">
