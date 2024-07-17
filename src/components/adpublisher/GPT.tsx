@@ -8,6 +8,7 @@
 
 import { useEffect } from "react"
 import Script from "next/script"
+import { usePathname, useSearchParams } from "next/navigation"
 
 // import sharedStyles from '../styles/shared.module.css';
 
@@ -15,12 +16,18 @@ interface MyObject {
   [key: string]: any
 }
 
+interface AdSlot {
+  id: string
+  slot: googletag.Slot
+}
+
 // Official GPT sources.
 const GPT_STANDARD_URL = "https://securepubads.g.doubleclick.net/tag/js/gpt.js"
 const GPT_LIMITED_ADS_URL = "https://pagead2.googlesyndication.com/tag/js/gpt.js"
 
 // Keep track of defined ad slots.
-let adSlots: MyObject = {}
+//let adSlots: MyObject = {}
+let adSlots: AdSlot[] = []
 let adSlotCount = 0
 
 if (typeof window !== "undefined") {
@@ -40,7 +47,8 @@ if (typeof window !== "undefined") {
 
 export function InitializeGPT() {
   // Reset tracking variables.
-  adSlots = {}
+  //adSlots = {}
+  adSlots = []
   adSlotCount = 0
 
   return (
@@ -55,13 +63,15 @@ export function InitializeGPT() {
 export function DefineAdSlot({
   adUnit,
   size,
-}: // slotId,
-{
+  slotId,
+}: {
   adUnit: string
   size: googletag.GeneralSize
-  // slotId: string
+  slotId: string
 }) {
-  const slotId = `slot-${adSlotCount++}`
+  // const slotId = `slot-${adSlotCount++}`
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
 
   useEffect(() => {
     // Register the slot with GPT when the component is loaded.
@@ -70,20 +80,32 @@ export function DefineAdSlot({
       if (slot) {
         slot.addService(googletag.pubads())
         googletag.display(slot)
-        adSlots[slotId] = slot
+        //adSlots[slotId] = slot
+        adSlots.push({ id: slotId, slot })
       }
     })
+    console.log("define slot")
 
     // Clean up the slot when the component is unloaded.
     return () => {
       googletag.cmd.push(() => {
-        if (adSlots[slotId]) {
-          googletag.destroySlots([adSlots[slotId]])
-          delete adSlots[slotId]
+        // if (adSlots[slotId]) {
+        //   googletag.destroySlots([adSlots[slotId]])
+        //   delete adSlots[slotId]
+        // }
+
+        if (adSlots.some(adSlot => adSlot.id === slotId)) {
+          const slot = adSlots.find(adSlot => adSlot.id === slotId)
+          if (slot) {
+            googletag.destroySlots([slot.slot])
+            adSlots = adSlots.filter(adSlot => adSlot.id !== slotId)
+          }
         }
       })
+
+      console.log("define slot cleanup")
     }
-  }, [])
+  }, [pathname, searchParams])
 
   // Create the ad slot container.
   return (
@@ -96,17 +118,27 @@ export function DefineAdSlot({
 }
 
 export function RequestAds() {
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
+
   useEffect(() => {
-    googletag.cmd.push(() => {
-      // Request ads for all ad slots defined up to this point.
-      //
-      // In many real world scenarios, requesting ads for *all*
-      // slots is not optimal. Instead, care should be taken to
-      // only refresh newly added/updated slots.
-      const slots = Object.values(adSlots)
-      googletag.pubads().refresh(slots)
-    })
-  }, [])
+    setTimeout(() => {
+      googletag.cmd.push(() => {
+        // Request ads for all ad slots defined up to this point.
+        //
+        // In many real world scenarios, requesting ads for *all*
+        // slots is not optimal. Instead, care should be taken to
+        // only refresh newly added/updated slots.
+        //  const slots = Object.values(adSlots)
+        //googletag.pubads().refresh(slots)
+
+        const slots = adSlots.map(adSlot => adSlot.slot)
+        googletag.pubads().refresh(slots)
+      })
+
+      console.log("request ads")
+    }, 5000)
+  }, [pathname, searchParams])
 }
 
 /**
