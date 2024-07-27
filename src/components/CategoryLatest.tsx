@@ -151,7 +151,11 @@ export default function CategoryLatest({ category }: Props) {
               </h2>
 
               <div className="description">
-                <PortableText value={data[0].body} components={PortableTextComponents} />
+                {data[0].description ? (
+                  <p>{data[0].description}</p>
+                ) : (
+                  <PortableText value={data[0].body} components={PortableTextComponents} />
+                )}
               </div>
             </div>
           )}

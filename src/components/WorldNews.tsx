@@ -39,6 +39,7 @@ export default function WorldNews() {
           _createdAt,
           title,
           slug,
+          description,
           mainImage,
           author->,
           category->,

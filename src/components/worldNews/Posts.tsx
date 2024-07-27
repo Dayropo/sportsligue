@@ -40,7 +40,7 @@ const Posts = ({ posts }: { posts: Post[] }) => {
                 </Link>
               </div>
             </div>
-            
+
             <div className="col-sm-7" style={{ overflow: "hidden" }}>
               <h2>
                 <Link href={`/${post.slug.current}`}>{post.title}</Link>
@@ -58,7 +58,11 @@ const Posts = ({ posts }: { posts: Post[] }) => {
                   </li> */}
               </ul>
               <div className="description">
-                <PortableText value={post.body} components={PortableTextComponents} />
+                {post.description ? (
+                  <p>{post.description}</p>
+                ) : (
+                  <PortableText value={post.body} components={PortableTextComponents} />
+                )}
               </div>
             </div>
           </div>
