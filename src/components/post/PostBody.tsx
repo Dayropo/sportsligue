@@ -18,6 +18,7 @@ import { useEffect, useState } from "react"
 import SliderWrapper from "../SliderWrapper"
 import Link from "next/link"
 import AdSense300x250 from "../adsense/AdSense300x250"
+import Script from "next/script"
 
 export default function PostBody({ slug }: { slug: string }) {
   const [isMobile, setIsMobile] = useState(false)
@@ -90,19 +91,19 @@ export default function PostBody({ slug }: { slug: string }) {
 
   RequestAds()
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768) // Adjust the breakpoint as needed
-    }
+  // useEffect(() => {
+  //   const handleResize = () => {
+  //     setIsMobile(window.innerWidth <= 768) // Adjust the breakpoint as needed
+  //   }
 
-    handleResize() // Check the initial screen size
+  //   handleResize() // Check the initial screen size
 
-    window.addEventListener("resize", handleResize) // Listen for window resize events
+  //   window.addEventListener("resize", handleResize) // Listen for window resize events
 
-    return () => {
-      window.removeEventListener("resize", handleResize) // Clean up the event listener
-    }
-  }, [])
+  //   return () => {
+  //     window.removeEventListener("resize", handleResize) // Clean up the event listener
+  //   }
+  // }, [])
 
   return (
     <section id="content-section">
@@ -314,6 +315,9 @@ export default function PostBody({ slug }: { slug: string }) {
                   size={[728, 90]}
                   slotId="div-gpt-ad-1720451550067-0"
                 />
+
+                <div data-type="_mgwidget" data-widget-id="1649297"></div>
+                <Script>{`(function(w,q){w[q]=w[q]||[];w[q].push(["_mgc.load"])})(window,"_mgq");`}</Script>
               </div>
               {/* End Advertisement */}
 

@@ -79,7 +79,8 @@ export default function CategoryLatest({ category }: Props) {
 
           <div className="news-post standart-post">
             <div className="post-image">
-              <Skeleton animation="wave"
+              <Skeleton
+                animation="wave"
                 variant="rectangular"
                 sx={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
               />
@@ -96,7 +97,8 @@ export default function CategoryLatest({ category }: Props) {
           <ul className="small-posts">
             {[...Array(3)].map((x, i) => (
               <li key={i}>
-                <Skeleton animation="wave"
+                <Skeleton
+                  animation="wave"
                   variant="rectangular"
                   width={80}
                   height={80}
@@ -107,7 +109,11 @@ export default function CategoryLatest({ category }: Props) {
                   <Skeleton animation="wave" variant="text" sx={{ fontSize: "14px" }} />
 
                   <ul className="post-tags">
-                    <Skeleton animation="wave" variant="text" sx={{ fontSize: "12px", width: "100px" }} />
+                    <Skeleton
+                      animation="wave"
+                      variant="text"
+                      sx={{ fontSize: "12px", width: "100px" }}
+                    />
                   </ul>
                 </div>
               </li>
@@ -116,65 +122,69 @@ export default function CategoryLatest({ category }: Props) {
         </>
       )}
 
-      {data && data.length > 0 && (
+      {data && (
         <>
           <div className="title-section">
             <h1>{category}</h1>
           </div>
 
-          <div className="news-post standart-post">
-            <div className="post-image">
-              <Link href={`/${data[0].slug.current}`}>
-                <Image
-                  src={urlFor(data[0].mainImage).url()}
-                  fill
-                  sizes="100vw"
-                  alt={data[0].title}
-                  style={{ objectFit: "cover" }}
-                  loading="lazy"
-                />
-              </Link>
-              <Link href={`/category/${data[0].category.slug.current}`} className="category">
-                {data[0].category.title}
-              </Link>
-            </div>
-
-            <h2>
-              <Link href={`/${data[0].slug.current}`}>{data[0].title}</Link>
-            </h2>
-
-            <div className="description">
-              <PortableText value={data[0].body} components={PortableTextComponents} />
-            </div>
-          </div>
-
-          <ul className="small-posts">
-            {data.slice(1, 4).map((post: Post) => (
-              <li key={post._id}>
-                <Link href={`/${post.slug.current}`}>
+          {data && data.length > 0 && (
+            <div className="news-post standart-post">
+              <div className="post-image">
+                <Link href={`/${data[0].slug.current}`}>
                   <Image
-                    src={urlFor(post.mainImage).url()}
+                    src={urlFor(data[0].mainImage).url()}
                     fill
                     sizes="100vw"
-                    alt={post.title}
+                    alt={data[0].title}
                     style={{ objectFit: "cover" }}
                     loading="lazy"
                   />
                 </Link>
+                <Link href={`/category/${data[0].category.slug.current}`} className="category">
+                  {data[0].category.title}
+                </Link>
+              </div>
 
-                <div className="post-cont">
-                  <h2>
-                    <Link href={`/${post.slug.current}`}>{post.title}</Link>
-                  </h2>
-                  <ul className="post-tags">
-                    <li>
-                      by <a href="#">{post.author.name}</a>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-            ))}
-          </ul>
+              <h2>
+                <Link href={`/${data[0].slug.current}`}>{data[0].title}</Link>
+              </h2>
+
+              <div className="description">
+                <PortableText value={data[0].body} components={PortableTextComponents} />
+              </div>
+            </div>
+          )}
+
+          {data && data.length > 0 && (
+            <ul className="small-posts">
+              {data.slice(1, 4).map((post: Post) => (
+                <li key={post._id}>
+                  <Link href={`/${post.slug.current}`}>
+                    <Image
+                      src={urlFor(post.mainImage).url()}
+                      fill
+                      sizes="100vw"
+                      alt={post.title}
+                      style={{ objectFit: "cover" }}
+                      loading="lazy"
+                    />
+                  </Link>
+
+                  <div className="post-cont">
+                    <h2>
+                      <Link href={`/${post.slug.current}`}>{post.title}</Link>
+                    </h2>
+                    <ul className="post-tags">
+                      <li>
+                        by <a href="#">{post.author.name}</a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          )}
         </>
       )}
     </div>

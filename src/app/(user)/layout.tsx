@@ -35,6 +35,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           src="https://cdn-cookieyes.com/client_data/b75e7d6171b86b69586cd011/script.js"
           strategy="beforeInteractive"
         />
+
+        <Script async src="https://jsc.idealmedia.io/site/973605.js" strategy="lazyOnload" />
       </head>
 
       {process.env.NODE_ENV === "production" && (

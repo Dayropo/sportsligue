@@ -75,7 +75,8 @@ export default function Header() {
     queryKey: ["others"],
     queryFn: async () => {
       const response = await client.fetch<Category[]>(
-        groq`*[_type == "category" && !(title in ["Football", "Tennis", "Basketball", "Boxing", "Formula 1", "American Football", "Baseball"])]{
+        // groq`*[_type == "category" && !(title in ["Football", "Tennis", "Basketball", "Boxing", "Formula 1", "American Football", "Baseball"])]{
+        groq`*[_type == "category" && !(title in ["Paris Olympics 2024", "Football", "Tennis", "Basketball", "Boxing", "Formula 1", "American Football"])]{
           _id,
           _createdAt,
           title,
@@ -110,13 +111,14 @@ export default function Header() {
                 </a>
               </li> */}
 
+              <NavItem title="Paris Olympics 2024" />
               <NavItem title="Football" />
               <NavItem title="Tennis" />
               <NavItem title="Basketball" />
               <NavItem title="Boxing" />
               <NavItem title="Formula 1" />
               <NavItem title="American Football" />
-              <NavItem title="Baseball" />
+              {/* <NavItem title="Baseball" /> */}
 
               {isLoading && (
                 <li className="nav-item">
