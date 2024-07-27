@@ -33,7 +33,8 @@ export default function WorldNews() {
     queryKey: ["world"],
     queryFn: async () => {
       const response = await client.fetch<Post[]>(
-        groq`*[_type == "post" && !(category->title in ["Football", "Tennis", "Basketball", "Boxing", "Formula 1", "American Football"])]{
+        // groq`*[_type == "post" && !(category->title in ["Football", "Tennis", "Basketball", "Boxing", "Formula 1", "American Football"])]{
+        groq`*[_type == "post" && !(category->title in ["Paris Olympics 2024","Football", "Tennis", "Basketball", "Boxing", "Formula 1",])]{
           _id,
           _createdAt,
           title,
@@ -72,7 +73,8 @@ export default function WorldNews() {
                 <div className="row">
                   <div className="col-sm-5">
                     <div className="post-image">
-                      <Skeleton animation="wave"
+                      <Skeleton
+                        animation="wave"
                         variant="rectangular"
                         sx={{
                           position: "absolute",
@@ -89,7 +91,11 @@ export default function WorldNews() {
                     <Skeleton animation="wave" variant="text" sx={{ fontSize: "20px" }} />
 
                     <ul className="post-tags">
-                      <Skeleton animation="wave" variant="text" sx={{ fontSize: "12px", width: "100px" }} />
+                      <Skeleton
+                        animation="wave"
+                        variant="text"
+                        sx={{ fontSize: "12px", width: "100px" }}
+                      />
                     </ul>
 
                     <div className="description">

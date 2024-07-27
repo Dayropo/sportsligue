@@ -60,7 +60,7 @@ export default function HomePage() {
 
   // useEffect(() => {
   //   const handleResize = () => {
-  //     setIsMobile(window.innerWidth <= 768) // Adjust the breakpoint as needed
+  //     setIsMobile(window.innerWidth <= 960) // Adjust the breakpoint as needed
   //   }
 
   //   handleResize() // Check the initial screen size
@@ -94,17 +94,14 @@ export default function HomePage() {
             {/* {isMobile ? (
               <DefineAdSlot
                 adUnit="/23072633878/320x100"
-                size={[
-                  [320, 50],
-                  [320, 100],
-                ]}
-                // slotId="div-gpt-ad-1720451500054-0"
+                size={[320, 100]}
+                slotId="div-gpt-ad-1720451500054-0"
               />
             ) : (
               <DefineAdSlot
                 adUnit="/23072633878/728x90"
                 size={[728, 90]}
-                // slotId="div-gpt-ad-1720451550067-0"
+                slotId="div-gpt-ad-1720451550067-0"
               />
             )} */}
 
@@ -135,24 +132,25 @@ export default function HomePage() {
               {/* <!-- Posts-block --> */}
               <div className="posts-block categories-box">
                 <div className="row">
+                  <CategoryLatest category="Paris Olympics 2024" />
                   <CategoryLatest category="Football" />
+                </div>
+              </div>
+              {/* <!-- End Posts-block --> */}
+              {/* <!-- Posts-block --> */}
+              <div className="posts-block categories-box">
+                <div className="row">
                   <CategoryLatest category="Tennis" />
-                </div>
-              </div>
-              {/* <!-- End Posts-block --> */}
-              {/* <!-- Posts-block --> */}
-              <div className="posts-block categories-box">
-                <div className="row">
                   <CategoryLatest category="Basketball" />
-                  <CategoryLatest category="Boxing" />
                 </div>
               </div>
               {/* <!-- End Posts-block --> */}
               {/* <!-- Posts-block --> */}
               <div className="posts-block categories-box">
                 <div className="row">
+                  <CategoryLatest category="Boxing" />
                   <CategoryLatest category="Formula 1" />
-                  <CategoryLatest category="American Football" />
+                  {/* <CategoryLatest category="American Football" /> */}
                 </div>
               </div>
               {/* <!-- End Posts-block --> */}
