@@ -317,7 +317,7 @@ export default function PostBody({ slug }: { slug: string }) {
                 />
 
                 <div data-type="_mgwidget" data-widget-id="1649297"></div>
-                <Script>{`(function(w,q){w[q]=w[q]||[];w[q].push(["_mgc.load"])})(window,"_mgq");`}</Script>
+                <Script id="_mgwidget" strategy="lazyOnload">{`(function(w,q){w[q]=w[q]||[];w[q].push(["_mgc.load"])})(window,"_mgq");`}</Script>
               </div>
               {/* End Advertisement */}
 
