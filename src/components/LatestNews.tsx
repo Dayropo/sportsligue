@@ -55,7 +55,8 @@ export default function LatestNews() {
               <div className="col-sm-6" key={i}>
                 <div className="news-post standart-post">
                   <div className="post-image">
-                    <Skeleton animation="wave"
+                    <Skeleton
+                      animation="wave"
                       variant="rectangular"
                       sx={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
                     />
@@ -64,7 +65,11 @@ export default function LatestNews() {
                   <Skeleton animation="wave" variant="text" sx={{ fontSize: "16px" }} />
 
                   <ul className="post-tags">
-                    <Skeleton animation="wave" variant="text" sx={{ fontSize: "12px", width: "100px" }} />
+                    <Skeleton
+                      animation="wave"
+                      variant="text"
+                      sx={{ fontSize: "12px", width: "100px" }}
+                    />
                   </ul>
 
                   <div className="description">
@@ -120,7 +125,11 @@ export default function LatestNews() {
                   </ul>
 
                   <div className="description">
-                    <PortableText value={post.body} components={PortableTextComponents} />
+                    {post.description ? (
+                      <p>{post.description}</p>
+                    ) : (
+                      <PortableText value={post.body} components={PortableTextComponents} />
+                    )}
                   </div>
                 </div>
               </div>

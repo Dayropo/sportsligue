@@ -31,6 +31,7 @@ export default function Posts({ slug }: { slug: string }) {
           _createdAt,
           title,
           slug,
+          description,
           mainImage,
           author->,
           category->,
@@ -166,7 +167,14 @@ export default function Posts({ slug }: { slug: string }) {
                             </li> */}
                             </ul>
                             <div className="description">
-                              <PortableText value={post.body} components={PortableTextComponents} />
+                              {post.description ? (
+                                <p>{post.description}</p>
+                              ) : (
+                                <PortableText
+                                  value={post.body}
+                                  components={PortableTextComponents}
+                                />
+                              )}
                             </div>
                           </div>
                         </div>
