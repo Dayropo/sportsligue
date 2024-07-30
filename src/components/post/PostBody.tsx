@@ -283,17 +283,26 @@ export default function PostBody({ slug }: { slug: string }) {
               {/* End single-post  */}
 
               {/* Advertisement */}
-              <div className="advertisement">
-                {/* <a
+              {/* <div className="advertisement">
+                <a
                     href="https://kn6m4zjsiy3.typeform.com/to/JNmi3cD2"
                     target="_blank"
                     rel="noopener noreferrer"
                 >
                     <Image src="/images/adsense/728x90.gif" width={728} height={90} alt="728x90" />
-                </a> */}
+                </a>
 
-                {/* <AdSense728x90 /> */}
-                {/* {isMobile ? (
+                <AdSense728x90 />
+
+                <div className="large-banner">
+                  <DefineAdSlot
+                    adUnit="/23072633878/728x90"
+                    size={[728, 90]}
+                    slotId="div-gpt-ad-1720451550067-0"
+                  />
+                </div>
+
+                <div className="mobile-banner">
                   <DefineAdSlot
                     adUnit="/23072633878/320x100"
                     size={[
@@ -302,19 +311,7 @@ export default function PostBody({ slug }: { slug: string }) {
                     ]}
                     slotId="div-gpt-ad-1720451500054-0"
                   />
-                ) : (
-                  <DefineAdSlot
-                    adUnit="/23072633878/728x90"
-                    size={[728, 90]}
-                    slotId="div-gpt-ad-1720451550067-0"
-                  />
-                )} */}
-
-                <DefineAdSlot
-                  adUnit="/23072633878/728x90"
-                  size={[728, 90]}
-                  slotId="div-gpt-ad-1720451550067-0"
-                />
+                </div>
 
                 <div data-type="_mgwidget" data-widget-id="1649297"></div>
 
@@ -322,7 +319,7 @@ export default function PostBody({ slug }: { slug: string }) {
                   id="_mgwidget"
                   strategy="lazyOnload"
                 >{`(function(w,q){w[q]=w[q]||[];w[q].push(["_mgc.load"])})(window,"_mgq");`}</Script>
-              </div>
+              </div> */}
               {/* End Advertisement */}
 
               {/* <!-- author-profile --> */}
@@ -731,6 +728,48 @@ export default function PostBody({ slug }: { slug: string }) {
                   </div>
                 )}
               </div>
+            </div>
+
+            <div className="col-lg-12">
+              {/* Advertisement */}
+              <div className="advertisement">
+                {/* <a
+                    href="https://kn6m4zjsiy3.typeform.com/to/JNmi3cD2"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <Image src="/images/adsense/728x90.gif" width={728} height={90} alt="728x90" />
+                </a> */}
+
+                {/* <AdSense728x90 /> */}
+
+                <div className="large-banner">
+                  <DefineAdSlot
+                    adUnit="/23072633878/728x90"
+                    size={[728, 90]}
+                    slotId="div-gpt-ad-1720451550067-0"
+                  />
+                </div>
+
+                <div className="mobile-banner">
+                  <DefineAdSlot
+                    adUnit="/23072633878/320x100"
+                    size={[
+                      [320, 50],
+                      [320, 100],
+                    ]}
+                    slotId="div-gpt-ad-1720451500054-0"
+                  />
+                </div>
+
+                <div data-type="_mgwidget" data-widget-id="1649297"></div>
+
+                <Script
+                  id="_mgwidget"
+                  strategy="lazyOnload"
+                >{`(function(w,q){w[q]=w[q]||[];w[q].push(["_mgc.load"])})(window,"_mgq");`}</Script>
+              </div>
+              {/* End Advertisement */}
             </div>
           </div>
         )}

@@ -2417,6 +2417,17 @@ ul.small-posts > li:last-child {
   gap: 30px;
 }
 
+.large-banner {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-banner {
+  display: none;
+}
+
 /*-------------------------------------------------- */
 /*  Single Post
 /*------------------------------------------------- */
@@ -4421,6 +4432,19 @@ footer .down-footer a.go-top:hover {
 
   .form-inline {
     display: none;
+  }
+}
+
+@media (max-width: 960px) {
+  .large-banner {
+    display: none;
+  }
+
+  .mobile-banner {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
