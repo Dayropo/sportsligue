@@ -105,11 +105,24 @@ export default function HomePage() {
               />
             )} */}
 
-            <DefineAdSlot
-              adUnit="/23072633878/728x90"
-              size={[728, 90]}
-              slotId="div-gpt-ad-1720451550067-0"
-            />
+            <div className="large-banner">
+              <DefineAdSlot
+                adUnit="/23072633878/728x90"
+                size={[728, 90]}
+                slotId="div-gpt-ad-1720451550067-0"
+              />
+            </div>
+
+            <div className="mobile-banner">
+              <DefineAdSlot
+                adUnit="/23072633878/320x100"
+                size={[
+                  [320, 50],
+                  [320, 100],
+                ]}
+                slotId="div-gpt-ad-1720451500054-0"
+              />
+            </div>
           </div>
           {/* <!-- End Advertisement --> */}
 
